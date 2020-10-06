@@ -1,0 +1,24 @@
+body {
+ background-image: url("background.jpg");
+ background-size: cover;
+}
+
+
+.BigHead{
+	text-align: center;
+	font-family: "Arial Black", Gadget, sans-serif;
+
+}
+
+.Center{
+	  margin: auto;
+  width: 30%;
+
+}
+
+#Dropdown1-div{
+	float: left;
+}
+#Dropdown2-div{
+	float: left;
+}
