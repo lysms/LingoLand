@@ -4,6 +4,9 @@
 ?>
 
 <title>myTrips</title>
+    <!-- Self-Defined CSS file -->
+    <link rel="stylesheet" type="text/css" href="articles.css">
+
 
 <?php include('../includes/head.inc.php'); ?>
 
@@ -43,7 +46,10 @@
         <!-- API for searching text by different languages -->
         <iframe src="https://api.gdeltproject.org/api/v1/search_ftxtsearch/search_ftxtsearch?query=sourcecountry:nigeria&output=wordcloud&sort=desc" height="500" scrolling="no" width=500></iframe>
     </div>
+        <!-- Self-Defined JavaScript file -->
+    <script src="articles.js"></script>
 </div>
+
   <?php include('../includes/foot.inc.php');
   // footer info and closing tags
 ?>
