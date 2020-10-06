@@ -15,13 +15,10 @@
     <script src="articles.js"></script>
 </head>
 
-<body>
+<body class="Backgroundimg-body">
+    <div> Here is supposed to be header buttons </div>
     <h2 class="BigHead">Suggested Articles</h2>
-    <div class="Center">
-        <div>
-            <!-- API for searching text by different languages -->
-            <iframe src="https://api.gdeltproject.org/api/v1/search_ftxtsearch/search_ftxtsearch?query=sourcecountry:nigeria&output=wordcloud&sort=desc" height="500" scrolling="no" width=500></iframe>
-        </div>
+    <div class="MenuPosition">
         <!-- Dropdown menu for users -->
         <div>
             <!-- First Menu -->
@@ -46,6 +43,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="Output-div">Here is for output of articles</div>
+    <div>
+        <!-- API for searching text by different languages -->
+        <iframe src="https://api.gdeltproject.org/api/v1/search_ftxtsearch/search_ftxtsearch?query=sourcecountry:nigeria&output=wordcloud&sort=desc" height="500" scrolling="no" width=500></iframe>
     </div>
 </body>
 
