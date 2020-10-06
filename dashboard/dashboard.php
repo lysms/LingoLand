@@ -9,23 +9,104 @@
 
 <?php include('../includes/home_navbar.php'); ?>
 <div id="headerImg">
-      <div id="welcomeText">
-        <h1 style="font-size:50px">Welcome</h1>
-        <h1 style="font-size:50px">to myTrips</h1>
-        <form action="/action_page.php" method="get" id="form1">
-          <a href="../Auth/login.php" id="login_btn">Login</a>
-          <a href="../Auth/signup.php" id="signup_btn">Signup</a>
-        </form>
-      </div>
-      <img src="header.jpg" id="headImg" alt="Wing of a plane">
+    <div id="main" class = "background-light-grey">
+        <div class="container">
+            <div class = "row">
+                <div class = "col-md-4">
+                    <img id="profile-img" src="../resources/images/profile-image.jpeg" width="250"  alt="profile image"/>
+                </div>
+                <div class = "col-md-6">
+                    <h2 class = "profile-name">John Stevens</h2>
+                    <p>Hi! My name is John, and i'm currently learning italian. Super into soccer, so been reading alot of soccer related news in italian. Va Milano</p>
+                    <h3 class = "info-item language">Language: Italian</h3>
+                    <h3 class = "info-item num-cards">Number of cards per day: 10</h3>
+                </div>
+            </div>
+        </div>
     </div>
+    <div id="main" class = "" >
+        <div class = "container">
+            <div class="row experience-item">
+                <h3 class = "col-12">Study</h3>
+            </div>
+            <div class = "row">
+                <div class = "col-md-3">
+                    <button class = "btn btn-info activity">Review Daily Flashcards</button>
+                </div>
+                <div class = "col-md-3">
+                    <button class = "btn btn-secondary activity">Review All Flashcards</button>
+                </div>
+                <div class = "col-md-3">
+                    <button class = "btn btn-secondary activity">Review Random Flashcards</button>
+                </div>
+                <div class = "col-md-3">
+                    <button class = "btn btn-success activity">Review Article</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main" class = "" >
+        <div class = "container">
+        <div class="row experience-item">
+            <h3 class = "col-12">Terms</h3>
+        </div>
+        <div class="row experience-item">
+            <div class = "col-12"> 
+            <table class = "table table-striped">
+                <thead class = 'thead-light'>
+                    <tr class= "d-flex">
+                        <th class = "col-3">Term</th>
+                        <th class = "col-3">Definition</th>
+                        <th class = "col-3">Context</th>
+                        <th class = "col-3"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr class = "d-flex">
+                            <th class = "col-3"> "vediamo!"</th>
+                            <th class = "col-3"> see(in the we conjugate of italian) </th>
+                            <th class = "col-3"> Ciao Silvia, da quanto tempo non ci vediamo!</th>
+                            <th class = "col-3">
+                                <a role="button" class="btn btn-danger" href= "#">Delete</a>
+                            </th>
+                        </tr>
+                        <tr class = "d-flex">
+                            <th class = "col-3"> "vediamo!"</th>
+                            <th class = "col-3"> see(in the we conjugate of italian) </th>
+                            <th class = "col-3"> Ciao Silvia, da quanto tempo non ci vediamo!</th>
+                            <th class = "col-3">
+                                <a role="button" class="btn btn-danger" href= "#">Delete</a>
+                            </th>
+                        </tr>
+                        <tr class = "d-flex">
+                            <th class = "col-3"> "vediamo!"</th>
+                            <th class = "col-3"> see(in the we conjugate of italian) </th>
+                            <th class = "col-3"> Ciao Silvia, da quanto tempo non ci vediamo!</th>
+                            <th class = "col-3">
+                                <a role="button" class="btn btn-danger" href= "#">Delete</a>
+                            </th>
+                        </tr>
+                        <tr class = "d-flex">
+                            <th class = "col-3"> "vediamo!"</th>
+                            <th class = "col-3"> see(in the we conjugate of italian) </th>
+                            <th class = "col-3"> Ciao Silvia, da quanto tempo non ci vediamo!</th>
+                            <th class = "col-3">
+                                <a role="button" class="btn btn-danger" href= "#">Delete</a>
+                            </th>
+                        </tr>
+                        <tr class = "d-flex">
+                            <th class = "col-3"> "vediamo!"</th>
+                            <th class = "col-3"> see(in the we conjugate of italian) </th>
+                            <th class = "col-3"> Ciao Silvia, da quanto tempo non ci vediamo!</th>
+                            <th class = "col-3">
+                                <a role="button" class="btn btn-danger" href= "#">Delete</a>
+                            </th>
+                        </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-    <div id="main">
-      <!-- welcome -->
-      <!-- two buttons -->
-
-  </div>
-  <?php include('../includes/foot.inc.php');
-  // footer info and closing tags
-?>
+<?php include('../includes/foot.inc.php');?>
