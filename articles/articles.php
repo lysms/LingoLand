@@ -13,7 +13,6 @@
 <?php include('../includes/home_navbar.php'); ?>
 <div class="Backgroundimg-body">
 <!-- Place html here --> 
-<div> Here is supposed to be header buttons </div>
     <h2 class="BigHead">Suggested Articles</h2>
     <div class="MenuPosition">
         <!-- Dropdown menu for users -->
@@ -46,7 +45,7 @@
         <!-- API for searching text by different languages -->
         <iframe src="https://api.gdeltproject.org/api/v1/search_ftxtsearch/search_ftxtsearch?query=sourcecountry:nigeria&output=wordcloud&sort=desc" height="500" scrolling="no" width=500></iframe>
     </div>
-        <!-- Self-Defined JavaScript file -->
+    <!-- Self-Defined JavaScript file -->
     <script src="articles.js"></script>
 </div>
 
