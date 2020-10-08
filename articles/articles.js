@@ -38,3 +38,6 @@ function speakText() {
     responsiveVoice.speak(text);
 
 }
+function stopSpeak() {
+    responsiveVoice.cancel();
+}
