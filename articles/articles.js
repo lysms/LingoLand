@@ -20,8 +20,6 @@ $(document).ready(function() {
     $("#Technology").click(function() {
         $("#dropdownMenuButtonPri").text("Technology");
         alert("Look! Technology Coming up!");
-        //some test codes
-        $(".Output-div").append("<p>China and USA up</p>")
     });
 
     $("#Art-and-Culture").click(function() {
@@ -33,7 +31,10 @@ $(document).ready(function() {
         $("#dropdownMenuButtonPri").text("Trumpian");
         alert("Look! Trump is Coming up!");
     });
-
 });
 
+function speakText() {
+    var text = document.getElementById('txt').value;
+    responsiveVoice.speak(text);
 
+}
