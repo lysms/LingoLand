@@ -4,11 +4,12 @@
 ?>
 
 <title>LingoLand &#8212; Review</title>
-<link rel="stylesheet" href="flashcards.css">
+
 
 <?php include('../includes/head.inc.php'); ?>
 
 <?php include('../includes/home_navbar.php'); ?>
+<link rel="stylesheet" href="flashcards.css">
 <div>
 <!-- Place html here --> 
 
