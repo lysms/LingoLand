@@ -1,0 +1,152 @@
+#index {
+    background-color: #61becc;
+}
+
+.card {
+    width: 250px;
+    margin: 0 auto;
+    /* Added */
+    float: none;
+    /* Added */
+    border: none;
+}
+
+.profile-image {
+    height: 250px;
+    object-fit: cover;
+}
+
+#Footer {
+    /*border-bottom: 2px solid #333;*/
+    padding: 1em 1em 1em 1em;
+    text-align: right;
+    white-space: normal;
+    right: 0;
+    width: 100%;
+    color: #ffffff;
+    background-color: #666666;
+}
+
+#Footer a {
+    color: #ffffff;
+    padding: 0 2em 0.5em 0;
+    text-decoration: none;
+}
+
+.content {
+    padding: 10px;
+    padding-bottom: 60px;
+}
+
+#index .jumbotron .container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 100%;
+}
+
+.container {
+    max-width: 1280px;
+    padding: 40px 180px;
+}
+
+#lingoland-title {
+    padding-top: 150px;
+    text-align: center;
+}
+
+.background-white {
+    background-color: white;
+}
+
+.background-yellow {
+    background-color: lightgoldenrodyellow;
+}
+
+#index .jumbotron {
+    background: none;
+    background-size: cover;
+    padding: 0px;
+}
+
+#index p.lead {
+    font-size: 1em;
+    color: black;
+}
+
+.home-image {
+    width: 100%;
+    padding-right: -1px;
+    margin-top: 1.1em;
+}
+
+#learn-more {
+    margin-top: 70px;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+h1 {
+    color: lightgoldenrodyellow;
+    font-size: 40px;
+}
+
+h2.index {
+    text-align: center;
+    color: lightgoldenrodyellow;
+}
+
+h3.index {
+    text-align: center;
+}
+
+img.index {
+    width: 96%;
+    max-width: 300px;
+}
+
+figure {
+    display: inline-block;
+}
+
+article {
+    text-align: center;
+}
+
+.project {
+    border-style: solid;
+    display: table-cell;
+    width: 30%;
+}
+
+.description {
+    padding: 10px;
+    text-align: left;
+}
+
+#slogan {
+    color: navajowhite;
+}
+
+#images {
+    text-align: center;
+}
+
+a.navbar-brand {
+    font-size: 150%;
+}
+
+.col-10 {
+    text-align: center;
+    width: 100%;
+    padding-left: 200px;
+}
+
+#but {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    text-align: center;
+    font-size: 1.2em;
+}
