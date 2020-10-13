@@ -1,0 +1,11 @@
+{	
+	"article_Technology":[
+		{"name":"Easy1", "url":"1234"},
+		{"name":"Easy2", "url":"1234"}
+	],
+	"article_Humanity":[
+		{"name":"Easy1", "url":"1234"},
+		{"name":"Easy2", "url":"1234"}
+	]
+
+}

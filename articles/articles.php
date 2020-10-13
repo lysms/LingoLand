@@ -23,7 +23,7 @@
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                     <li><a id="Technology" href="#">Technology</a></li>
-                    <li><a id="Art-and-Culture" href="#">Art and Culture</a></li>
+                    <li><a id="Humanity" href="#">Humanity</a></li>
                     <li><a id="Politics" href="#">Politics</a></li>
                 </ul>
             </div>
@@ -40,10 +40,11 @@
             </div>
         </div>
     </div>
-    <div class="Output-div">Here is for output of articles</div>
+    <div id="Output-div"></div>
     <div>
         <!-- API for searching text by different languages -->
         <iframe src="https://api.gdeltproject.org/api/v1/search_ftxtsearch/search_ftxtsearch?query=sourcecountry:nigeria&output=wordcloud&sort=desc" height="500" scrolling="no" width=500></iframe>
+        <!-- API for voicespeaker -->
         <textarea id="txt" cols="50" rows="10"></textarea>
         <input onclick="speakText()" type="button" value="submit">
         <input onclick="stopSpeak()" type="button" value="stop">
