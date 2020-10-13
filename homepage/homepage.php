@@ -6,10 +6,11 @@
 <title>LingoLand &#8212; Home</title>
 
 <head>
-<title>LingoLang</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="homepage.css">
+    <title>LingoLang</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="homepage.css">
 </head>
 
 
@@ -22,7 +23,7 @@
                 <div id="lingoland-title" class="col-md-6">
                     <h1>LingoLand</h1>
                     <h3 id="slogan">Read more. Study less.</h3>
-                    <a type="button" id="learn-more" class="btn btn-info" href="../Auth/signup.php">Get Started</a>
+                    <a type="button" id="learn-more" class="btn btn-info" href="../auth/auth.php">Get Started</a>
                 </div>
                 <div class="col-md-6">
                     <img class="home-image" src="../resources/images/foreign-language.jpg" alt="flashcards" />
@@ -116,7 +117,7 @@
                 </div>
             </div>
             <hr>
-            <a type="button" id="but" class="btn btn-info" href="../Auth/signup.php">Explore More</a>
+            <a type="button" id="but" class="btn btn-info" href="../auth/auth.php">Explore More</a>
         </div>
     </div>
 
@@ -168,6 +169,6 @@
         </section>
     </div>
 </div>
-    <?php include('../includes/foot.inc.php');
+<?php include('../includes/foot.inc.php');
   // footer info and closing tags
 ?>
