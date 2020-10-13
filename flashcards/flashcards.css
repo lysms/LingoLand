@@ -1,3 +1,9 @@
+
+body{	
+	background-color: rgba(127, 255, 213,0.3);
+}
+
+
 #info {
 	margin: auto;
 	width: 80%;
@@ -11,18 +17,16 @@
 	float: right;
 }
 
-
-
 main {
 	margin: auto;
-	background-color: antiquewhite;
+	background-color: #ffddcc;
 	width: 80%;
 	min-height: auto;
 	height: 70vh;
 
 }
 
-.card {
+.flashcard {
 	text-align: center;
 	margin: 0;
 	padding: 10px;
@@ -36,29 +40,33 @@ main {
 	visibility: hidden;
 }
 
-#show_button {
-	display: block;
-	margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  min-width: 100px;
-  width: 10%;
+
+#user_input {
+	position: relative;
+  margin: 10px auto 10px auto;
+  width: 150px;
+  height: 100px;
 }
 
-#answer_box {
-	visibility: hidden;
+#show_button {
 	display: block;
-	margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
   min-width: 100px;
-  width: 10%;
 }
 
 .answer_button {
 	width: 45%;
 }
+#wrong_button {
+	float: left;
+}
+#right_button {
+	float: right;
+}
 
 #edit_button {
-	float: right;
+	position: absolute;
+	left: 25%;
+  bottom: 0;
 }
