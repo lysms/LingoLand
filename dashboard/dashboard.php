@@ -3,7 +3,7 @@
   include('../includes/functions.inc.php'); // functions
 ?>
 
-<title>LingoLand</title>
+<title>LingoLand &#8212; Dashboard</title>
 
 <?php include('../includes/head.inc.php'); ?>
 
