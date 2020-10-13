@@ -36,6 +36,7 @@
                 </form>
               </div>
           </div>
+          <div class="whitespace">
         </div>
   </div>
   <?php include('../includes/foot.inc.php');
