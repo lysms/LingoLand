@@ -3,7 +3,7 @@
   include('../includes/functions.inc.php'); // functions
 ?>
 
-<title>myTrips</title>
+<title>LingoLand</title>
     <!-- Self-Defined CSS file -->
     <link rel="stylesheet" type="text/css" href="articles.css">
 
