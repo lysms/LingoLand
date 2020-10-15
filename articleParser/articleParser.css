@@ -1,8 +1,13 @@
-.highlight {
+/* .highlight {
     background-color: #FFFF88;
-}
+} */
 
 .fas.fa-trash-alt:hover{
     cursor: pointer;
     color: red;
+}
+
+.language-to-translate{
+    width: 50%;
+    margin-bottom: 50px;
 }

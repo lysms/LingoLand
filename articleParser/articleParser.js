@@ -1,45 +1,49 @@
 var id = 1
 
-cards = []
+var cards = []
 
-function createTranslation(stringToTranslate){
-  url = "https://api.au-syd.language-translator.watson.cloud.ibm.com/instances/2339c367-dbe9-4f5b-9747-db8b1ea37e00"
-  urlTranslate = url + "/v3/translate?version=2018-05-01"
-  //urlTranslate =  "https://test.api.randomkey.io/v1/quota"
-  console.log(urlTranslate);
-  $.ajax({
-      beforeSend: function (xhr) {
-          xhr.setRequestHeader ("Authorization", "Basic " + btoa("apikey" + ":" + "fF2CLHL3rU9x64hVoq3kH9mdHzIke5obf_n5fKFg2TpE"));
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-      type: 'POST',
-      url: urlTranslate,
+var language = "it";
+
+function getRandomColor() {
+  color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
+  return color;
+}
+
+async function createTranslation(stringToTranslate){
+  url = "http://localhost/articleParser/getTranslation.php"
+  console.log(url);
+  const response = $.ajax({
+      type: 'GET',
+      url: url,
       data: {
           text: stringToTranslate,
-          model_id: "it-en"
+          model_id: language + "-en"
       },
-      dataType: 'application/json',
       success: function(res){
-        console.log(res);
-        return res;
+        return res.translations[0];
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) { // if there was a problem
         console.log(XMLHttpRequest, textStatus, errorThrown);
         alert('Error Occured');
       }
     });
+  return new Promise((resolve, reject) => {
+    if(response){
+      resolve(response);
+    } else{
+      reject();
+    }
+  })
 }
 
-function createCard(sel, translation, context){
+function createCard(sel, translation, context, color){
   var newCardObject = {
     id: id,
     term: sel,
     translation: translation,
     context: context
   }
-  var newCardElement = '<div id="card-'+ id +'" class="card background-green mb-4" style="width: 100%;"> \
+  var newCardElement = '<div id="card-'+ id +'" class="card mb-4" style="width: 100%; background-color: '+ color +';"> \
     <i id="' +id+ '" class="fas fa-trash-alt"></i>\
     <div class="card-body">\
     <h5 class="card-title">Term</h5>\
@@ -57,10 +61,21 @@ function createCard(sel, translation, context){
 $(document).ready(function(){
     $("p.article-text").click(function(){
         var sel = getSelection().toString();
-        $("p.article-text").highlight(sel);
-        createCard(sel, "TBD", "lorem ipsum dolor");
+        const color = getRandomColor();
+        console.log(color);
+        $("p.article-text").highlight(sel, color);
+        createTranslation(sel).then(function(translation){
+          console.log(translation.translations);
+          createCard(sel, translation.translations[0].translation, "lorem ipsum dolor", color);
+        });
     })
 });
+
+$('select').on('change', function(e){
+  language = this.value;
+  console.log(language);
+})
+
 $(document).on("click", ".fas.fa-trash-alt", function(){
   let cardID = this.id;
   for(var i = 0; i < cards.length; i++){
@@ -71,6 +86,3 @@ $(document).on("click", ".fas.fa-trash-alt", function(){
     }
   }
 })
-
-
-//createTranslation("quanto")
