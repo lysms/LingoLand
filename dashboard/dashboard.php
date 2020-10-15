@@ -31,16 +31,16 @@
             </div>
             <div class = "row">
                 <div class = "col-md-3">
-                    <button class = "btn btn-info activity">Review Daily Flashcards</button>
+                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review Daily Flashcards</a>    
                 </div>
                 <div class = "col-md-3">
-                    <button class = "btn btn-secondary activity">Review All Flashcards</button>
+                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review all Flashcards</a>    
                 </div>
                 <div class = "col-md-3">
-                    <button class = "btn btn-secondary activity">Review Random Flashcards</button>
+                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review Random Flashcards</a>     
                 </div>
                 <div class = "col-md-3">
-                    <button class = "btn btn-success activity">Review Article</button>
+                <a href="../articles/articles.php" class="btn btn-success activity">Review Article</a>    
                 </div>
             </div>
         </div>

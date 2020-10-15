@@ -1,7 +1,6 @@
 <?php
   include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
   include('../includes/functions.inc.php'); // functions
-  echo "before post";
   if($_SERVER['REQUEST_METHOD']=='POST' and isset($_POST['text']) ){
       $text = $_POST['text'];//assigning your input value
   }
