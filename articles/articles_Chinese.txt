@@ -1,11 +1,15 @@
 {	
 	"article_Technology":[
-		{"name":"Easy1", "url":"1234"},
-		{"name":"Easy2", "url":"1234"}
+		{"name":"智慧交通", "url":"http://m.stdaily.com/qykj/qianyan/2020-10/13/content_1027236.shtml"},
+		{"name":"病毒", "url":"http://m.stdaily.com/qykj/qianyan/2020-10/13/content_1026940.shtml"}
 	],
 	"article_Humanity":[
-		{"name":"Easy1", "url":"1234"},
-		{"name":"Easy2", "url":"1234"}
+		{"name":"三国演义", "url":"https://yd.cnki.net/gz/book/index03.html"},
+		{"name":"红楼梦", "url":"https://yd.cnki.net/gz/book/index04.html"}
+	],
+	"article_Politics":[
+		{"name":"外交部:中国人权", "url":"http://world.people.com.cn/n1/2020/1014/c1002-31892149.html"},
+		{"name":"全面深化改革", "url":"http://politics.people.com.cn/n1/2020/1009/c1001-31885180.html"}
 	]
 
 }

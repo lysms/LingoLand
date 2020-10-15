@@ -1,0 +1,15 @@
+{	
+	"article_Technology":[
+		{"name":"Razzia bei Münchner BKA-Trojanerlieferant", "url":"https://www.nytimes.com/2020/10/13/technology/viral-misinformation-violence-election.html"},
+		{"name":"Videokonferenz-Anbieter Zoom will Event-Plattform werden", "url":"https://www.handelsblatt.com/technik/it-internet/anwenderkonferenz-zoomtopia-videokonferenz-anbieter-zoom-will-event-plattform-werden/26275222.html"}
+	],
+	"article_Humanity":[
+		{"name":"Auktion anstelle Kunstmesse floppt", "url":"https://www.handelsblatt.com/arts_und_style/kunstmarkt/experiment-in-paris-auktion-anstelle-kunstmesse-floppt/26268758.html"},
+		{"name":"T-Rex-Skelett für 31 Millionen Dollar – Die Welt der Hochpreiskunst", "url":"https://www.handelsblatt.com/arts_und_style/kunstmarkt/high-end-auktionen-in-new-york-t-rex-skelett-fuer-31-millionen-dollar-die-welt-der-hochpreiskunst/26256302.html"}
+	],
+	"article_Politics":[
+		{"name":"Neue Chance für die milliardenschwere Steuerrevolution der OECD", "url":"https://www.handelsblatt.com/politik/international/digitalsteuer-neue-chance-fuer-die-milliardenschwere-steuerrevolution-der-oecd-/26275616.html"},
+		{"name":"Angela Merkel: „Wir können uns auch ökonomisch eine zweite Welle nicht leisten“", "url":"https://www.handelsblatt.com/politik/deutschland/bund-laender-beratungen-angela-merkel-wir-koennen-uns-auch-oekonomisch-eine-zweite-welle-nicht-leisten/26274736.html"}
+	]
+
+}

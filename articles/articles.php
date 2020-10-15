@@ -42,8 +42,6 @@
     </div>
     <div id="Output-div"></div>
     <div>
-        <!-- API for searching text by different languages -->
-        <iframe src="https://api.gdeltproject.org/api/v1/search_ftxtsearch/search_ftxtsearch?query=sourcecountry:nigeria&output=wordcloud&sort=desc" height="500" scrolling="no" width=500></iframe>
         <!-- API for voicespeaker -->
         <textarea id="txt" cols="50" rows="10"></textarea>
         <input onclick="speakText()" type="button" value="submit">

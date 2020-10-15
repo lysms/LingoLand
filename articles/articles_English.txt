@@ -1,0 +1,15 @@
+{	
+	"article_Technology":[
+		{"name":"Misinformation Stokes Calls for Violence on Election Day", "url":"https://www.nytimes.com/2020/10/13/technology/viral-misinformation-violence-election.html"},
+		{"name":"Google Employees Are Free to Speak Up. Except on Antitrust.", "url":"https://www.nytimes.com/2020/10/13/technology/google-employees-antitrust.html"}
+	],
+	"article_Humanity":[
+		{"name":"Simone Leigh Is First Black Woman to Represent U.S. at Venice Biennale", "url":"https://www.nytimes.com/2020/10/14/arts/design/simone-leigh-venice-biennale.html"},
+		{"name":"How to Handle the Hate in America’s Musical Heritage", "url":"https://www.nytimes.com/2020/10/14/arts/music/anthology-of-american-folk-music.html?auth=login-google"}
+	],
+	"article_Politics":[
+		{"name":"Barrett, Declining to Detail Legal Views, Says She Will Not Be ‘a Pawn’ of Trump", "url":"https://www.nytimes.com/2020/10/13/us/politics/amy-coney-barrett-supreme-court-hearings.html"},
+		{"name":"What Kamala Harris Learned About Power at Howard", "url":"https://www.nytimes.com/2020/10/14/us/politics/kamala-harris-howard.html"}
+	]
+
+}
