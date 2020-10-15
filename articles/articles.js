@@ -7,6 +7,7 @@ $(document).ready(function() {
 
         if (check == 1) {
             alert("Please select language first then choose the article class. We can not provide any resources without knowing your preference unless you are an alien.");
+            location.reload();
         }
     });
 
