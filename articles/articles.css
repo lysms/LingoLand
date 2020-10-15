@@ -1,35 +1,46 @@
 .Backgroundimg-body {
- background-image: url("background.jpg");
- background-size: cover;
-}
-
-
-.BigHead{
-	text-align: center;
-	font-family: "Arial Black", Gadget, sans-serif;
+    background-color: rgba(127, 255, 213, 0.3);
+    min-height: 50em;
 
 }
 
-.MenuPosition{
-	top: 10%;
-	  margin-left: auto;
-	  margin-right: auto;
-	  margin-top: 40px;
-	  width: 30%;
+
+.BigHead {
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
 
 }
 
-#Dropdown1-div{
-	float: left;
-}
-#Dropdown2-div{
-	float: left;
+.MenuPosition {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+
 }
 
-#Output-div{
-	width: 30%;
-	clear: both;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 200px;
+#Dropdown1-div {}
+
+#Dropdown2-div {}
+
+#Output-div {
+	height: 20em;
+    background-color: #ffddcc;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+#Left-Resources {
+    float: left;
+}
+
+#Right-Resources {
+    background-color: #ffddcc;
+    width: 25%;
+    float: right;
+    height: 25em;
 }
