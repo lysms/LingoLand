@@ -1,35 +1,43 @@
 .Backgroundimg-body {
- background-image: url("background.jpg");
- background-size: cover;
+    background-image: url("background.jpg");
+    background-size: cover;
 }
 
 
-.BigHead{
-	text-align: center;
-	font-family: "Arial Black", Gadget, sans-serif;
+.BigHead {
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
 
 }
 
-.MenuPosition{
-	top: 10%;
-	  margin-left: auto;
-	  margin-right: auto;
-	  margin-top: 40px;
-	  width: 30%;
+.MenuPosition {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
-#Dropdown1-div{
-	float: left;
-}
-#Dropdown2-div{
-	float: left;
+#Dropdown1-div {}
+
+#Dropdown2-div {}
+
+#Output-div {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
 }
 
-#Output-div{
-	width: 30%;
-	clear: both;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 200px;
+#Left-Resources {
+    float: left;
+}
+
+#Right-Resources {
+    width: 25%;
+    float: right;
+    height: 20em;
 }
