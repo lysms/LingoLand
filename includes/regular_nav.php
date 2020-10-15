@@ -12,16 +12,10 @@
                 <a class="nav-link" href="../dashboard/dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#feature">Features</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="../flashcards/flashcards.php">Flashcard Maker</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../articles/articles.php">Suggested Articles</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#meet-the-team">LingoLand Team</a>
             </li>
         </ul>
     </div>
