@@ -10,7 +10,7 @@
 
 <?php include('../includes/head.inc.php'); ?>
 
-<?php include('../includes/home_navbar.php'); ?>
+<?php include('../includes/regular_nav.php'); ?>
 <div class="Backgroundimg-body">
 <!-- Place html here --> 
     <h2 class="BigHead">Suggested Articles</h2>
