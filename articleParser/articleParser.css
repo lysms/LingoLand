@@ -1,0 +1,8 @@
+.highlight {
+    background-color: #FFFF88;
+}
+
+.fas.fa-trash-alt:hover{
+    cursor: pointer;
+    color: red;
+}
