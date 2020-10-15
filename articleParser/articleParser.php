@@ -18,10 +18,10 @@
     </div>
   </div>
   <div class="row"> 
-    <form class = "parse-text">
+    <form class = "parse-text" action="./articleParser2.php" method="post">
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Copy text into text area for parsing</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+        <label for="text">Copy text into text area for parsing</label>
+        <textarea name="text" class="form-control" id="text" rows="15"></textarea>
       </div>
       <button type="submit" class="btn btn-primary mb-2">Parse Text</button>
     </form>

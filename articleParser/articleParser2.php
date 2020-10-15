@@ -1,49 +1,21 @@
 <?php
   include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
   include('../includes/functions.inc.php'); // functions
-?>
+  echo "before post";
+  if($_SERVER['REQUEST_METHOD']=='POST' and isset($_POST['text']) ){
+      $text = $_POST['text'];//assigning your input value
+  }
 
+?>
+<link href="./articleParser.css" rel="stylesheet" type="text/css"/>
 <title>LingoLand</title>
 
 <?php include('../includes/head.inc.php'); ?>
 
 <?php include('../includes/home_navbar.php'); ?>
 <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
+    <ul id="terms" class="sidebar-nav">
         <li class="sidebar-brand"> <a href="#"> Terms </a> </li>
-        <div class="card background-green mb-4" style="width: 100%;">
-            <div class="card-body">
-                <h5 class="card-title">Term</h5>
-                <p class="card-subtitle mb-2 text-muted">"vediamo!"</p>
-                <h5 class="card-title">Translation</h5>
-                <p class="card-subtitle mb-2 text-muted">see (in the we conjugate of italian)</p>
-                <h5 class="card-title">Context</h5>
-                <p class="card-subtitle mb-2 text-muted">"Ciao Silvia, da quanto tempo non ci vediamo!"</p>
-                <button type="submit" class="btn btn-secondary mb-2">Make Flashcard</button>
-            </div>
-        </div>
-        <div class="card background-pink mb-4" style="width: 100%;">
-            <div class="card-body">
-                <h5 class="card-title">Term</h5>
-                <p class="card-subtitle mb-2 text-muted">"vediamo!"</p>
-                <h5 class="card-title">Translation</h5>
-                <p class="card-subtitle mb-2 text-muted">see (in the we conjugate of italian)</p>
-                <h5 class="card-title">Context</h5>
-                <p class="card-subtitle mb-2 text-muted">"Ciao Silvia, da quanto tempo non ci vediamo!"</p>
-                <button type="submit" class="btn btn-secondary mb-2">Make Flashcard</button>
-            </div>
-        </div>
-        <div class="card background-light-blue mb-4" style="width: 100%;">
-            <div class="card-body">
-                <h5 class="card-title">Term</h5>
-                <p class="card-subtitle mb-2 text-muted">"vediamo!"</p>
-                <h5 class="card-title">Translation</h5>
-                <p class="card-subtitle mb-2 text-muted">see (in the we conjugate of italian)</p>
-                <h5 class="card-title">Context</h5>
-                <p class="card-subtitle mb-2 text-muted">"Ciao Silvia, da quanto tempo non ci vediamo!"</p>
-                <button type="submit" class="btn btn-secondary mb-2">Make Flashcard</button>
-            </div>
-        </div>
     </ul>
 </div> <!-- /#sidebar-wrapper -->
 <div class="container">
@@ -56,9 +28,10 @@
     </div>
   </div>
   <div class="row"> 
+  <?=$text;?>
     <form class = "parse-text">
       <div class="form-group">
-        <p> 
+        <p class="article-text"> 
             Marta: Ciao Silvia, da quanto tempo non ci <span class="background-green">vediamo</span>! Come stai? <br>
             Silvia: Bene grazie. Che piacere vederti! Sono <span class="background-pink">appena</span> tornata da Londra. Sono stata lì tre mesi per studiare inglese. <br>
             Marta: E come è andata? <br>
@@ -71,4 +44,6 @@
     </form>
   </div>
 </div>
+<script type="text/javascript" src="jquery.highlight.js"></script>
+<script type="text/javascript" src="articleParser.js"></script>
 <?php include('../includes/foot.inc.php');?>
