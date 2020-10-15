@@ -2,11 +2,19 @@
 
 //Jquery for the articles below
 $(document).ready(function() {
+    var check = 1; // This variable is for checking whether the client has choosen language first or not.
+    $("#dropdownMenuButtonPri").click(function() {
+
+        if (check == 1) {
+            alert("Please select language first then choose the article class. We can not provide any resources without knowing your preference unless you are an alien.");
+        }
+    });
 
     // Click function for changing article genre and language
     // English part
     $("#English").click(function() {
         $("#dropdownMenuButton").text("English");
+        check = 2;
         // document.getElementsByClassName("LanguageDisplay").innerHTML = "English-Lol"; This method doesnt work. Solution is that to add[0] behind (LanguageDisplay)
         alert("Look! English-Lol");
         $("#Technology").click(function() {
@@ -85,6 +93,7 @@ $(document).ready(function() {
         alert("Aussehen! Deustch-Lol");
         $("#Technology").click(function() {
             $("#dropdownMenuButtonPri").text("Technology");
+            check = 2;
             alert("Look! Technology is coming up!");
             //This is for displaying articles 
             //The first one is for the Technology
@@ -159,6 +168,7 @@ $(document).ready(function() {
         alert("看! 中文-哈哈");
         $("#Technology").click(function() {
             $("#dropdownMenuButtonPri").text("Technology");
+            check = 2;
             alert("Look! Technology is coming up!");
             //This is for displaying articles 
             //The first one is for the Technology

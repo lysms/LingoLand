@@ -14,7 +14,7 @@
 <div class="Backgroundimg-body">
 <!-- Place html here --> 
     <h2 class="BigHead">Suggested Articles</h2>
-        <div class="MenuPosition">
+    <div class="MenuPosition">
         <!-- Dropdown menu for users -->
         <!-- First Menu -->
         <div id="Dropdown1-div" class="dropdown">
@@ -38,15 +38,16 @@
             </div>
         </div>
     </div>
-    <div id="Right-Resources">
-    </div>
-    <div id="Output-div"></div>
-    <div>
+    <div id="Left-Resources">
         <!-- API for voicespeaker -->
-        <textarea id="txt" cols="50" rows="10"></textarea>
+        <textarea id="txt" cols="45" rows="17"></textarea>
         <input onclick="speakText()" type="button" value="submit">
         <input onclick="stopSpeak()" type="button" value="stop">
     </div>
+    <div id="Right-Resources">
+        We will provide more resources here for any clients who are seeking for more articles in the language they want.
+    </div>
+    <div id="Output-div">Here will be the output of the articles</div>
     <!-- Self-Defined JavaScript file -->
     <script src="articles.js"></script>
     <script type="text/javascript" src="https://code.responsivevoice.org/responsivevoice.js"></script>
