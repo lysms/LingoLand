@@ -10,8 +10,7 @@ function getRandomColor() {
 }
 
 async function createTranslation(stringToTranslate){
-  url = window.location.href.toString().replace("articleParser2.php", "getTranslation.php")
-  console.log(url);
+  const url = window.location.href.toString().replace("articleParser2.php", "getTranslation.php")
   const response = $.ajax({
       type: 'GET',
       url: url,
