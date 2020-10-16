@@ -85,7 +85,7 @@ $(document).ready(function() {
         alert("Aussehen! Deustch-Lol");
         $("#Technology").click(function() {
             $("#dropdownMenuButtonPri").text("Technology");
-            alert("Look! Technology is coming up!");
+            alert("Technologie");
             //This is for displaying articles 
             //The first one is for the Technology
             var i, x = "";
@@ -108,7 +108,7 @@ $(document).ready(function() {
         });
         $("#Humanity").click(function() {
             $("#dropdownMenuButtonPri").text("Humanity");
-            alert("Look! HASS is coming up!");
+            alert("Kultur");
             //The second one is for the Humanity
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
@@ -130,7 +130,7 @@ $(document).ready(function() {
         });
         $("#Politics").click(function() {
             $("#dropdownMenuButtonPri").text("Politicians-emmm");
-            alert("Look! Politics is Coming up!");
+            alert("Politik");
             //The third one is for the Politics
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
@@ -159,7 +159,7 @@ $(document).ready(function() {
         alert("看! 中文-哈哈");
         $("#Technology").click(function() {
             $("#dropdownMenuButtonPri").text("Technology");
-            alert("Look! Technology is coming up!");
+            alert("接下来是科技篇");
             //This is for displaying articles 
             //The first one is for the Technology
             var i, x = "";
@@ -182,7 +182,7 @@ $(document).ready(function() {
         });
         $("#Humanity").click(function() {
             $("#dropdownMenuButtonPri").text("Humanity");
-            alert("Look! HASS is coming up!");
+            alert("接下来是人文篇");
             //The second one is for the Humanity
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
@@ -204,7 +204,7 @@ $(document).ready(function() {
         });
         $("#Politics").click(function() {
             $("#dropdownMenuButtonPri").text("Politicians-emmm");
-            alert("Look! Politics is Coming up!");
+            alert("接下来是政治篇");
             //The third one is for the Politics
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
@@ -240,4 +240,11 @@ function speakText() {
 //This is a function for speech to be stopped
 function stopSpeak() {
     responsiveVoice.cancel();
+}
+
+function check(){
+    if(document.getElementById("dropdownMenuButton").innerHTML= "Language"){
+        alert("GG");
+        window.reload();
+    }
 }
