@@ -18,8 +18,7 @@
         <!-- Dropdown menu for users -->
         <!-- First Menu -->
         <div id="Dropdown1-div" class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButtonPri">Article Classes
-                <span class="caret"></span></button>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButtonPri" onclick="check()">Article Classes<span class="caret"></span></button>
             <ul class="dropdown-menu">
                 <li><a id="Technology" href="#">Technology</a></li>
                 <li><a id="Humanity" href="#">Humanity</a></li>
@@ -28,9 +27,8 @@
         </div>
         <!-- Second Menu -->
         <div id="Dropdown2-div" class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Language
-            </button>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            >Language</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a id="English" class="dropdown-item" href="#">English</a>
                 <a id="Germany" class="dropdown-item" href="#">Germany</a>

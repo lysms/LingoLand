@@ -243,8 +243,8 @@ function stopSpeak() {
 }
 
 function check(){
-    if(document.getElementById("dropdownMenuButton").innerHTML= "Language"){
+    if(document.getElementById("dropdownMenuButton").innerHTML== "Language"){
         alert("GG");
-        window.reload();
+        location.reload();
     }
 }
