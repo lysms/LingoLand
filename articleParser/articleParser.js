@@ -1,4 +1,4 @@
-var id = 1
+var id = 1;
 
 var cards = []
 
@@ -10,7 +10,7 @@ function getRandomColor() {
 }
 
 async function createTranslation(stringToTranslate){
-  url = "http://localhost/articleParser/getTranslation.php"
+  url = window.location.href.toString().replace("articleParser2.php", "getTranslation.php")
   console.log(url);
   const response = $.ajax({
       type: 'GET',
@@ -63,7 +63,7 @@ $(document).ready(function(){
         var sel = getSelection().toString();
         const color = getRandomColor();
         console.log(color);
-        $("p.article-text").highlight(sel, color);
+        $("p.article-text").highlight(sel, color, id);
         createTranslation(sel).then(function(translation){
           console.log(translation.translations);
           createCard(sel, translation.translations[0].translation, "lorem ipsum dolor", color);
@@ -80,8 +80,7 @@ $(document).on("click", ".fas.fa-trash-alt", function(){
   let cardID = this.id;
   for(var i = 0; i < cards.length; i++){
     if (cards[i].id = cardID){
-      const term = cards[i].term; 
-      $("p.article-text").removeHighlight(term);
+      $("p.article-text").removeHighlight(cardID);
       $("#card-" + cardID). remove();
     }
   }
