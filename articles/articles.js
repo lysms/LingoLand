@@ -11,7 +11,10 @@ $(document).ready(function() {
         alert("Look! English-Lol");
         $("#Technology").click(function() {
             $("#dropdownMenuButtonPri").text("Technology");
-            alert("Look! Technology is coming up!");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
+                alert("Look! Technology is coming up!");
+            }
+
             //This is for displaying articles 
             //The first one is for the Technology
             var i, x = "";
@@ -33,8 +36,11 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Humanity").click(function() {
-            $("#dropdownMenuButtonPri").text("Humanity");
-            alert("Look! HASS is coming up!");
+            $("#dropdownMenuButtonPri").text("Culture");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
+                alert("Look! Culture is coming up!");
+            }
+
             //The second one is for the Humanity
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
@@ -56,7 +62,10 @@ $(document).ready(function() {
         });
         $("#Politics").click(function() {
             $("#dropdownMenuButtonPri").text("Politicians-emmm");
-            alert("Look! Politics is Coming up!");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
+                alert("Look! Politics is coming up!");
+            }
+
             //The third one is for the Politics
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
@@ -84,8 +93,11 @@ $(document).ready(function() {
         $("#dropdownMenuButton").text("Deutsch");
         alert("Aussehen! Deustch-Lol");
         $("#Technology").click(function() {
-            $("#dropdownMenuButtonPri").text("Technology");
-            alert("Technologie");
+            $("#dropdownMenuButtonPri").text("Technologie");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "Deutsch") {
+                alert("Technologie!");
+            }
+
             //This is for displaying articles 
             //The first one is for the Technology
             var i, x = "";
@@ -107,8 +119,11 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Humanity").click(function() {
-            $("#dropdownMenuButtonPri").text("Humanity");
-            alert("Kultur");
+            $("#dropdownMenuButtonPri").text("Kultur");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "Deutsch") {
+                alert("Kultur!");
+            }
+
             //The second one is for the Humanity
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
@@ -129,8 +144,11 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Politics").click(function() {
-            $("#dropdownMenuButtonPri").text("Politicians-emmm");
-            alert("Politik");
+            $("#dropdownMenuButtonPri").text("Politik");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "Deutsch") {
+                alert("Politik!");
+            }
+
             //The third one is for the Politics
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
@@ -157,9 +175,15 @@ $(document).ready(function() {
     $("#Chinese").click(function() {
         $("#dropdownMenuButton").text("中文");
         alert("看! 中文-哈哈");
+        document.getElementById("Right-Resources").innerHTML += "<br><li><a href='http://www.people.com.cn/'>人民日报</a>";
+
+        //subbutton for choosing the topic
         $("#Technology").click(function() {
-            $("#dropdownMenuButtonPri").text("Technology");
-            alert("接下来是科技篇");
+            $("#dropdownMenuButtonPri").text("科技");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "中文") {
+                alert("接下来是科技篇");
+            }
+
             //This is for displaying articles 
             //The first one is for the Technology
             var i, x = "";
@@ -181,8 +205,10 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Humanity").click(function() {
-            $("#dropdownMenuButtonPri").text("Humanity");
-            alert("接下来是人文篇");
+            $("#dropdownMenuButtonPri").text("人文");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "中文") {
+                alert("接下来是人文篇");
+            }
             //The second one is for the Humanity
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
@@ -203,8 +229,10 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Politics").click(function() {
-            $("#dropdownMenuButtonPri").text("Politicians-emmm");
-            alert("接下来是政治篇");
+            $("#dropdownMenuButtonPri").text("政治");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "中文") {
+                alert("接下来是政治篇");
+            }
             //The third one is for the Politics
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
@@ -242,8 +270,8 @@ function stopSpeak() {
     responsiveVoice.cancel();
 }
 
-function check(){
-    if(document.getElementById("dropdownMenuButton").innerHTML== "Language"){
+function check() {
+    if (document.getElementById("dropdownMenuButton").innerHTML == "Language") {
         alert("GG");
         location.reload();
     }
