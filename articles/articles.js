@@ -36,7 +36,7 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Humanity").click(function() {
-            $("#dropdownMenuButtonPri").text("Culture");
+            $("#dropdownMenuButtonPri").text("Humanity");
             if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
                 alert("Look! Culture is coming up!");
             }
@@ -61,7 +61,7 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Politics").click(function() {
-            $("#dropdownMenuButtonPri").text("Politicians-emmm");
+            $("#dropdownMenuButtonPri").text("Politics");
             if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
                 alert("Look! Politics is coming up!");
             }
@@ -88,13 +88,13 @@ $(document).ready(function() {
     });
 
 
-    // Germany part
+    // German part
     $("#Germany").click(function() {
-        $("#dropdownMenuButton").text("Deutsch");
-        alert("Aussehen! Deustch-Lol");
+    	$("#dropdownMenuButton").text("German");
+        alert("Aussehen! Deustch!");
         $("#Technology").click(function() {
-            $("#dropdownMenuButtonPri").text("Technologie");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "Deutsch") {
+            $("#dropdownMenuButtonPri").text("Technology");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "German") {
                 alert("Technologie!");
             }
 
@@ -119,8 +119,8 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Humanity").click(function() {
-            $("#dropdownMenuButtonPri").text("Kultur");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "Deutsch") {
+            $("#dropdownMenuButtonPri").text("Humanity");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "German") {
                 alert("Kultur!");
             }
 
@@ -144,8 +144,8 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Politics").click(function() {
-            $("#dropdownMenuButtonPri").text("Politik");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "Deutsch") {
+            $("#dropdownMenuButtonPri").text("Politics");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "German") {
                 alert("Politik!");
             }
 
@@ -173,14 +173,14 @@ $(document).ready(function() {
 
     // Chinese part
     $("#Chinese").click(function() {
-        $("#dropdownMenuButton").text("中文");
+    	$("#dropdownMenuButton").text("Chinese");
         alert("看! 中文-哈哈");
         document.getElementById("Right-Resources").innerHTML += "<br><li><a href='http://www.people.com.cn/'>人民日报</a>";
 
         //subbutton for choosing the topic
         $("#Technology").click(function() {
-            $("#dropdownMenuButtonPri").text("科技");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "中文") {
+            $("#dropdownMenuButtonPri").text("Technology");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "Chinese") {
                 alert("接下来是科技篇");
             }
 
@@ -205,8 +205,8 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Humanity").click(function() {
-            $("#dropdownMenuButtonPri").text("人文");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "中文") {
+            $("#dropdownMenuButtonPri").text("Humanity");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "Chinese") {
                 alert("接下来是人文篇");
             }
             //The second one is for the Humanity
@@ -229,8 +229,8 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Politics").click(function() {
-            $("#dropdownMenuButtonPri").text("政治");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "中文") {
+            $("#dropdownMenuButtonPri").text("Politics");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "Chinese") {
                 alert("接下来是政治篇");
             }
             //The third one is for the Politics
@@ -256,23 +256,37 @@ $(document).ready(function() {
 
 });
 
-
-//This is a function for speech input
-function speakText() {
-    var text = document.getElementById('txt').value;
-    responsiveVoice.speak(text);
-
+// Get data for API of searching articles
+async function createArticles(){
+  const url = window.location.href;
+  const response = $.ajax({
+      type: 'GET',
+      url: url,
+      data: {
+          language: document.getElementById("dropdownMenuButton").innerHTML, //Language is for the language choice which user wanna look at
+          keyword: document.getElementById("dropdownMenuButtonPri").innerHTML
+      },
+      success: function(res){
+        return res.translations[0];
+      }
+    });
+  return new Promise((resolve, reject) => {
+    if(response){
+      resolve(response);
+    } else{
+      reject();
+    }
+  })
 }
 
 
-//This is a function for speech to be stopped
-function stopSpeak() {
-    responsiveVoice.cancel();
-}
+
+
+
 
 function check() {
     if (document.getElementById("dropdownMenuButton").innerHTML == "Language") {
-        alert("GG");
+        alert("Choose a language!");
         location.reload();
     }
 }
