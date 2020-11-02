@@ -1,4 +1,7 @@
+var sessionStatus = 0;
 var reviewCount;
+var missCount = 0;
+var missIndices = [];
 var currentCard = 0;
 var flashcardData;
 var againData; //this will store indices of cards that were marked wrong, so they can come back around durring the session
@@ -10,13 +13,13 @@ dataReq.send();
 dataReq.onload = function() {
 	flashcardData = JSON.parse(this.responseText);
 	reviewCount = flashcardData.reviewCount;
-
 	if(reviewCount == "0"){
 		document.getElementById("review_count").innerHTML = "0 cards left";
 		document.getElementById("question").innerHTML = "No new reviews";
+		document.getElementById("user_input").innerHTML = "";
 		return;
 	}
-
+	sessionStatus = 1;
 	if(reviewCount == "1")
 		document.getElementById("review_count").innerHTML = reviewCount + " card left";
 	else
@@ -28,6 +31,7 @@ dataReq.onload = function() {
 
 
 function showAnswer(){
+	sessionStatus = 2;
 	document.getElementById("answer").style.visibility = "visible";
 	document.getElementById("user_input").innerHTML = 
 	"<button type=\"button\" class=\"answer_button\" id=\"wrong_button\" onclick=\"answer(false)\">Again</button>" +
@@ -36,12 +40,36 @@ function showAnswer(){
 }
 
 function answer(correct){
+	sessionStatus = 1;
 	// updates the cards interval and duedate in the database
+	if(currentCard == reviewCount)
+		updateDatabase(missIndices[0], correct);
+	else
+		updateDatabase(currentCard, correct)
 
-	// TODO
+	// updates the list of missed cards
+	if(currentCard == reviewCount){
+		if(correct){
+			missCount--;
+			missIndices.shift();
+		}
+		else{
+			missIndices.push(missIndices.shift());
+		}
+	}
+	else if(!correct){
+		missCount++;
+		missIndices.push(currentCard);
+		flashcardData.cards[currentCard].interval = 0.5;
+	}
+
+	
 
 	//updates currentCard variable and stats
-	currentCard++;
+	if(currentCard != reviewCount){
+		currentCard++;
+	}
+
 	updateStats(correct);
 
 	//resets the view to front only
@@ -55,9 +83,28 @@ function answer(correct){
 		document.getElementById("question").innerHTML = flashcardData.cards[currentCard].front;
 		document.getElementById("answer").innerHTML = flashcardData.cards[currentCard].back;
 	}
+	else if(missCount > 0){
+		document.getElementById("question").innerHTML = flashcardData.cards[missIndices[0]].front;
+		document.getElementById("answer").innerHTML = flashcardData.cards[missIndices[0]].back;
+	}
 	else{
 		endSession();
 	}
+}
+
+function updateDatabase(cardIndex, correct) {
+	let cardInfo = new FormData();
+	cardInfo.append("correct", correct);
+	cardInfo.append("card", JSON.stringify(flashcardData.cards[cardIndex]));
+
+	let dataUpdate = new XMLHttpRequest();
+	dataUpdate.open("post", "updateData.php", true);
+	dataUpdate.send(cardInfo);
+
+	dataUpdate.onload = function() {
+		if(this.responseText == "error")
+			alert(this.responseText);
+	};
 }
 
 var answerCount = 0;
@@ -68,8 +115,9 @@ function updateStats(correct){
 	if(correct){
 		correctCount++;
 	}
+
 	// updates number of remaining cards
-	var cardsLeft = reviewCount - currentCard;
+	var cardsLeft = reviewCount - currentCard + missCount;
 	if(cardsLeft == 1)
 		document.getElementById("review_count").innerHTML = cardsLeft + " card left";
 	else
@@ -83,3 +131,19 @@ function endSession() {
 	document.getElementById("question").innerHTML = "You Are Winner";
 	document.getElementById("user_input").innerHTML = "";
 }
+
+
+document.onkeyup = function(e) {
+
+	if(sessionStatus == 0) 
+		return;
+  else if(e.which == 49 && sessionStatus == 2){
+    answer(false);
+  } 
+  else if(e.which == 50 && sessionStatus == 2){
+    answer(true);
+  } 
+  else if((e.which == 49 || e.which == 50) && sessionStatus == 1){
+  	showAnswer();
+  }
+};

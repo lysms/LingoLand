@@ -2,7 +2,7 @@
 $dbOk = false;
 @ $db = new mysqli('localhost', 'root', '', 'lingoland');
 if($db->connect_error){
-	echo json_encode("error");
+	echo json_encode(array("reviewCount" => "0"));
 } 
 else{
 	$dbOk = true; 
