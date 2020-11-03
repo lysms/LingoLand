@@ -1,6 +1,7 @@
 <?php
   include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
   include('../includes/functions.inc.php'); // functions
+  include('connection.php');
 ?>
 
 <title>Register</title>
@@ -23,28 +24,32 @@
     <div class="main-auth">
         <div class="col-md-6 col-sm-12">
             <div class="register-form">
-                <form>
+                <form action="register.php" method="post">
+
+
                     <div class="form-group">
                         <label>User Name</label>
-                        <input type="text" class="form-control" placeholder="User Name">
+                        <input type="text" name="username" class=" form-control" placeholder="User Name" required>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <label>First Name</label>
-                            <input type="firstname" class="form-control" placeholder="First Name">
+                            <label for="firstname">First Name</label>
+                            <input type="firstname" name="firstname" class="form-control" placeholder="First Name"
+                                required>
                         </div>
                         <div class="col-sm-6">
-                            <label>Last Name</label>
-                            <input type="lastname" class="form-control" placeholder="Last Name">
+                            <label for="lastname">Last Name</label>
+                            <input type="lastname" name="lastname" class="form-control" placeholder="Last Name"
+                                required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" placeholder="Password">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password" required>
                     </div>
                     <div class="form-group">
-                        <label>Retype Password</label>
-                        <input type="retype" class="form-control" placeholder="Password">
+                        <label for="password1">Confirm Password</label>
+                        <input type="password" name="password1" class="form-control" placeholder="Password" required>
                     </div>
                     <div class="form-group">
                         <label>Language</label>
@@ -61,7 +66,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-black">Register</button>
+                        <button type="submit" name="register" class="btn btn-black">Register</button>
                     </div>
                 </form>
             </div>
