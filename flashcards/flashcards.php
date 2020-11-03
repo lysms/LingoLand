@@ -19,14 +19,14 @@
         <h3 id="accuracy">100% correct</h3>
     </section>
 
-    <main>
+    <main id="card_area">
         <h2 class="flashcard" id="question"></h2>
         <h2 class="flashcard" id="answer"></h2>
     </main>
 
     <section id="user_input">
         <button type="button" id="show_button" onclick="showAnswer()">Show Answer</button>
-        <button type="button" id="edit_button">Edit Card</button>
+        <button type="button" id="edit_button" onclick="enterEditMode()">Edit Card</button>
     </section>
 
     <script src="flashcards.js"></script>

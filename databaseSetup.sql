@@ -32,6 +32,7 @@ CREATE TABLE `flashcards` (
   `cardid` int(10) UNSIGNED NOT NULL,
   `duedate` datetime DEFAULT NULL,
   `interval` int(10) NOT NULL,
+  `easefactor` int(10) UNSIGNED NOT NULL DEFAULT 250,
   `front` varchar(1000) DEFAULT NULL,
   `back` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -40,11 +41,11 @@ CREATE TABLE `flashcards` (
 -- Dumping data for table `flashcards`
 --
 
-INSERT INTO `flashcards` (`cardid`, `duedate`, `interval`, `front`, `back`) VALUES
-(1, '2020-09-15 23:59:00', 10, 'This is the front of the card', 'This is the back of the card'),
-(2, '2020-10-31 12:59:00', 1, 'This is the front of another card', 'This is the back of another card'),
-(3, '2120-10-31 12:59:00', 1000, 'This is the front of a card that should never be shown', 'This is the back of a card that should never be shown'),
-(4, '2000-04-15 23:59:00', 10, 'This is the front of a card that is very overdue', 'This is the back of a card that is very overdue');
+INSERT INTO `flashcards` (`cardid`, `duedate`, `interval`, `easefactor`, `front`, `back`) VALUES
+(1, '2020-09-15 23:59:00', 10, 250, 'This is the front of the card', 'This is the back of the card'),
+(2, '2020-10-31 12:59:00', 1, 250, 'This is the front of another card', 'This is the back of another card'),
+(3, '2120-10-31 12:59:00', 1000, 250, 'This is the front of a card that should never be shown', 'This is the back of a card that should never be shown'),
+(4, '2000-04-15 23:59:00', 10, 250, 'This is the front of a card that is very overdue', 'This is the back of a card that is very overdue');
 
 --
 -- Indexes for dumped tables

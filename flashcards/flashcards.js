@@ -4,7 +4,6 @@ var missCount = 0;
 var missIndices = [];
 var currentCard = 0;
 var flashcardData;
-var againData; //this will store indices of cards that were marked wrong, so they can come back around durring the session
 
 var dataReq = new XMLHttpRequest();
 dataReq.open("get", "getData.php", true);
@@ -36,7 +35,118 @@ function showAnswer(){
 	document.getElementById("user_input").innerHTML = 
 	"<button type=\"button\" class=\"answer_button\" id=\"wrong_button\" onclick=\"answer(false)\">Again</button>" +
 	"<button type=\"button\" class=\"answer_button\" id=\"right_button\" onclick=\"answer(true)\">Correct</button>" +
-	"<button type=\"button\" id=\"edit_button\">Edit Card</button>";
+	"<button type=\"button\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
+}
+
+function enterEditMode(){
+	sessionStatus = -1;
+	// gets the current card
+	var cardIndex;
+	if(currentCard == reviewCount)
+		cardIndex = missIndices[0];
+	else
+		cardIndex = currentCard;
+
+	// makes the card text editable
+	document.getElementById("card_area").innerHTML = 
+	"<input type=\"text\" id=\"question_box\" value=\""+flashcardData.cards[cardIndex]["front"]+"\"name=\"fname\">" +
+	"<input type=\"text\" id=\"answer_box\" value=\""+flashcardData.cards[cardIndex]["back"]+"\"name=\"fname\">";
+
+	// gives the user edit buttons
+	document.getElementById("user_input").innerHTML = 
+	"<button type=\"button\" class=\"edit_button\" id=\"cancel_button\" onclick=\"exitEditMode(false)\">Cancel</button>" +
+	"<button type=\"button\" class=\"edit_button\" id=\"save_button\" onclick=\"sendChanges()\">Save</button>" +
+	"<button type=\"button\" id=\"edit_button\" onclick=\"confirm()\">Delete Card</button>";
+}
+
+function sendChanges(){
+	// gets the current card
+	var cardIndex;
+	if(currentCard == reviewCount)
+		cardIndex = missIndices[0];
+	else
+		cardIndex = currentCard;
+
+	// changes the card data with the text box
+	flashcardData.cards[cardIndex]["front"] = document.getElementById("question_box").value;
+	flashcardData.cards[cardIndex]["back"] = document.getElementById("answer_box").value;
+
+	//sends the update request
+	let cardInfo = new FormData();
+	cardInfo.append("card", JSON.stringify(flashcardData.cards[cardIndex]));
+
+	let dataUpdate = new XMLHttpRequest();
+	dataUpdate.open("post", "editCard.php", true);
+	dataUpdate.send(cardInfo);
+
+
+	exitEditMode(false);
+}
+
+function confirm(){
+	document.getElementById("user_input").innerHTML = 
+	"<button type=\"button\" class=\"edit_button\" id=\"cancel_button\" onclick=\"exitEditMode()\">Cancel</button>" +
+	"<button type=\"button\" class=\"edit_button\" id=\"save_button\" onclick=\"deleteCard()\">Confirm</button>";
+}
+
+function deleteCard(){
+	var cardIndex;
+	if(currentCard == reviewCount)
+		cardIndex = missIndices[0];
+	else
+		cardIndex = currentCard;
+
+	let cardInfo = new FormData();
+	cardInfo.append("card", JSON.stringify(flashcardData.cards[cardIndex]));
+
+	let dataUpdate = new XMLHttpRequest();
+	dataUpdate.open("post", "deleteCard.php", true);
+	dataUpdate.send(cardInfo);
+
+	exitEditMode(true);
+}
+
+function exitEditMode(deleted){
+	sessionStatus = 1;
+
+	document.getElementById("card_area").innerHTML = 
+	"<h2 class=\"flashcard\" id=\"question\"></h2>" +
+  "<h2 class=\"flashcard\" id=\"answer\"></h2>";
+
+	document.getElementById("answer").style.visibility = "hidden";
+	document.getElementById("user_input").innerHTML = 
+	"<button type=\"button\" id=\"show_button\" onclick=\"showAnswer()\">Show Answer</button>" +
+	"<button type=\"button\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
+	if(deleted){
+		if(currentCard != reviewCount){
+			currentCard++;
+		}
+		else if(missCount > 0){
+			missCount--;
+			missIndices.shift();
+		}
+
+		// updates number of remaining cards
+		var cardsLeft = reviewCount - currentCard + missCount;
+		if(cardsLeft == 1)
+			document.getElementById("review_count").innerHTML = cardsLeft + " card left";
+		else
+			document.getElementById("review_count").innerHTML = cardsLeft + " cards left";
+			
+	}
+
+	// changes text to the next card
+	if(currentCard != reviewCount){
+		document.getElementById("question").innerHTML = flashcardData.cards[currentCard].front;
+		document.getElementById("answer").innerHTML = flashcardData.cards[currentCard].back;
+	}
+	else if(missCount > 0){
+		document.getElementById("question").innerHTML = flashcardData.cards[missIndices[0]].front;
+		document.getElementById("answer").innerHTML = flashcardData.cards[missIndices[0]].back;
+	}
+	else{
+		endSession();
+	}
 }
 
 function answer(correct){
@@ -60,7 +170,7 @@ function answer(correct){
 	else if(!correct){
 		missCount++;
 		missIndices.push(currentCard);
-		flashcardData.cards[currentCard].interval = 0.5;
+		flashcardData.cards[currentCard].interval = 0;
 	}
 
 	
@@ -76,7 +186,7 @@ function answer(correct){
 	document.getElementById("answer").style.visibility = "hidden";
 	document.getElementById("user_input").innerHTML = 
 	"<button type=\"button\" id=\"show_button\" onclick=\"showAnswer()\">Show Answer</button>" +
-	"<button type=\"button\" id=\"edit_button\">Edit Card</button>";
+	"<button type=\"button\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
 
 	// changes text to the next card
 	if(currentCard != reviewCount){
@@ -133,9 +243,10 @@ function endSession() {
 }
 
 
+
 document.onkeyup = function(e) {
 
-	if(sessionStatus == 0) 
+	if(sessionStatus < 1) 
 		return;
   else if(e.which == 49 && sessionStatus == 2){
     answer(false);

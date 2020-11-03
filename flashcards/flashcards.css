@@ -40,6 +40,28 @@ main {
 	visibility: hidden;
 }
 
+#question_box {
+	background-color: #ffddcc;
+	font-size: 2rem;
+	font-weight: 500;
+  line-height: 1.2;
+	display: block;
+	width: 100%;
+	padding: 10px;
+	border: none;
+	text-align: center;
+}
+#answer_box {
+	background-color: #ffddcc;
+	font-size: 2rem;
+	font-weight: 500;
+  line-height: 1.2;
+	display: block;
+	width: 100%;
+	padding: 10px;
+	border: none;
+	text-align: center;
+}
 
 #user_input {
 	position: relative;
@@ -69,4 +91,16 @@ main {
 	position: absolute;
 	left: 25%;
   bottom: 0;
+}
+
+.edit_button {
+	width: 45%;
+}
+
+#cancel_button {
+	float: left;
+}
+
+#save_button {
+	float: right;
 }
