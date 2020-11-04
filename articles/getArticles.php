@@ -1,7 +1,7 @@
 <?php
     if(isset($_GET["language"]) and isset($_GET["keyword"])){
         $url = 'https://api.gdeltproject.org/api/v1/search_ftxtsearch/search_ftxtsearch';
-        $query = "?query=".$_GET["keyword"].":sourcelang:".$_GET["language"]."&output=urllist&dropdup=true";
+        $query = "?query=sourcelang:".$_GET["language"]."&output=urllist&dropdup=true";
         $url = $url.$query; 
         echo $_GET["language"]."\n" ;
         echo $_GET["keyword"]."\n";

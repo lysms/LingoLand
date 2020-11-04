@@ -264,7 +264,6 @@ async function createArticles(){
       url: url,
       data: {
           language: document.getElementById("dropdownMenuButton").innerHTML, //Language is for the language choice which user wanna look at
-          keyword: document.getElementById("dropdownMenuButtonPri").innerHTML
       },
       success: function(res){
         return res.translations[0];
