@@ -38,6 +38,7 @@
     </div>
     <div id="Left-Resources">
     <!-- API for articles searching -->
+    <p>Do you want more articles?</p>
     <button type="button" id="search" class="btn btn-dark">Searching</button>
     </div>
     <div id="Right-Resources">

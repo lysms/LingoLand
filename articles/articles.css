@@ -37,7 +37,8 @@
 #Left-Resources {
     float: left;
     height: 30em;
-    background-color: #ffddcc;
+    margin-top: 50px;
+    margin-left: 100px;
 }
 
 #Right-Resources {
