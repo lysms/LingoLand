@@ -2,6 +2,21 @@
 
 //Jquery for the articles below
 $(document).ready(function() {
+    // Click searching for more articles given by API
+    $("#search").click(async function(){
+        if (document.getElementById("dropdownMenuButton").innerHTML == "Language"||document.getElementById("dropdownMenuButtonPri").innerHTML == "Article Classes"){
+            alert("Please choose language the choose the article class");
+            location.reload();
+        }
+        else{
+            const articles = await getArticles();
+            console.log(articles);
+        }
+        
+    });
+
+
+
 
     // Click function for changing article genre and language
     // English part
@@ -256,28 +271,35 @@ $(document).ready(function() {
 
 });
 
-// Get data for API of searching articles
-async function createArticles(){
-  const url = window.location.href;
-  const response = $.ajax({
-      type: 'GET',
-      url: url,
-      data: {
-          language: document.getElementById("dropdownMenuButton").innerHTML, //Language is for the language choice which user wanna look at
-      },
-      success: function(res){
-        return res.translations[0];
-      }
-    });
-  return new Promise((resolve, reject) => {
-    if(response){
-      resolve(response);
-    } else{
-      reject();
-    }
-  })
-}
 
+function getArticles(){
+    // Get data for API of searching articles
+    const url =  window.location.href.toString().replace("articles.php", "getArticles.php");
+    const result = $.ajax({    
+        type: 'GET',
+        url: url,
+        contentType: "application/json",
+        data: {
+            language: document.getElementById("dropdownMenuButton").innerHTML,
+            keyword: document.getElementById("dropdownMenuButtonPri").innerHTML
+        },
+        success: function(res){
+           return res;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) { // if there was a problem
+        console.log(XMLHttpRequest, textStatus, errorThrown);
+        alert('Error Occured');
+        }
+    });
+
+    return new Promise((resolve, reject) => {
+        if(result){
+          resolve(result);
+        } else{
+          reject();
+        }
+    })
+}
 
 
 

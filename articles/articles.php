@@ -38,6 +38,7 @@
     </div>
     <div id="Left-Resources">
     <!-- API for articles searching -->
+    <button type="button" id="search" class="btn btn-dark">Searching</button>
     </div>
     <div id="Right-Resources">
         We will provide more resources here for any clients who are seeking for more articles in the language they want.
