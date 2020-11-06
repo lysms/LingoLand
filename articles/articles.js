@@ -12,7 +12,8 @@ $(document).ready(function() {
             const articles = await getArticles();
             console.log(articles);
             for (var i = 0; i < 5; i++){
-            	
+            	var articles_link = "<li>" + articles[i] + "</li><br>";
+            	document.getElementById("Output-div").innerHTML += articles_link;
             }
         }
         
