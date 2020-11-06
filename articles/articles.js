@@ -5,12 +5,15 @@ $(document).ready(function() {
     // Click searching for more articles given by API
     $("#search").click(async function(){
         if (document.getElementById("dropdownMenuButton").innerHTML == "Language"||document.getElementById("dropdownMenuButtonPri").innerHTML == "Article Classes"){
-            alert("Please choose language the choose the article class");
+            alert("Please choose language then choose the article class");
             location.reload();
         }
         else{
             const articles = await getArticles();
             console.log(articles);
+            for (var i = 0; i < 5; i++){
+            	
+            }
         }
         
     });
@@ -24,6 +27,7 @@ $(document).ready(function() {
         $("#dropdownMenuButton").text("English");
         // document.getElementsByClassName("LanguageDisplay").innerHTML = "English-Lol"; This method doesnt work. Solution is that to add[0] behind (LanguageDisplay)
         alert("Look! English-Lol");
+        document.getElementById("Right-Resources").innerHTML += "<br><li><a href='https://www.voanews.com/'>VOA</a>";
         $("#Technology").click(function() {
             $("#dropdownMenuButtonPri").text("Technology");
             if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
@@ -107,6 +111,7 @@ $(document).ready(function() {
     $("#Germany").click(function() {
     	$("#dropdownMenuButton").text("German");
         alert("Aussehen! Deustch!");
+        document.getElementById("Right-Resources").innerHTML += "<br><li><a href='https://www.deutschlandfunk.de/startseite.187.de.html'>DeustchLandFunk</a>";
         $("#Technology").click(function() {
             $("#dropdownMenuButtonPri").text("Technology");
             if (document.getElementById("dropdownMenuButton").innerHTML == "German") {
@@ -271,9 +276,9 @@ $(document).ready(function() {
 
 });
 
-
-function getArticles(){
     // Get data for API of searching articles
+function getArticles(){
+
     const url =  window.location.href.toString().replace("articles.php", "getArticles.php");
     const result = $.ajax({    
         type: 'GET',
