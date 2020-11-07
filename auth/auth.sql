@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2020 at 04:14 PM
+-- Generation Time: Nov 07, 2020 at 07:43 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -40,7 +40,7 @@ CREATE TABLE `auth` (
 --
 
 INSERT INTO `auth` (`id`, `username`, `password`, `firstname`, `lastname`) VALUES
-(1, 'yanshen', '81dc9bdb52d04dc20036dbd8313ed055', 'Yanshen', 'Lin');
+(1, 'lingoland', '123456', 'Ling', 'Go');
 
 --
 -- Indexes for dumped tables
@@ -60,7 +60,7 @@ ALTER TABLE `auth`
 -- AUTO_INCREMENT for table `auth`
 --
 ALTER TABLE `auth`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
