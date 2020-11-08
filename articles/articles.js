@@ -10,7 +10,7 @@ $(document).ready(function() {
         }
         else{
             const articles = await getArticles();
-            out_articles = JSON.parse(articles);
+            var out_articles = JSON.parse(articles);
             //console.log(articles);
             for (var i = 0; i < 5; i++){
             	var articles_link = "<li><a href=" + out_articles[i].uri + ">articles_" + i + "</a></li><br>";
