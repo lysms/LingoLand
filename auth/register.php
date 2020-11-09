@@ -6,13 +6,14 @@
 
 <title>Register</title>
 
+
 <?php include('../includes/head.inc.php'); ?>
 
 <div>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="auth.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <scrip src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></scrip>
     <!------ Include the above in your HEAD tag ---------->
 
     <div class="sidenav">
@@ -51,20 +52,15 @@
                         <label for="password1">Confirm Password</label>
                         <input type="password" name="password1" class="form-control" placeholder="Password" required>
                     </div>
-                    <div class="form-group">
-                        <label>Language</label>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Choose Language...
-                            </button>
-                            <div class="dropdown-menu" name="language" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" name="spanish" href="#">Spanish</a>
-                                <a class="dropdown-item" name="chinese" href="#">Chinese</a>
-                                <a class="dropdown-item" name="italian" href="#">Italian</a>
-                            </div>
-                        </div>
-                    </div>
+
+
+                    <select name="language">
+                        <option value="" disabled selected>Choose your Language</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="italian">Italian</option>
+                    </select>
+
                     <div class="form-group">
                         <button type="submit" name="register" class="btn btn-black">Register</button>
                     </div>
