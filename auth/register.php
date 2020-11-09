@@ -58,10 +58,10 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Choose Language...
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Spanish</a>
-                                <a class="dropdown-item" href="#">Chinese</a>
-                                <a class="dropdown-item" href="#">Italian</a>
+                            <div class="dropdown-menu" name="language" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" name="spanish" href="#">Spanish</a>
+                                <a class="dropdown-item" name="chinese" href="#">Chinese</a>
+                                <a class="dropdown-item" name="italian" href="#">Italian</a>
                             </div>
                         </div>
                     </div>

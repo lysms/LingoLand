@@ -35,6 +35,9 @@ if (isset($_POST['lastname'])) {
     $lastname = $_POST['lastname'];
 }
 
+if(isset($_POST['language'])){
+    $language = $_POST['language'];
+}
 
 
 //form validation
@@ -74,7 +77,7 @@ if ($user) {
 // Process the Registeration. 
 if (count($errors) == 0) {
     $password = $password; // encrypt the password. 
-    $query = "INSERT INTO auth (username, password, firstname, lastname) VALUES ('$username', '$password', '$firstname', '$lastname')";
+    $query = "INSERT INTO auth (username, password, firstname, lastname, language) VALUES ('$username', '$password', '$firstname', '$lastname', '$language')";
     mysqli_query($db, $query);
 
     $_SESSION['username'] = $username;
