@@ -1,11 +1,14 @@
 <?php
   include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
   include('../includes/functions.inc.php'); // functions
+  include('connection.php');
 ?>
 
 <title>Login</title>
 
 <?php include('../includes/head.inc.php'); ?>
+
+
 <div>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,16 +25,16 @@
     <div class="main-auth">
         <div class="col-md-6 col-sm-12">
             <div class="login-form">
-                <form>
+                <form action="auth.php" method="post">
                     <div class="form-group">
-                        <label>User Name</label>
-                        <input type="text" class="form-control" placeholder="User Name">
+                        <label for="username">User Name</label>
+                        <input type="text" name="username" class="form-control" placeholder="User Name" required>
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" placeholder="Password">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn btn-black">Login</button>
+                    <button type="submit" value="save" id="save" name="login" class="btn btn-black">Login</button>
                     <a href="register.php" class="btn btn-secondary">Register</a>
                 </form>
             </div>
