@@ -26,7 +26,7 @@
 #Dropdown2-div {}
 
 #Output-div {
-	height: 20em;
+    height: 30em;
     background-color: #ffddcc;
     width: 30%;
     margin-left: auto;
@@ -36,11 +36,15 @@
 
 #Left-Resources {
     float: left;
+    height: 30em;
+    margin-top: 50px;
+    margin-left: 100px;
 }
 
 #Right-Resources {
+    margin-top: 50px;
     background-color: #ffddcc;
     width: 25%;
     float: right;
-    height: 25em;
+    height: 30em;
 }

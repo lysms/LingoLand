@@ -2,6 +2,26 @@
 
 //Jquery for the articles below
 $(document).ready(function() {
+    // Click searching for more articles given by API
+    $("#search").click(async function(){
+        if (document.getElementById("dropdownMenuButton").innerHTML == "Language"||document.getElementById("dropdownMenuButtonPri").innerHTML == "Article Classes"){
+            alert("Please choose language then choose the article class");
+            location.reload();
+        }
+        else{
+            const articles = await getArticles();
+            var out_articles = JSON.parse(articles);
+            //console.log(articles);
+            for (var i = 0; i < 5; i++){
+            	var articles_link = "<li><a href=" + out_articles[i].uri + ">articles_" + i + "</a></li><br>";
+            	document.getElementById("Output-div").innerHTML += articles_link;
+            }
+        }
+        
+    });
+
+
+
 
     // Click function for changing article genre and language
     // English part
@@ -9,6 +29,7 @@ $(document).ready(function() {
         $("#dropdownMenuButton").text("English");
         // document.getElementsByClassName("LanguageDisplay").innerHTML = "English-Lol"; This method doesnt work. Solution is that to add[0] behind (LanguageDisplay)
         alert("Look! English-Lol");
+        document.getElementById("Right-Resources").innerHTML += "<br><li><a href='https://www.voanews.com/'>VOA</a>";
         $("#Technology").click(function() {
             $("#dropdownMenuButtonPri").text("Technology");
             if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
@@ -36,7 +57,7 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Humanity").click(function() {
-            $("#dropdownMenuButtonPri").text("Culture");
+            $("#dropdownMenuButtonPri").text("Humanity");
             if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
                 alert("Look! Culture is coming up!");
             }
@@ -61,7 +82,7 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Politics").click(function() {
-            $("#dropdownMenuButtonPri").text("Politicians-emmm");
+            $("#dropdownMenuButtonPri").text("Politics");
             if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
                 alert("Look! Politics is coming up!");
             }
@@ -88,13 +109,14 @@ $(document).ready(function() {
     });
 
 
-    // Germany part
+    // German part
     $("#Germany").click(function() {
-        $("#dropdownMenuButton").text("Deutsch");
-        alert("Aussehen! Deustch-Lol");
+    	$("#dropdownMenuButton").text("German");
+        alert("Aussehen! Deustch!");
+        document.getElementById("Right-Resources").innerHTML += "<br><li><a href='https://www.deutschlandfunk.de/startseite.187.de.html'>DeustchLandFunk</a>";
         $("#Technology").click(function() {
-            $("#dropdownMenuButtonPri").text("Technologie");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "Deutsch") {
+            $("#dropdownMenuButtonPri").text("Technology");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "German") {
                 alert("Technologie!");
             }
 
@@ -119,8 +141,8 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Humanity").click(function() {
-            $("#dropdownMenuButtonPri").text("Kultur");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "Deutsch") {
+            $("#dropdownMenuButtonPri").text("Humanity");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "German") {
                 alert("Kultur!");
             }
 
@@ -144,8 +166,8 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Politics").click(function() {
-            $("#dropdownMenuButtonPri").text("Politik");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "Deutsch") {
+            $("#dropdownMenuButtonPri").text("Politics");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "German") {
                 alert("Politik!");
             }
 
@@ -173,14 +195,14 @@ $(document).ready(function() {
 
     // Chinese part
     $("#Chinese").click(function() {
-        $("#dropdownMenuButton").text("中文");
+    	$("#dropdownMenuButton").text("Chinese");
         alert("看! 中文-哈哈");
         document.getElementById("Right-Resources").innerHTML += "<br><li><a href='http://www.people.com.cn/'>人民日报</a>";
 
         //subbutton for choosing the topic
         $("#Technology").click(function() {
-            $("#dropdownMenuButtonPri").text("科技");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "中文") {
+            $("#dropdownMenuButtonPri").text("Technology");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "Chinese") {
                 alert("接下来是科技篇");
             }
 
@@ -205,8 +227,8 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Humanity").click(function() {
-            $("#dropdownMenuButtonPri").text("人文");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "中文") {
+            $("#dropdownMenuButtonPri").text("Humanity");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "Chinese") {
                 alert("接下来是人文篇");
             }
             //The second one is for the Humanity
@@ -229,8 +251,8 @@ $(document).ready(function() {
             xmlhttp.send();
         });
         $("#Politics").click(function() {
-            $("#dropdownMenuButtonPri").text("政治");
-            if (document.getElementById("dropdownMenuButton").innerHTML == "中文") {
+            $("#dropdownMenuButtonPri").text("Politics");
+            if (document.getElementById("dropdownMenuButton").innerHTML == "Chinese") {
                 alert("接下来是政治篇");
             }
             //The third one is for the Politics
@@ -256,23 +278,43 @@ $(document).ready(function() {
 
 });
 
+    // Get data for API of searching articles
+function getArticles(){
 
-//This is a function for speech input
-function speakText() {
-    var text = document.getElementById('txt').value;
-    responsiveVoice.speak(text);
+    const url =  window.location.href.toString().replace("articles.php", "getArticles.php");
+    const result = $.ajax({    
+        type: 'GET',
+        url: url,
+        contentType: "application/json",
+        data: {
+            language: document.getElementById("dropdownMenuButton").innerHTML,
+            keyword: document.getElementById("dropdownMenuButtonPri").innerHTML
+        },
+        success: function(res){
+           return res;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) { // if there was a problem
+        console.log(XMLHttpRequest, textStatus, errorThrown);
+        alert('Error Occured');
+        }
+    });
 
+    return new Promise((resolve, reject) => {
+        if(result){
+          resolve(result);
+        } else{
+          reject();
+        }
+    })
 }
 
 
-//This is a function for speech to be stopped
-function stopSpeak() {
-    responsiveVoice.cancel();
-}
+
+
 
 function check() {
     if (document.getElementById("dropdownMenuButton").innerHTML == "Language") {
-        alert("GG");
+        alert("Choose a language!");
         location.reload();
     }
 }
