@@ -20,12 +20,12 @@ function createCard(sel, translation, context, color){
       <i id="' +id+ '" class="fas fa-trash-alt"></i>\
       <div class="card-body">\
       <h5 class="card-title">Term</h5>\
-      <p class="card-subtitle mb-2 text-muted">' + sel + 
+      <p class="card-subtitle term mb-2 text-muted">' + sel + 
       '<h5 class="card-title">Translation</h5> \
-      <p class="card-subtitle mb-2 text-muted">'+ newCardObject.translation +'</p> \
+      <p class="card-subtitle translation mb-2 text-muted">'+ newCardObject.translation +'</p> \
       <h5 class="card-title">Context</h5> \
       <p class="card-subtitle mb-2 text-muted">'+ newCardObject.context +'"</p> \
-      <button type="submit" class="btn btn-secondary mb-2">Make Flashcard</button>'; 
+      <button type="submit" id="create-card-'+ id +'" class="make-flashcard btn btn-secondary mb-2">Make Flashcard</button>'; 
     cards.push(newCardObject)
     id += 1;
     $(newCardElement).appendTo("#terms");
@@ -57,3 +57,13 @@ async function createTranslation(stringToTranslate){
     })
   }
 
+function createFlashcard(front, back){
+  const url = window.location.href.toString().replace("articleParser/iframetest.php", "flashcards/addCard.php")
+  
+  let cardInfo = new FormData();
+  cardInfo.append("card", "{\"front\":\""+front+"\",\"back\":\""+back+"\"}");
+  
+  let cardAdd = new XMLHttpRequest();
+  cardAdd.open("post", url, true);
+  cardAdd.send(cardInfo);
+}
