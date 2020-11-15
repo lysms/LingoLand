@@ -49,6 +49,7 @@ if (empty($username)) {
 if (empty($password)) {
     array_push($errors, "Password is required");
 }
+
 if (empty($password1)) {
     array_push($errors, "Confirmed Password is required");
 }
@@ -86,19 +87,13 @@ if (count($errors) == 0) {
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
 
-    header("localhost: ../../dashboard/dashboard.php");
+    header("location: ../../dashboard/dashboard.php");
 }
-
-
 
 //LOGIN user
 
 if (isset($_POST['login'])) {
-
-    $username = mysqli_real_escape_string($db, $_POST['username']);
-    $password = mysqli_real_escape_string($db, $_POST['password']);
-
-
+	$errors = array();
     if (empty($username)) {
         array_push($errors, "Username is required");
     }
@@ -114,9 +109,17 @@ if (isset($_POST['login'])) {
         $result = $db->query($query);
 
         $record = $result->fetch_assoc();
-        if ($username == $record['username'] && $password == $record['password']) {
+
+	if(!isset($record['username']) || !isset($record['password'])) {
+		echo 'Wrong username or password';
+		session_destroy();
+	}
+
+	else if ($username == $record['username'] && $password == $record['password']) {
             echo 'login successful';
-            header("register.php");
+    $_SESSION['username'] = $username;
+    $_SESSION['success'] = "You are now logged in";
+    header("location: ../dashboard/dashboard.php");
         }
     }
 }
