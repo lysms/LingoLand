@@ -86,7 +86,8 @@ if (count($errors) == 0) {
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
 
-    header("localhost: ../../dashboard/dashboard.php");
+    //header("location: ../homepage/homepage.php");
+    //header('Location: http://www.example.com/');
 }
 
 
@@ -97,17 +98,17 @@ if (isset($_POST['login'])) {
 
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
-
+    $error = array();
 
     if (empty($username)) {
-        array_push($errors, "Username is required");
+        array_push($error, "Username is required");
     }
 
     if (empty($password)) {
-        array_push($errors, "Password is required");
+        array_push($error, "Password is required");
     }
 
-    if (count($errors) == 0) {
+    if (count($error) == 0) {
         $password = md5($password);
 
         $query = "SELECT * FROM auth WHERE username= '$username' AND password = '$password' ";
@@ -116,7 +117,9 @@ if (isset($_POST['login'])) {
         $record = $result->fetch_assoc();
         if ($username == $record['username'] && $password == $record['password']) {
             echo 'login successful';
-            header("register.php");
+            header('Location: http://www.example.com/');
+        } else {
+            echo 'login fail';
         }
     }
 }
