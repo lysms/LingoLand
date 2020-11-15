@@ -15,6 +15,7 @@ $db = mysqli_connect('localhost', 'root', '', 'auth') or die("could not connect 
 
 
 // register users. 
+// Get the user input from the form, and assign into variable. 
 if (isset($_POST['username'])) {
     $username = $_POST['username'];
 }
@@ -35,7 +36,7 @@ if (isset($_POST['lastname'])) {
     $lastname = $_POST['lastname'];
 }
 
-if(isset($_POST['language'])){
+if (isset($_POST['language'])) {
     $language = $_POST['language'];
 }
 
@@ -74,9 +75,11 @@ if ($user) {
     }
 }
 
+
 // Process the Registeration. 
+// Insert the user's infomations into the databse table. 
 if (count($errors) == 0) {
-    $password = $password; // encrypt the password. 
+    $password = md5($password); // encrypt the password. 
     $query = "INSERT INTO auth (username, password, firstname, lastname, language) VALUES ('$username', '$password', '$firstname', '$lastname', '$language')";
     mysqli_query($db, $query);
 
@@ -105,7 +108,7 @@ if (isset($_POST['login'])) {
     }
 
     if (count($errors) == 0) {
-        $password = $password;
+        $password = md5($password);
 
         $query = "SELECT * FROM auth WHERE username= '$username' AND password = '$password' ";
         $result = $db->query($query);
