@@ -87,22 +87,26 @@ if (count($errors) == 0) {
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
 
-    header("location: ../../dashboard/dashboard.php");
+    header("location: ../dashboard/dashboard.php");
 }
 
 //LOGIN user
 
 if (isset($_POST['login'])) {
 	$errors = array();
+    $username = mysqli_real_escape_string($db, $_POST['username']);
+    $password = mysqli_real_escape_string($db, $_POST['password']);
+    $error = array();
+
     if (empty($username)) {
-        array_push($errors, "Username is required");
+        array_push($error, "Username is required");
     }
 
     if (empty($password)) {
-        array_push($errors, "Password is required");
+        array_push($error, "Password is required");
     }
 
-    if (count($errors) == 0) {
+    if (count($error) == 0) {
         $password = md5($password);
 
         $query = "SELECT * FROM auth WHERE username= '$username' AND password = '$password' ";
@@ -120,6 +124,8 @@ if (isset($_POST['login'])) {
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
     header("location: ../dashboard/dashboard.php");
+        } else {
+            echo 'login fail';
         }
     }
 }

@@ -1,7 +1,7 @@
 <?php
-  include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
-  include('../includes/functions.inc.php'); // functions
-  include('connection.php');
+include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
+include('../includes/functions.inc.php'); // functions
+include('connection.php');
 ?>
 
 <title>Login</title>
