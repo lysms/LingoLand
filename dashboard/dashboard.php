@@ -8,6 +8,27 @@
 <?php include('../includes/head.inc.php'); ?>
 
 <?php include('../includes/regular_nav.php'); ?>
+
+<?php 
+$userID = 1;
+$query = 'select * from flashcards where userID = '. $userID .' order by duedate';
+$reviewQuery = 'select * from flashcards where duedate <= "' .
+    (new DateTime('now'))->format('Y-m-d H:i:s') . '" and userID = '. $userID;
+
+$reviewCount = 0;
+$cardCount = 0;
+
+$dbOk = false;
+@ $db = new mysqli('localhost', 'root', '', 'lingoland');
+if($db->connect_error){
+    echo "Database Error";
+} 
+else{
+    $dbOk = true; 
+    $cardCount = $db->query($query)->num_rows;
+    $reviewCount = $db->query($reviewQuery)->num_rows;
+}
+ ?>
 <div id="headerImg">
     <div id="main" class="background-light-grey">
         <div class="container">
@@ -33,11 +54,11 @@
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review Daily
-                        Flashcards</a>
+                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review Daily Flashcards (
+                    <?php echo $reviewCount; ?> )</a>
                 </div>
                 <div class="col-md-3">
-                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review all Flashcards</a>
+                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review all Flashcards ( <?php echo $cardCount; ?> )</a>
                 </div>
                 <div class="col-md-3">
                     <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review Random
@@ -59,58 +80,36 @@
                     <table class="table table-striped">
                         <thead class='thead-light'>
                             <tr class="d-flex">
-                                <th class="col-3">Term</th>
-                                <th class="col-3">Definition</th>
-                                <th class="col-3">Context</th>
+                                <th class="col-3">Front</th>
+                                <th class="col-3">Back</th>
+                                <th class="col-3">Due Date</th>
                                 <th class="col-3"> </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="d-flex">
-                                <th class="col-3"> "vediamo!"</th>
-                                <th class="col-3"> see(in the we conjugate of italian) </th>
-                                <th class="col-3"> Ciao Silvia, da quanto tempo non ci vediamo!</th>
-                                <th class="col-3">
-                                    <a role="button" class="btn btn-danger" href="#">Delete</a>
-                                </th>
-                            </tr>
-                            <tr class="d-flex">
-                                <th class="col-3"> "vediamo!"</th>
-                                <th class="col-3"> see(in the we conjugate of italian) </th>
-                                <th class="col-3"> Ciao Silvia, da quanto tempo non ci vediamo!</th>
-                                <th class="col-3">
-                                    <a role="button" class="btn btn-danger" href="#">Delete</a>
-                                </th>
-                            </tr>
-                            <tr class="d-flex">
-                                <th class="col-3"> "vediamo!"</th>
-                                <th class="col-3"> see(in the we conjugate of italian) </th>
-                                <th class="col-3"> Ciao Silvia, da quanto tempo non ci vediamo!</th>
-                                <th class="col-3">
-                                    <a role="button" class="btn btn-danger" href="#">Delete</a>
-                                </th>
-                            </tr>
-                            <tr class="d-flex">
-                                <th class="col-3"> "vediamo!"</th>
-                                <th class="col-3"> see(in the we conjugate of italian) </th>
-                                <th class="col-3"> Ciao Silvia, da quanto tempo non ci vediamo!</th>
-                                <th class="col-3">
-                                    <a role="button" class="btn btn-danger" href="#">Delete</a>
-                                </th>
-                            </tr>
-                            <tr class="d-flex">
-                                <th class="col-3"> "vediamo!"</th>
-                                <th class="col-3"> see(in the we conjugate of italian) </th>
-                                <th class="col-3"> Ciao Silvia, da quanto tempo non ci vediamo!</th>
-                                <th class="col-3">
-                                    <a role="button" class="btn btn-danger" href="#">Delete</a>
-                                </th>
-                            </tr>
+                            <?php 
+                            
+                            if($dbOk){
+
+                            $result = $db->query($query);
+
+                            for ($i=0; $i < $cardCount; $i++) {
+                                $card = $result->fetch_assoc();
+                                echo "<tr class=\"d-flex\">";
+                                echo "<th class=\"col-3\">".$card["front"]."</th>";
+                                echo "<th class=\"col-3\">".$card["back"]."</th>";
+                                echo "<th class=\"col-3\">".$card["duedate"]."</th>";
+                                echo "<th class=\"col-3\">".
+                                "<button onclick=\"deleteCard(".$card["cardid"].")\" role=\"button\" class=\"btn btn-danger\">Delete</button></th>";
+                            }
+                            }
+                             ?>
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
+    <script src="dashboard.js"></script>
     <?php include('../includes/foot.inc.php');?>

@@ -27,6 +27,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `auth`
 --
+DROP TABLE `flashcards`;
+DROP TABLE `auth`;
 
 CREATE TABLE `auth` (
   `id` int(10) NOT NULL,
