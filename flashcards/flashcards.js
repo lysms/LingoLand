@@ -16,6 +16,7 @@ dataReq.onload = function() {
 		document.getElementById("review_count").innerHTML = "0 cards left";
 		document.getElementById("question").innerHTML = "No new reviews";
 		document.getElementById("user_input").innerHTML = "";
+		setTimeout(toDashboard,3000);
 		return;
 	}
 	sessionStatus = 1;
@@ -28,6 +29,9 @@ dataReq.onload = function() {
 	document.getElementById("answer").innerHTML = flashcardData.cards[0].back;
 };
 
+function toDashboard(){
+	window.location.href = "../dashboard/dashboard.php";
+}
 
 function showAnswer(){
 	sessionStatus = 2;
@@ -238,8 +242,9 @@ function updateStats(correct){
 
 function endSession() {
 	// give session summary and/or just congratulate user 
-	document.getElementById("question").innerHTML = "You Are Winner";
+	document.getElementById("question").innerHTML = "No More Reviews";
 	document.getElementById("user_input").innerHTML = "";
+	setTimeout(toDashboard,3000);
 }
 
 
