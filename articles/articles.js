@@ -1,11 +1,14 @@
 //Javascript and Jquery for project's articles part
 
 //Jquery for the articles below
+var languageToKey = {}
+
 $(document).ready(function() {
     $.getJSON("/articles/identifiableLanguages.json", function(data){
         var languages = []
         $.each(data.languages, function(key, language){
             languages.push('<option value="'+ language.name +'">'+ language.name +'</option>')
+            languageToKey[language.name] = language.language;
         })
 
         $(languages.join("")).appendTo("#language-select");
@@ -20,9 +23,8 @@ $(document).ready(function() {
 
         $("#articles > table > tbody > tr > td > a").each(function(){
             const modifiedhref = this.href.replace("javascript:window.open('", "").replace("');", "").replaceAll("%27", ""); 
-            console.log(modifiedhref);
-            this.href = window.location.href.toString().replace("/articles/articles.php", "/articleParser/iframetest.php?uri=") + modifiedhref
-        }) 
+            this.href = window.location.href.toString().replace("/articles/articles.php", "/articleParser/iframetest.php?uri=") + modifiedhref +"&language=" + languageToKey[formInputs[1].value];
+         }) 
     })
 
     // Click searching for more articles given by API
