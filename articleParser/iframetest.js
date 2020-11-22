@@ -21,3 +21,13 @@ $(document).on("click", ".make-flashcard", function(){
 })
 
 
+$(document).on("click", ".fas.fa-trash-alt", function(){
+  let cardID = this.id;
+  for(var i = 0; i < cards.length; i++){
+    if (cards[i].id = cardID){
+      $(iframe).contents().removeHighlight(cardID);
+      $("#card-" + cardID).remove();
+    }
+  }
+})
+

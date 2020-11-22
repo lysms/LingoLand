@@ -1,7 +1,9 @@
 <?php
-    $URL = "https://www.washingtonpost.com/nation/2020/09/03/coronavirus-covid-live-updates-us/";
-
-    $domain = file_get_contents($URL);
-
-    echo $domain;
+    if(isset($_GET['uri'])){
+        $URL = $_GET['uri'];
+        $domain = file_get_contents($URL);
+        echo $domain;
+    }else{
+        echo json_encode(array('error' => 'invalid url'));
+    }
 ?>

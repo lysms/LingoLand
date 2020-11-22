@@ -16,7 +16,7 @@ function createCard(sel, translation, context, color){
       translation: translation,
       context: context
     }
-    var newCardElement = '<div id="card-'+ id +'" class="card mb-4" style="width: 100%; background-color: '+ color +';"> \
+    var newCardElement = '<div id="card-'+ id +'" class="term-card card" style="width: 100%; background-color: '+ color +';"> \
       <i id="' +id+ '" class="fas fa-trash-alt"></i>\
       <div class="card-body">\
       <h5 class="card-title">Term</h5>\
@@ -24,7 +24,7 @@ function createCard(sel, translation, context, color){
       '<h5 class="card-title">Translation</h5> \
       <p class="card-subtitle translation mb-2 text-muted">'+ newCardObject.translation +'</p> \
       <h5 class="card-title">Context</h5> \
-      <p class="card-subtitle mb-2 text-muted">'+ newCardObject.context +'"</p> \
+      <p class="card-subtitle mb-2 text-muted">'+ newCardObject.context +'</p> \
       <button type="submit" id="create-card-'+ id +'" class="make-flashcard btn btn-secondary mb-2">Make Flashcard</button>'; 
     cards.push(newCardObject)
     id += 1;

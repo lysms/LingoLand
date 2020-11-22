@@ -14,38 +14,29 @@
 <div class="Backgroundimg-body">
 <!-- Place html here --> 
     <h2 class="BigHead">Suggested Articles</h2>
-    <div class="MenuPosition">
-        <!-- Dropdown menu for users -->
-        <!-- First Menu -->
-        <div id="Dropdown1-div" class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownMenuButtonPri" onclick="check()">Article Classes<span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a id="Technology" href="#">Technology</a></li>
-                <li><a id="Humanity" href="#">Humanity</a></li>
-                <li><a id="Politics" href="#">Politics</a></li>
-            </ul>
-        </div>
-        <!-- Second Menu -->
-        <div id="Dropdown2-div" class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            >Language</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a id="English" class="dropdown-item" href="#">English</a>
-                <a id="Germany" class="dropdown-item" href="#">German</a>
-                <a id="Chinese" class="dropdown-item" href="#">Chinese</a>
+    
+    <form id="search-articles" class="MenuPosition container">    
+        <div class="search-filters row"> 
+            <!-- Dropdown menu for users -->
+            <!-- First Menu -->
+            <div class="form-group col-md-8">
+                <input id="search-filter" name="search-filter" type="text" class="form-control" id="topic" placeholder="Choose Topic" required>
             </div>
+            <!-- Second Menu -->
+            <div id="Dropdown2-div" class="col-md-2 dropdown">
+                <select id="language-select" name="language" class="form-control" aria-labelledby="dropdownMenuButton" required>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" id="search" class="btn btn-dark" placeholder="Search">Search</button>
+            </div>    
         </div>
+    </form>
+    
+    <div id="articles-output-section" class="container">
+        <ul id="articles" class="list-group">
+        </ul>
     </div>
-    <div id="Left-Resources">
-    <!-- API for articles searching -->
-    <p>Do you want more articles?</p>
-    <button type="button" id="search" class="btn btn-dark">Searching</button>
-    </div>
-    <div id="Right-Resources">
-        We will provide more resources here for any clients who are seeking for more articles in the language they want.
-    </div>
-    <div id="Output-div">Here will be the output of the articles</div>
-    <!-- Self-Defined JavaScript file -->
     <script src="articles.js"></script>
 </div>
 
