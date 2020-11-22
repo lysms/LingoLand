@@ -51,7 +51,7 @@ function createCard(sel, translation, context, color){
     <p class="card-subtitle mb-2 text-muted">'+ newCardObject.translation +'</p> \
     <h5 class="card-title">Context</h5> \
     <p class="card-subtitle mb-2 text-muted">'+ newCardObject.context +'"</p> \
-    <button type="submit" class="btn btn-secondary mb-2">Make Flashcard</button>'; 
+    <button type="submit" id="create-card-'+ id +'" class="make-flashcard btn btn-secondary mb-2">Make Flashcard</button>'; 
   cards.push(newCardObject)
   id += 1;
   $(newCardElement).appendTo("#terms");
