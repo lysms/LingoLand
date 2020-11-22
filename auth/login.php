@@ -25,7 +25,7 @@ include('connection.php');
     <div class="main-auth">
         <div class="col-md-6 col-sm-12">
             <div class="login-form">
-                <form action="auth.php" method="post">
+                <form action="login.php" method="post">
                     <div class="form-group">
                         <label for="username">User Name</label>
                         <input type="text" name="username" class="form-control" placeholder="User Name" required>
@@ -34,7 +34,7 @@ include('connection.php');
                         <label for="password">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
-                    <input type="submit" value="Login" name="login" class="btn btn-black"/>
+                    <input type="submit" value="Login" name="login" class="btn btn-black" />
                     <a href="register.php" class="btn btn-secondary">Register</a>
                 </form>
             </div>
@@ -42,5 +42,5 @@ include('connection.php');
         <div class="whitespace"></div>
     </div>
     <?php include('../includes/foot.inc.php');
-  // footer info and closing tags
-?>
+    // footer info and closing tags
+    ?>
