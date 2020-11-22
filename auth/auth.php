@@ -1,7 +1,7 @@
 <?php
-  include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
-  include('../includes/functions.inc.php'); // functions
-  include('connection.php');
+include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
+include('../includes/functions.inc.php'); // functions
+include('connection.php');
 ?>
 
 <title>Login</title>
@@ -34,7 +34,7 @@
                         <label for="password">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
-                    <button type="submit" value="save" id="save" name="login" class="btn btn-black">Login</button>
+                    <input type="submit" value="Login" name="login" class="btn btn-black"/>
                     <a href="register.php" class="btn btn-secondary">Register</a>
                 </form>
             </div>

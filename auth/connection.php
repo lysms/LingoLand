@@ -15,6 +15,7 @@ $db = mysqli_connect('localhost', 'root', '', 'auth') or die("could not connect 
 
 
 // register users. 
+// Get the user input from the form, and assign into variable. 
 if (isset($_POST['username'])) {
     $username = $_POST['username'];
 }
@@ -35,7 +36,7 @@ if (isset($_POST['lastname'])) {
     $lastname = $_POST['lastname'];
 }
 
-if(isset($_POST['language'])){
+if (isset($_POST['language'])) {
     $language = $_POST['language'];
 }
 
@@ -48,6 +49,7 @@ if (empty($username)) {
 if (empty($password)) {
     array_push($errors, "Password is required");
 }
+
 if (empty($password1)) {
     array_push($errors, "Confirmed Password is required");
 }
@@ -74,46 +76,56 @@ if ($user) {
     }
 }
 
+
 // Process the Registeration. 
+// Insert the user's infomations into the databse table. 
 if (count($errors) == 0) {
-    $password = $password; // encrypt the password. 
+    $password = md5($password); // encrypt the password. 
     $query = "INSERT INTO auth (username, password, firstname, lastname, language) VALUES ('$username', '$password', '$firstname', '$lastname', '$language')";
     mysqli_query($db, $query);
 
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
 
-    header("localhost: ../../dashboard/dashboard.php");
+    header("location: ../dashboard/dashboard.php");
 }
-
-
 
 //LOGIN user
 
 if (isset($_POST['login'])) {
-
+	$errors = array();
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
-
+    $error = array();
 
     if (empty($username)) {
-        array_push($errors, "Username is required");
+        array_push($error, "Username is required");
     }
 
     if (empty($password)) {
-        array_push($errors, "Password is required");
+        array_push($error, "Password is required");
     }
 
-    if (count($errors) == 0) {
-        $password = $password;
+    if (count($error) == 0) {
+        $password = md5($password);
 
         $query = "SELECT * FROM auth WHERE username= '$username' AND password = '$password' ";
         $result = $db->query($query);
 
         $record = $result->fetch_assoc();
-        if ($username == $record['username'] && $password == $record['password']) {
+
+	if(!isset($record['username']) || !isset($record['password'])) {
+		echo 'Wrong username or password';
+		session_destroy();
+	}
+
+	else if ($username == $record['username'] && $password == $record['password']) {
             echo 'login successful';
-            header("register.php");
+    $_SESSION['username'] = $username;
+    $_SESSION['success'] = "You are now logged in";
+    header("location: ../dashboard/dashboard.php");
+        } else {
+            echo 'login fail';
         }
     }
 }
