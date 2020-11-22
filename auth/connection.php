@@ -78,9 +78,9 @@ if ($user) {
 
 
 // Process the Registeration. 
-// Insert the user's infomations into the databse table. 
+// Insert the user's infomations into the database table. 
 if (count($errors) == 0) {
-    $password = md5($password); // encrypt the password. 
+    $password = password_hash($password); // encrypt the password. 
     $query = "INSERT INTO auth (username, password, firstname, lastname, language) VALUES ('$username', '$password', '$firstname', '$lastname', '$language')";
     mysqli_query($db, $query);
 
@@ -107,7 +107,7 @@ if (isset($_POST['login'])) {
     }
 
     if (count($error) == 0) {
-        $password = md5($password);
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
         $query = "SELECT * FROM auth WHERE username= '$username' AND password = '$password' ";
         $result = $db->query($query);
