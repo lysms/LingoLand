@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2020 at 03:00 PM
+-- Generation Time: Nov 23, 2020 at 04:06 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -60,6 +60,7 @@ CREATE TABLE `flashcards` (
   `easefactor` int(10) UNSIGNED NOT NULL DEFAULT 250,
   `front` varchar(1000) DEFAULT NULL,
   `back` varchar(1000) DEFAULT NULL,
+  `deck` varchar(255) NOT NULL,
   `userID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -67,12 +68,12 @@ CREATE TABLE `flashcards` (
 -- Dumping data for table `flashcards`
 --
 
-INSERT INTO `flashcards` (`cardid`, `duedate`, `interval`, `easefactor`, `front`, `back`, `userID`) VALUES
-(1, '2020-11-22 14:55:12', 0, 240, 'This is the front of the card', 'This is the back of the card', 1),
-(2, '2020-10-31 12:59:00', 1, 250, 'This is the front of another card', 'This is the back of another card', 1),
-(3, '2120-10-31 12:59:00', 1000, 250, 'This is the front of a card that should never be shown', 'This is the back of a card that should never be shown', 1),
-(4, '2020-11-22 14:55:06', 0, 240, 'This is the front of a card that is very overdue', 'This is the back of a card that is very overdue', 1),
-(5, '2020-11-22 14:55:06', 3, 250, 'This is the front of a card for user 7', 'This is the back of a card for user 7', 7);
+INSERT INTO `flashcards` (`cardid`, `duedate`, `interval`, `easefactor`, `front`, `back`, `deck`, `userID`) VALUES
+(1, '2020-11-22 14:55:12', 0, 240, 'This is the front of the card', 'This is the back of the card', 'english', 1),
+(2, '2020-10-31 12:59:00', 1, 250, 'This is the front of another card', 'This is the back of another card', 'italian', 1),
+(3, '2120-10-31 12:59:00', 1000, 250, 'This is the front of a card that should never be shown', 'This is the back of a card that should never be shown', 'english', 1),
+(4, '2020-11-22 14:55:06', 0, 240, 'This is the front of a card that is very overdue', 'This is the back of a card that is very overdue', 'english', 1),
+(5, '2020-11-22 14:55:06', 3, 250, 'This is the front of a card for user 7', 'This is the back of a card for user 7', 'english', 7);
 
 --
 -- Indexes for dumped tables
