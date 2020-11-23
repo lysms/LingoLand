@@ -298,11 +298,7 @@
         },
         {
             "language": "zh",
-            "name": "Simplified Chinese"
-        },
-        {
-            "language": "zh-TW",
-            "name": "Traditional Chinese"
+            "name": "Chinese"
         }
     ]
 }
