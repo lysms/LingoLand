@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `flashcards`
 --
-DROP TABLE `flashcards`;
+-- DROP TABLE `flashcards`;
 CREATE TABLE `flashcards` (
   `cardid` int(10) UNSIGNED NOT NULL,
   `duedate` datetime DEFAULT NULL,

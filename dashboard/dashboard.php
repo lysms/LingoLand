@@ -1,6 +1,7 @@
 <?php
-  include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
-  include('../includes/functions.inc.php'); // functions
+include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
+include('../includes/functions.inc.php'); // functions
+include('../auth/connection.php');
 ?>
 
 <title>LingoLand &#8212; Dashboard</title>
@@ -8,6 +9,7 @@
 <?php include('../includes/head.inc.php'); ?>
 
 <?php include('../includes/regular_nav.php'); ?>
+
 
 <?php 
 $userID = 1;
@@ -29,6 +31,7 @@ else{
     $reviewCount = $db->query($reviewQuery)->num_rows;
 }
  ?>
+
 <div id="headerImg">
     <div id="main" class="background-light-grey">
         <div class="container">
@@ -38,11 +41,17 @@ else{
                         alt="profile image" />
                 </div>
                 <div class="col-md-6">
-                    <h2 class="profile-name">John Stevens</h2>
-                    <p>Hi! My name is John, and i'm currently learning italian. Super into soccer, so been reading alot
+                    <h2 class="profile-name"><?php echo $_SESSION["firstname"] . " " . $_SESSION["lastname"]; ?>
+                    </h2>
+                    <p>Hi! My name is John, and i'm currently learning italian. Super into soccer, so been
+                        reading alot
                         of soccer related news in italian. Va Milano</p>
                     <h3 class="info-item language">Language: Italian</h3>
                     <h3 class="info-item num-cards">Number of cards per day: 10</h3>
+                    <div class="container">
+                        <button type="submit" class="butt" value="Log Out" name="logout"><a href="../auth/logout.php"
+                                title="Logout">Log Out</a></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,3 +127,4 @@ else{
     </div>
     <script src="dashboard.js"></script>
     <?php include('../includes/foot.inc.php');?>
+

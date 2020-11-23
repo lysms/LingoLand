@@ -6,18 +6,28 @@ $(iframe).on('load',function(){
     $(this).contents().find("body").on('click', function(event){
         var sel = idoc.getSelection().toString();
         const color = getRandomColor();
-        console.log(color);
-        console.log(sel);
-        $(this).contents().find("body").highlight(sel, color, id, idoc);
+        console.log($(this).contents());
+        $(this).contents().highlight(sel, color, id);
         createTranslation(sel).then(function(translation){
-          console.log(translation.translations);
           createCard(sel, translation.translations[0].translation, "lorem ipsum dolor", color);
         });
     })
-
-    // var sel = getSelection().toString();
-    // const color = getRandomColor();
-    // console.log(color);
-    // $(body).highlight(sel, color, id);
-    // id +=1;
 });
+
+$(document).on("click", ".make-flashcard", function(){
+  const term = this.parentNode.querySelector(".term").innerHTML
+  const translation = this.parentNode.querySelector(".translation").innerHTML
+  createFlashcard(term, translation);
+})
+
+
+$(document).on("click", ".fas.fa-trash-alt", function(){
+  let cardID = this.id;
+  for(var i = 0; i < cards.length; i++){
+    if (cards[i].id = cardID){
+      $(iframe).contents().removeHighlight(cardID);
+      $("#card-" + cardID).remove();
+    }
+  }
+})
+

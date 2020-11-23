@@ -4,9 +4,9 @@ session_start();
 
 $username = "";
 $password = "";
-
-
-$errors = array();
+$firstname = "";
+$lastname = "";
+$language = "";
 
 //connect to db
 
@@ -15,117 +15,58 @@ $db = mysqli_connect('localhost', 'root', '', 'auth') or die("could not connect 
 
 
 // register users. 
-// Get the user input from the form, and assign into variable. 
-if (isset($_POST['username'])) {
+if (isset($_POST['register'])) {
     $username = $_POST['username'];
-}
-
-if (isset($_POST['password'])) {
     $password = $_POST['password'];
-}
-
-if (isset($_POST['password1'])) {
     $password1 = $_POST['password1'];
-}
-
-if (isset($_POST['firstname'])) {
     $firstname = $_POST['firstname'];
-}
-
-if (isset($_POST['lastname'])) {
     $lastname = $_POST['lastname'];
-}
+    $user_check = "SELECT * FROM auth WHERE username = '$username' LIMIT 1";
 
-if (isset($_POST['language'])) {
-    $language = $_POST['language'];
-}
+    $result = mysqli_query($db, $user_check);
+    $user = mysqli_fetch_assoc($result);
 
+    if ($user) {
+        if ($user['username'] === $username) {
+            echo '<script>alert("Username is exist, please try a new one.");</script>';
+        }
+    } else {
+        $password = password_hash($password, PASSWORD_DEFAULT); // encrypt the password. 
+        $query = "INSERT INTO auth (username, password, firstname, lastname, language) VALUES ('$username', '$password', '$firstname', '$lastname', '$language')";
+        mysqli_query($db, $query);
 
-//form validation
-if (empty($username)) {
-    array_push($errors, "Username is required");
-}
-
-if (empty($password)) {
-    array_push($errors, "Password is required");
-}
-
-if (empty($password1)) {
-    array_push($errors, "Confirmed Password is required");
-}
-if (empty($firstname)) {
-    array_push($errors, "FirstName is required");
-}
-
-if (empty($lastname)) {
-    array_push($errors, "Last name is required");
-}
-
-
-
-// check db for existing user with the same username
-
-$user_check = "SELECT * FROM auth WHERE username = '$username' LIMIT 1";
-
-$result = mysqli_query($db, $user_check);
-$user = mysqli_fetch_assoc($result);
-
-if ($user) {
-    if ($user['username'] === $username) {
-        array_push($errors, "Username already exists");
+        $_SESSION["firstname"] = $firstname;
+        $_SESSION["lastname"] = $lastname;
+        if (isset($_SESSION["firstname"])) {
+            header("location: ../dashboard/dashboard.php");
+        }
     }
 }
 
 
-// Process the Registeration. 
-// Insert the user's infomations into the databse table. 
-if (count($errors) == 0) {
-    $password = md5($password); // encrypt the password. 
-    $query = "INSERT INTO auth (username, password, firstname, lastname, language) VALUES ('$username', '$password', '$firstname', '$lastname', '$language')";
-    mysqli_query($db, $query);
-
-    $_SESSION['username'] = $username;
-    $_SESSION['success'] = "You are now logged in";
-
-    header("location: ../dashboard/dashboard.php");
-}
 
 //LOGIN user
 
 if (isset($_POST['login'])) {
-	$errors = array();
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
-    $error = array();
 
-    if (empty($username)) {
-        array_push($error, "Username is required");
-    }
-
-    if (empty($password)) {
-        array_push($error, "Password is required");
-    }
-
-    if (count($error) == 0) {
-        $password = md5($password);
+    if (!empty($username)) {
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
         $query = "SELECT * FROM auth WHERE username= '$username' AND password = '$password' ";
         $result = $db->query($query);
 
         $record = $result->fetch_assoc();
 
-	if(!isset($record['username']) || !isset($record['password'])) {
-		echo 'Wrong username or password';
-		session_destroy();
-	}
-
-	else if ($username == $record['username'] && $password == $record['password']) {
-            echo 'login successful';
-    $_SESSION['username'] = $username;
-    $_SESSION['success'] = "You are now logged in";
-    header("location: ../dashboard/dashboard.php");
-        } else {
-            echo 'login fail';
+        if (!isset($record['username']) || !isset($record['password'])) {
+            echo '<script>alert("Wrong username or password.");</script>';
+        } else if ($username == $record['username'] && $password == $record['password']) {
+            $_SESSION["firstname"] = $record['firstname'];
+            $_SESSION["lastname"] = $record['lastname'];
+        }
+        if (isset($_SESSION["firstname"])) {
+            header("location: ../dashboard/dashboard.php");
         }
     }
 }

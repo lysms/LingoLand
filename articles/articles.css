@@ -4,6 +4,17 @@
 
 }
 
+.search-filters{
+    width: 100%;
+}
+
+.dropdown{
+    width: 100% !important; 
+}
+
+#dropdownMenuButton{
+    width: 100%;
+}
 
 .BigHead {
     text-align: center;
@@ -12,26 +23,23 @@
 }
 
 .MenuPosition {
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 40px;
-    width: 40%;
+    width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 
 }
 
-#Dropdown1-div {}
-
-#Dropdown2-div {}
-
-#Output-div {
+#articles {
     height: 30em;
     background-color: #ffddcc;
-    width: 30%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    margin-top: 0px;
+    overflow-y: auto;
 }
 
 #Left-Resources {

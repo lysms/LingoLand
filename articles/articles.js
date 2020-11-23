@@ -1,7 +1,32 @@
 //Javascript and Jquery for project's articles part
 
 //Jquery for the articles below
+var languageToKey = {}
+
 $(document).ready(function() {
+    $.getJSON("/articles/identifiableLanguages.json", function(data){
+        var languages = []
+        $.each(data.languages, function(key, language){
+            languages.push('<option value="'+ language.name +'">'+ language.name +'</option>')
+            languageToKey[language.name] = language.language;
+        })
+
+        $(languages.join("")).appendTo("#language-select");
+
+    })
+    $("#search-articles").submit(async function(e){
+        e.preventDefault();
+        const formInputs = $('#search-articles').serializeArray();
+        console.log(formInputs);
+        const articles = await getArticles(formInputs[1].value, formInputs[0].value);
+        document.getElementById("articles").innerHTML = articles
+
+        $("#articles > table > tbody > tr > td > a").each(function(){
+            const modifiedhref = this.href.replace("javascript:window.open('", "").replace("');", "").replaceAll("%27", ""); 
+            this.href = window.location.href.toString().replace("/articles/articles.php", "/articleParser/iframetest.php?uri=") + modifiedhref +"&language=" + languageToKey[formInputs[1].value];
+         }) 
+    })
+
     // Click searching for more articles given by API
     $("#search").click(async function(){
         if (document.getElementById("dropdownMenuButton").innerHTML == "Language"||document.getElementById("dropdownMenuButtonPri").innerHTML == "Article Classes"){
@@ -279,16 +304,16 @@ $(document).ready(function() {
 });
 
     // Get data for API of searching articles
-function getArticles(){
-
+function getArticles(language, keyword){
+    console.log(language, keyword);
     const url =  window.location.href.toString().replace("articles.php", "getArticles.php");
     const result = $.ajax({    
         type: 'GET',
         url: url,
-        contentType: "application/json",
+        contentType: "application/html",
         data: {
-            language: document.getElementById("dropdownMenuButton").innerHTML,
-            keyword: document.getElementById("dropdownMenuButtonPri").innerHTML
+            "language": language,
+            "keyword": keyword
         },
         success: function(res){
            return res;
