@@ -42,11 +42,11 @@ if ($db->connect_error) {
                 <div class="col-md-6">
                     <h2 class="profile-name"><?php echo $_SESSION["firstname"] . " " . $_SESSION["lastname"]; ?>
                     </h2>
-                    <p>Hi! My name is John, and i'm currently learning italian. Super into soccer, so been
+                    <!-- <p>Hi! My name is John, and i'm currently learning italian. Super into soccer, so been
                         reading alot
                         of soccer related news in italian. Va Milano</p>
                     <h3 class="info-item language">Language: Italian</h3>
-                    <h3 class="info-item num-cards">Number of cards per day: 10</h3>
+                    <h3 class="info-item num-cards">Number of cards per day: 10</h3> -->
                     <div class="container">
                         <button type="submit" class="butt" value="Log Out" name="logout"><a href="../auth/logout.php"
                                 title="Logout">Log Out</a></button>
@@ -73,10 +73,10 @@ if ($db->connect_error) {
                     <button onclick="doReviews()" id="reviewButton" class="btn btn-secondary activity">Review Daily
                         Flashcards ( 0 )</button>
                 </div>
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                     <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review all Flashcards (
                         <?php echo $cardCount; ?> )</a>
-                </div>
+                </div> -->
                 <div class="col-md-3">
                     <a href="../articles/articles.php" class="btn btn-success activity">Review Article</a>
                 </div>
