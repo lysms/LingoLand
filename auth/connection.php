@@ -31,7 +31,7 @@ if (isset($_POST['register'])) {
             echo '<script>alert("Username is exist, please try a new one.");</script>';
         }
     } else {
-        $password = md5($password); // encrypt the password. 
+        $password = password_hash($password, PASSWORD_DEFAULT); // encrypt the password. 
         $query = "INSERT INTO auth (username, password, firstname, lastname, language) VALUES ('$username', '$password', '$firstname', '$lastname', '$language')";
         mysqli_query($db, $query);
 
@@ -52,7 +52,7 @@ if (isset($_POST['login'])) {
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
     if (!empty($username)) {
-        $password = md5($password);
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
         $query = "SELECT * FROM auth WHERE username= '$username' AND password = '$password' ";
         $result = $db->query($query);
