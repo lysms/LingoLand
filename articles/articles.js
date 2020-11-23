@@ -3,46 +3,45 @@
 //Jquery for the articles below
 var languageToKey = {}
 
-$(document).ready(function() {
-    $.getJSON("/articles/identifiableLanguages.json", function(data){
+$(document).ready(function () {
+    $.getJSON("./identifiableLanguages.json", function (data) {
         var languages = []
-        $.each(data.languages, function(key, language){
-            languages.push('<option value="'+ language.name +'">'+ language.name +'</option>')
+        $.each(data.languages, function (key, language) {
+            languages.push('<option value="' + language.name + '">' + language.name + '</option>')
             languageToKey[language.name] = language.language;
         })
 
         $(languages.join("")).appendTo("#language-select");
 
     })
-    $("#search-articles").submit(async function(e){
+    $("#search-articles").submit(async function (e) {
         e.preventDefault();
         const formInputs = $('#search-articles').serializeArray();
         console.log(formInputs);
         const articles = await getArticles(formInputs[1].value, formInputs[0].value);
         document.getElementById("articles").innerHTML = articles
 
-        $("#articles > table > tbody > tr > td > a").each(function(){
-            const modifiedhref = this.href.replace("javascript:window.open('", "").replace("');", "").replaceAll("%27", ""); 
-            this.href = window.location.href.toString().replace("/articles/articles.php", "/articleParser/iframetest.php?uri=") + modifiedhref +"&language=" + languageToKey[formInputs[1].value];
-         }) 
+        $("#articles > table > tbody > tr > td > a").each(function () {
+            const modifiedhref = this.href.replace("javascript:window.open('", "").replace("');", "").replaceAll("%27", "");
+            this.href = window.location.href.toString().replace("/articles/articles.php", "/articleParser/iframetest.php?uri=") + modifiedhref + "&language=" + languageToKey[formInputs[1].value];
+        })
     })
 
     // Click searching for more articles given by API
-    $("#search").click(async function(){
-        if (document.getElementById("dropdownMenuButton").innerHTML == "Language"||document.getElementById("dropdownMenuButtonPri").innerHTML == "Article Classes"){
+    $("#search").click(async function () {
+        if (document.getElementById("dropdownMenuButton").innerHTML == "Language" || document.getElementById("dropdownMenuButtonPri").innerHTML == "Article Classes") {
             alert("Please choose language then choose the article class");
             location.reload();
-        }
-        else{
+        } else {
             const articles = await getArticles();
             var out_articles = JSON.parse(articles);
             //console.log(articles);
-            for (var i = 0; i < 5; i++){
-            	var articles_link = "<li><a href=" + out_articles[i].uri + ">articles_" + i + "</a></li><br>";
-            	document.getElementById("Output-div").innerHTML += articles_link;
+            for (var i = 0; i < 5; i++) {
+                var articles_link = "<li><a href=" + out_articles[i].uri + ">articles_" + i + "</a></li><br>";
+                document.getElementById("Output-div").innerHTML += articles_link;
             }
         }
-        
+
     });
 
 
@@ -50,12 +49,12 @@ $(document).ready(function() {
 
     // Click function for changing article genre and language
     // English part
-    $("#English").click(function() {
+    $("#English").click(function () {
         $("#dropdownMenuButton").text("English");
         // document.getElementsByClassName("LanguageDisplay").innerHTML = "English-Lol"; This method doesnt work. Solution is that to add[0] behind (LanguageDisplay)
         alert("Look! English-Lol");
         document.getElementById("Right-Resources").innerHTML += "<br><li><a href='https://www.voanews.com/'>VOA</a>";
-        $("#Technology").click(function() {
+        $("#Technology").click(function () {
             $("#dropdownMenuButtonPri").text("Technology");
             if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
                 alert("Look! Technology is coming up!");
@@ -65,7 +64,7 @@ $(document).ready(function() {
             //The first one is for the Technology
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
 
@@ -81,7 +80,7 @@ $(document).ready(function() {
             xmlhttp.open("GET", "articles_English.txt", true);
             xmlhttp.send();
         });
-        $("#Humanity").click(function() {
+        $("#Humanity").click(function () {
             $("#dropdownMenuButtonPri").text("Humanity");
             if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
                 alert("Look! Culture is coming up!");
@@ -90,7 +89,7 @@ $(document).ready(function() {
             //The second one is for the Humanity
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
 
@@ -106,7 +105,7 @@ $(document).ready(function() {
             xmlhttp.open("GET", "articles_English.txt", true);
             xmlhttp.send();
         });
-        $("#Politics").click(function() {
+        $("#Politics").click(function () {
             $("#dropdownMenuButtonPri").text("Politics");
             if (document.getElementById("dropdownMenuButton").innerHTML == "English") {
                 alert("Look! Politics is coming up!");
@@ -115,7 +114,7 @@ $(document).ready(function() {
             //The third one is for the Politics
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
 
@@ -135,11 +134,11 @@ $(document).ready(function() {
 
 
     // German part
-    $("#Germany").click(function() {
-    	$("#dropdownMenuButton").text("German");
+    $("#Germany").click(function () {
+        $("#dropdownMenuButton").text("German");
         alert("Aussehen! Deustch!");
         document.getElementById("Right-Resources").innerHTML += "<br><li><a href='https://www.deutschlandfunk.de/startseite.187.de.html'>DeustchLandFunk</a>";
-        $("#Technology").click(function() {
+        $("#Technology").click(function () {
             $("#dropdownMenuButtonPri").text("Technology");
             if (document.getElementById("dropdownMenuButton").innerHTML == "German") {
                 alert("Technologie!");
@@ -149,7 +148,7 @@ $(document).ready(function() {
             //The first one is for the Technology
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
 
@@ -165,7 +164,7 @@ $(document).ready(function() {
             xmlhttp.open("GET", "articles_Germany.txt", true);
             xmlhttp.send();
         });
-        $("#Humanity").click(function() {
+        $("#Humanity").click(function () {
             $("#dropdownMenuButtonPri").text("Humanity");
             if (document.getElementById("dropdownMenuButton").innerHTML == "German") {
                 alert("Kultur!");
@@ -174,7 +173,7 @@ $(document).ready(function() {
             //The second one is for the Humanity
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
 
@@ -190,7 +189,7 @@ $(document).ready(function() {
             xmlhttp.open("GET", "articles_Germany.txt", true);
             xmlhttp.send();
         });
-        $("#Politics").click(function() {
+        $("#Politics").click(function () {
             $("#dropdownMenuButtonPri").text("Politics");
             if (document.getElementById("dropdownMenuButton").innerHTML == "German") {
                 alert("Politik!");
@@ -199,7 +198,7 @@ $(document).ready(function() {
             //The third one is for the Politics
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
 
@@ -219,13 +218,13 @@ $(document).ready(function() {
 
 
     // Chinese part
-    $("#Chinese").click(function() {
-    	$("#dropdownMenuButton").text("Chinese");
+    $("#Chinese").click(function () {
+        $("#dropdownMenuButton").text("Chinese");
         alert("看! 中文-哈哈");
         document.getElementById("Right-Resources").innerHTML += "<br><li><a href='http://www.people.com.cn/'>人民日报</a>";
 
         //subbutton for choosing the topic
-        $("#Technology").click(function() {
+        $("#Technology").click(function () {
             $("#dropdownMenuButtonPri").text("Technology");
             if (document.getElementById("dropdownMenuButton").innerHTML == "Chinese") {
                 alert("接下来是科技篇");
@@ -235,7 +234,7 @@ $(document).ready(function() {
             //The first one is for the Technology
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
 
@@ -251,7 +250,7 @@ $(document).ready(function() {
             xmlhttp.open("GET", "articles_Chinese.txt", true);
             xmlhttp.send();
         });
-        $("#Humanity").click(function() {
+        $("#Humanity").click(function () {
             $("#dropdownMenuButtonPri").text("Humanity");
             if (document.getElementById("dropdownMenuButton").innerHTML == "Chinese") {
                 alert("接下来是人文篇");
@@ -259,7 +258,7 @@ $(document).ready(function() {
             //The second one is for the Humanity
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
 
@@ -275,7 +274,7 @@ $(document).ready(function() {
             xmlhttp.open("GET", "articles_Chinese.txt", true);
             xmlhttp.send();
         });
-        $("#Politics").click(function() {
+        $("#Politics").click(function () {
             $("#dropdownMenuButtonPri").text("Politics");
             if (document.getElementById("dropdownMenuButton").innerHTML == "Chinese") {
                 alert("接下来是政治篇");
@@ -283,7 +282,7 @@ $(document).ready(function() {
             //The third one is for the Politics
             var i, x = "";
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
 
@@ -303,11 +302,11 @@ $(document).ready(function() {
 
 });
 
-    // Get data for API of searching articles
-function getArticles(language, keyword){
+// Get data for API of searching articles
+function getArticles(language, keyword) {
     console.log(language, keyword);
-    const url =  window.location.href.toString().replace("articles.php", "getArticles.php");
-    const result = $.ajax({    
+    const url = window.location.href.toString().replace("articles.php", "getArticles.php");
+    const result = $.ajax({
         type: 'GET',
         url: url,
         contentType: "application/html",
@@ -315,20 +314,20 @@ function getArticles(language, keyword){
             "language": language,
             "keyword": keyword
         },
-        success: function(res){
-           return res;
+        success: function (res) {
+            return res;
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown) { // if there was a problem
-        console.log(XMLHttpRequest, textStatus, errorThrown);
-        alert('Error Occured');
+        error: function (XMLHttpRequest, textStatus, errorThrown) { // if there was a problem
+            console.log(XMLHttpRequest, textStatus, errorThrown);
+            alert('Error Occured');
         }
     });
 
     return new Promise((resolve, reject) => {
-        if(result){
-          resolve(result);
-        } else{
-          reject();
+        if (result) {
+            resolve(result);
+        } else {
+            reject();
         }
     })
 }

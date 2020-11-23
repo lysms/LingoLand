@@ -10,7 +10,7 @@ $language = "";
 
 //connect to db
 
-$db = mysqli_connect('localhost', 'root', '', 'auth') or die("could not connect to database");
+$db = mysqli_connect('localhost', 'root', '', 'lingoland') or die("could not connect to database");
 
 
 
@@ -34,12 +34,7 @@ if (isset($_POST['register'])) {
         $password = password_hash($password, PASSWORD_DEFAULT); // encrypt the password. 
         $query = "INSERT INTO auth (username, password, firstname, lastname, language) VALUES ('$username', '$password', '$firstname', '$lastname', '$language')";
         mysqli_query($db, $query);
-
-        $_SESSION["firstname"] = $firstname;
-        $_SESSION["lastname"] = $lastname;
-        if (isset($_SESSION["firstname"])) {
-            header("location: ../dashboard/dashboard.php");
-        }
+        header("location: auth.php");
     }
 }
 
@@ -52,19 +47,28 @@ if (isset($_POST['login'])) {
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
     if (!empty($username)) {
-        $password = password_hash($password, PASSWORD_DEFAULT);
+        // $password = password_hash($password, PASSWORD_DEFAULT);
 
-        $query = "SELECT * FROM auth WHERE username= '$username' AND password = '$password' ";
+        $query = "SELECT * FROM auth WHERE username = '$username'";
         $result = $db->query($query);
 
         $record = $result->fetch_assoc();
-
-        if (!isset($record['username']) || !isset($record['password'])) {
-            echo '<script>alert("Wrong username or password.");</script>';
-        } else if ($username == $record['username'] && $password == $record['password']) {
+        // echo '<script>alert("' . $record['username'] . '");</script>';
+        if (password_verify($password, $record['password'])) {
             $_SESSION["firstname"] = $record['firstname'];
             $_SESSION["lastname"] = $record['lastname'];
+            $_SESSION["id"] = $record['id'];
+        } else {
+            echo '<script>alert("' . $record['password'] . '");</script>';
+            echo '<script>alert("Wrong username or password.");</script>';
         }
+        // if (!isset($record['username']) || !isset($record['password'])) {
+        //     echo '<script>alert("Wrong username or password.");</script>';
+        // } else if ($username == $record['username'] && $password == $record['password']) {
+        //     $_SESSION["firstname"] = $record['firstname'];
+        //     $_SESSION["lastname"] = $record['lastname'];
+        //     $_SESSION["id"] = $record['id'];
+        // }
         if (isset($_SESSION["firstname"])) {
             header("location: ../dashboard/dashboard.php");
         }
