@@ -1,4 +1,5 @@
 <?php  
+include ('../auth/connection.php');
 $dbOk = false;
 @ $db = new mysqli('localhost', 'root', '', 'lingoland');
 if($db->connect_error){
@@ -10,7 +11,7 @@ else{
 
 if($dbOk){
 	// gets the currently logged in user's id
-	$userID = 1;
+	$userID = $_SESSION["id"];
 
 	// if the user is not logged in, return no cards
 	if(false){
@@ -28,4 +29,3 @@ if($dbOk){
 	// creates the return data in JSON format
 	echo "{\"reviewCount\": \"" . $reviewCount . "\"}";
 }
-?>

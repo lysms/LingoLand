@@ -13,22 +13,23 @@ cardAdd.send(cardInfo);
  -->
 
 
-<?php  
+<?php
+include('../auth/connection.php');
 $dbOk = false;
-@ $db = new mysqli('localhost', 'root', '', 'lingoland');
-if($db->connect_error){
+@$db = new mysqli('localhost', 'root', '', 'lingoland');
+if ($db->connect_error) {
 	echo json_encode("error");
-} 
-else{
-	$dbOk = true; 
+} else {
+	$dbOk = true;
 }
 
-if($dbOk){
+if ($dbOk) {
 	$card = json_decode("$_POST[card]", true);
 	$today = new DateTime('now');
 
 	// creates and executes the update query
-	$query = 'insert into flashcards (`duedate`, `interval`, `easefactor`, `front`, `back`) values ("'. $today->format('Y-m-d H:i:s') . '", 0, 250, "' . $card['front'] . '", "'. $card['back'] .'")';
+	$query = 'insert into flashcards (`duedate`, `interval`, `easefactor`, `front`, `back`, `deck`, `userID`) values ("' .
+		$today->format('Y-m-d H:i:s') . '", 0, 250, "' . $card['front'] . '", "' . $card['back'] . '", "' . $card['deck'] . '","' . $_SESSION["id"] . '")';
 
 	$db->query($query);
 }

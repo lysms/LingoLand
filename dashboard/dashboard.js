@@ -11,18 +11,20 @@ function getData() {
 	cardAdd.open("post", "getDeckCount.php", true);
 	cardAdd.send(deckInfo);
 
-	cardAdd.onload = function() {
+	cardAdd.onload = function () {
+		alert(deckName);
 		let flashcardData = JSON.parse(this.responseText);
 
-		document.getElementById("reviewButton").innerHTML = 
-		"Review Daily Flashcards(" + flashcardData.reviewCount + ")"; 
+		document.getElementById("reviewButton").innerHTML =
+			"Review Daily Flashcards(" + flashcardData.reviewCount + ")";
 	};
 
-	
+
 }
-function doReviews(){
-	window.location.href = "../flashcards/flashcards.php?deck=" 
-                         + document.getElementById("deckSelect").value;
+
+function doReviews() {
+	window.location.href = "../flashcards/flashcards.php?deck=" +
+		document.getElementById("deckSelect").value;
 }
 
 function deleteCard(cardID) {
