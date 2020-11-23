@@ -8,12 +8,6 @@ $firstname = "";
 $lastname = "";
 $language = "";
 
-if (isset($_SESSION['username'])) {
-    echo "hello";
-}
-
-
-
 //connect to db
 
 $db = mysqli_connect('localhost', 'root', '', 'auth') or die("could not connect to database");
