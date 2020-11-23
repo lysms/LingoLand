@@ -54,15 +54,18 @@ else{
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review Daily Flashcards (
-                    <?php echo $reviewCount; ?> )</a>
+                    <select name="deck" id="deckSelect" oninput="getData()">
+                      <option value="english">English</option>
+                      <option value="italian">Italian</option>
+                      <option value="spanish">Spanish</option>
+                      <option value="french">French</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button onclick="doReviews()" id="reviewButton" class="btn btn-secondary activity">Review Daily Flashcards ( 0 )</button>
                 </div>
                 <div class="col-md-3">
                     <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review all Flashcards ( <?php echo $cardCount; ?> )</a>
-                </div>
-                <div class="col-md-3">
-                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review Random
-                        Flashcards</a>
                 </div>
                 <div class="col-md-3">
                     <a href="../articles/articles.php" class="btn btn-success activity">Review Article</a>
@@ -80,6 +83,7 @@ else{
                     <table class="table table-striped">
                         <thead class='thead-light'>
                             <tr class="d-flex">
+                                <th class="col-2">Deck</th>
                                 <th class="col-3">Front</th>
                                 <th class="col-3">Back</th>
                                 <th class="col-3">Due Date</th>
@@ -96,6 +100,7 @@ else{
                             for ($i=0; $i < $cardCount; $i++) {
                                 $card = $result->fetch_assoc();
                                 echo "<tr class=\"d-flex\">";
+                                echo "<th class=\"col-2\">".$card["deck"]."</th>";
                                 echo "<th class=\"col-3\">".$card["front"]."</th>";
                                 echo "<th class=\"col-3\">".$card["back"]."</th>";
                                 echo "<th class=\"col-3\">".$card["duedate"]."</th>";

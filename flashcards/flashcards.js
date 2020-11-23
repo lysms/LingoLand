@@ -5,9 +5,14 @@ var missIndices = [];
 var currentCard = 0;
 var flashcardData;
 
+const params = new URLSearchParams(location.search);
+//alert(params.get('deck'));
+
 var dataReq = new XMLHttpRequest();
 dataReq.open("get", "getData.php", true);
 dataReq.send();
+
+alert
 
 dataReq.onload = function() {
 	flashcardData = JSON.parse(this.responseText);
