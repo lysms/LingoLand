@@ -17,7 +17,19 @@ if (isset($_GET['uri'])) {
 <?php include('../includes/regular_nav.php'); ?>
 <?php include('../sidebar/sidebar.php'); ?>
 
+
 <div id="article-page" class="page-content-wrapper">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="mr-auto">Flashcard</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        Flashcard Created!
+      </div>
+    </div>
     <div class="navbar-dark">
         <iframe id="article" src="./proxy.php?uri=<?= $uri ?>" title="Article Post" width="100%"
             height="1000px"></iframe>

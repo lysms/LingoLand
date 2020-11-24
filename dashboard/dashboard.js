@@ -12,7 +12,6 @@ function getData() {
 	cardAdd.send(deckInfo);
 
 	cardAdd.onload = function () {
-		alert(deckName);
 		let flashcardData = JSON.parse(this.responseText);
 
 		document.getElementById("reviewButton").innerHTML =

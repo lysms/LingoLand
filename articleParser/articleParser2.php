@@ -42,13 +42,6 @@
         <form class="parse-text">
             <div class="form-group">
                 <p class="article-text"> <?=$text;?>
-                    <!-- Marta: Ciao Silvia, da quanto tempo non ci <span class="background-green">vediamo</span>! Come stai? <br>
-            Silvia: Bene grazie. Che piacere vederti! Sono <span class="background-pink">appena</span> tornata da Londra. Sono stata lì tre mesi per studiare inglese. <br>
-            Marta: E come è andata? <br>
-            Silvia: È stata un’esperienza molto interessante. Ho migliorato il mio inglese e ho conosciuto tante persone. A proposito ti presento Beth. Ci siamo conosciute in 
-            <span class = "background-light-blue">Inghilterra</span>. Beth è qui per studiare l’italiano. <br>
-            Marta: Piacere di conoscerti Beth. Benvenuta in Italia. <br>
-            Silvia: Domani sera pensiamo di andare al cinema. Vuoi venire anche tu? <br> -->
                 </p>
             </div>
         </form>

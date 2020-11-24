@@ -15,10 +15,7 @@
                 <a class="nav-link" href="#features">Features</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../articleParser/articleParser.php">Flashcard Maker</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../articles/articles.php">Suggested Articles</a>
+                <a class="nav-link" href="../articles/articles.php">Flashcard Maker</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#meet-the-team">LingoLand Team</a>

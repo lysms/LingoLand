@@ -23,7 +23,7 @@ $(document).ready(function () {
 
         $("#articles > table > tbody > tr > td > a").each(function () {
             const modifiedhref = this.href.replace("javascript:window.open('", "").replace("');", "").replaceAll("%27", "");
-            this.href = window.location.href.toString().replace("/articles/articles.php", "/articleParser/iframetest.php?uri=") + modifiedhref + "&language=" + languageToKey[formInputs[1].value];
+            this.href = window.location.href.toString().replace("/articles/articles.php", "/articleParser/iframetest.php?uri=") + modifiedhref + "&language=" + languageToKey[formInputs[1].value] + "&languagename=" + formInputs[1].value;
         })
     })
 
