@@ -28,7 +28,7 @@
                 </select>
             </div>
             <div class="col-md-2">
-                <button type="submit" id="search" class="btn btn-dark" placeholder="Search">Search</button>
+                <button type="submit" id="search" class="btn btn-dark button" placeholder="Search">Search</button>
             </div>    
         </div>
     </form>
