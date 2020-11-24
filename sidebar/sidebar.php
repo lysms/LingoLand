@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/sidebar/sidebar.css">
+<link rel="stylesheet" type="text/css" href="../sidebar/sidebar.css">
 <div id="wrapper" class="navbar-dark">
     <div id="sidebar-wrapper">
         <div class="sidebar-nav">
@@ -10,5 +10,5 @@
         </div>
     </div> 
 </div>
-<script type="text/javascript" src="/sidebar/sidebar.js"></script>
+<script type="text/javascript" src="../sidebar/sidebar.js"></script>
 <!-- /#sidebar-wrapper -->

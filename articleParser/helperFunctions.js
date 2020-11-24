@@ -3,6 +3,7 @@ var id = 1;
 var cards = []
 
 var language = getQueryVariable("language");
+var languagename = getQueryVariable("languagename");
 
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
@@ -29,15 +30,13 @@ function createCard(sel, translation, context, color){
       context: context
     }
     var newCardElement = '<div id="card-'+ id +'" class="term-card card" style="width: 100%; background-color: '+ color +';"> \
-      <i id="' +id+ '" class="fas fa-trash-alt"></i>\
+      <i id="' +id+ '" class="delete-flashcard fas fa-trash-alt"></i>\
       <div class="card-body">\
       <h5 class="card-title">Term</h5>\
       <p class="card-subtitle term mb-2 text-muted">' + sel + 
       '<h5 class="card-title">Translation</h5> \
-      <p class="card-subtitle translation mb-2 text-muted">'+ newCardObject.translation +'</p> \
-      <h5 class="card-title">Context</h5> \
-      <p class="card-subtitle mb-2 text-muted">'+ newCardObject.context +'</p> \
-      <button type="submit" id="create-card-'+ id +'" class="make-flashcard btn btn-secondary mb-2">Make Flashcard</button>'; 
+      <p class="card-subtitle translation mb-2 text-muted">'+ newCardObject.translation +'</p>\
+      <button type="submit" id="create-card-'+ id +'" class="make-flashcard btn btn-secondary mb-2">Make Flashcard</button></div></div>'; 
     cards.push(newCardObject)
     id += 1;
     $(newCardElement).appendTo("#terms");
@@ -73,7 +72,7 @@ function createFlashcard(front, back){
   const url = window.location.href.toString().replace("articleParser/iframetest.php", "flashcards/addCard.php")
   
   let cardInfo = new FormData();
-  cardInfo.append("card", "{\"front\":\""+front+"\",\"back\":\""+back+"\"}");
+  cardInfo.append("card", "{\"front\":\""+front+"\",\"back\":\""+back+"\",\"deck\":\""+languagename+"\"}");
   
   let cardAdd = new XMLHttpRequest();
   cardAdd.open("post", url, true);

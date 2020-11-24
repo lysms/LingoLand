@@ -2,6 +2,11 @@
 var iframe = document.getElementById("article");
 var idoc= iframe.contentWindow;
 
+
+$(document).ready(function(){
+  $('.toast').toast({delay: 2000});
+})
+
 $(iframe).on('load',function(){
     $(this).contents().find("body").on('click', function(event){
         var sel = idoc.getSelection().toString();
@@ -9,7 +14,7 @@ $(iframe).on('load',function(){
         console.log($(this).contents());
         $(this).contents().highlight(sel, color, id);
         createTranslation(sel).then(function(translation){
-          createCard(sel, translation.translations[0].translation, "lorem ipsum dolor", color);
+          createCard(sel, translation.translations[0].translation, "", color);
         });
     })
 });
@@ -18,6 +23,8 @@ $(document).on("click", ".make-flashcard", function(){
   const term = this.parentNode.querySelector(".term").innerHTML
   const translation = this.parentNode.querySelector(".translation").innerHTML
   createFlashcard(term, translation);
+  $(this).hide()
+  $('.toast').toast('show');
 })
 
 

@@ -12,10 +12,7 @@
                 <a class="nav-link" href="../dashboard/dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../articleParser/articleParser.php">Flashcard Maker</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../articles/articles.php">Suggested Articles</a>
+                <a class="nav-link" href="../articles/articles.php">Flashcard Maker</a>
             </li>
         </ul>
     </div>

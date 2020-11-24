@@ -42,14 +42,8 @@ if ($db->connect_error) {
                 <div class="col-md-6">
                     <h2 class="profile-name"><?php echo $_SESSION["firstname"] . " " . $_SESSION["lastname"]; ?>
                     </h2>
-                    <!-- <p>Hi! My name is John, and i'm currently learning italian. Super into soccer, so been
-                        reading alot
-                        of soccer related news in italian. Va Milano</p>
-                    <h3 class="info-item language">Language: Italian</h3>
-                    <h3 class="info-item num-cards">Number of cards per day: 10</h3> -->
                     <div class="container">
-                        <button type="submit" class="butt" value="Log Out" name="logout"><a href="../auth/logout.php"
-                                title="Logout">Log Out</a></button>
+                        <a class="btn btn-primary" href="../auth/logout.php" title="Logout">Log Out</a>
                     </div>
                 </div>
             </div>
@@ -62,7 +56,7 @@ if ($db->connect_error) {
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <select name="deck" id="deckSelect" oninput="getData()">
+                    <select name="deck" id="deckSelect" class="form-control" oninput="getData()">
                         <option value="english">English</option>
                         <option value="italian">Italian</option>
                         <option value="spanish">Spanish</option>
@@ -71,14 +65,14 @@ if ($db->connect_error) {
                 </div>
                 <div class="col-md-3">
                     <button onclick="doReviews()" id="reviewButton" class="btn btn-secondary activity">Review Daily
-                        Flashcards ( 0 )</button>
+                        Flashcards (0)</button>
                 </div>
                 <!-- <div class="col-md-3">
                     <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review all Flashcards (
                         <?php echo $cardCount; ?> )</a>
                 </div> -->
-                <div class="col-md-3">
-                    <a href="../articles/articles.php" class="btn btn-success activity">Review Article</a>
+                <div class="col-md-2">
+                    <a href="../articles/articles.php" class="d-flex flex-column align-items-center justify-content-center btn btn-success activity">Find New Articles</a>
                 </div>
             </div>
         </div>
