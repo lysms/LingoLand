@@ -22,7 +22,7 @@ main {
 	background-color: #ffddcc;
 	width: 80%;
 	min-height: auto;
-	height: 70vh;
+	min-height: 55vh;
 
 }
 
@@ -33,11 +33,16 @@ main {
 }
 
 #question {
-	
+	min-height: 50%;
+	padding: 4% 0;
+	overflow: auto;
 }
 
 #answer {
 	visibility: hidden;
+	min-height: 50%;
+	padding: 4% 0;
+	overflow: auto;
 }
 
 #question_box {
