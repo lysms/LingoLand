@@ -42,9 +42,9 @@ function showAnswer() {
 	sessionStatus = 2;
 	document.getElementById("answer").style.visibility = "visible";
 	document.getElementById("user_input").innerHTML =
-		"<button type=\"button\" class=\"answer_button\" id=\"wrong_button\" onclick=\"answer(false)\">Again</button>" +
-		"<button type=\"button\" class=\"answer_button\" id=\"right_button\" onclick=\"answer(true)\">Correct</button>" +
-		"<button type=\"button\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
+		"<button type=\"button\" class=\"btn btn-danger answer_button\" id=\"wrong_button\" onclick=\"answer(false)\">Again</button>" +
+		"<button type=\"button\" class=\"btn btn-success answer_button\" id=\"right_button\" onclick=\"answer(true)\">Correct</button>" +
+		"<button type=\"button\" class=\"btn btn-outline-danger\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
 }
 
 function enterEditMode() {
@@ -124,8 +124,8 @@ function exitEditMode(deleted) {
 
 	document.getElementById("answer").style.visibility = "hidden";
 	document.getElementById("user_input").innerHTML =
-		"<button type=\"button\" id=\"show_button\" onclick=\"showAnswer()\">Show Answer</button>" +
-		"<button type=\"button\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
+		"<button type=\"button\" class=\"btn btn-secondary\" id=\"show_button\" onclick=\"showAnswer()\">Show Answer</button>" +
+		"<button type=\"button\" class=\"btn btn-outline-danger\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
 	if (deleted) {
 		if (currentCard != reviewCount) {
 			currentCard++;
@@ -189,8 +189,8 @@ function answer(correct) {
 	//resets the view to front only
 	document.getElementById("answer").style.visibility = "hidden";
 	document.getElementById("user_input").innerHTML =
-		"<button type=\"button\" id=\"show_button\" onclick=\"showAnswer()\">Show Answer</button>" +
-		"<button type=\"button\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
+		"<button type=\"button\" class=\"btn btn-secondary\" id=\"show_button\" onclick=\"showAnswer()\">Show Answer</button>" +
+		"<button type=\"button\" class=\"btn btn-outline-danger\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
 
 	// changes text to the next card
 	if (currentCard != reviewCount) {
