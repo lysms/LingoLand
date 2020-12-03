@@ -1,6 +1,12 @@
 <?php
 
 session_start();
-unset($_SESSION["firstname"]);
-unset($_SESSION["lastname"]);
+
+echo "Loggging out...";
+
+session_unset();
+session_destroy();
+
+$_SESSION = array();
+
 header("location: ../homepage/homepage.php");

@@ -1,4 +1,16 @@
 <?php
+
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
+if (!isset($_SESSION["firstname"])) {
+    header("location: ../homepage/homepage.php");
+}
+
+?>
+
+<?php
 include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
 include('../includes/functions.inc.php'); // functions
 include('../auth/connection.php');
@@ -12,6 +24,7 @@ include('../auth/connection.php');
 
 
 <?php
+
 $userID = $_SESSION["id"];
 $query = 'select * from flashcards where userID = ' . $userID . ' order by duedate';
 $reviewQuery = 'select * from flashcards where duedate <= "' .

@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if(!isset($_SESSION)) {
+    session_start();
+}
 
 $username = "";
 $password = "";
@@ -54,12 +56,14 @@ if (isset($_POST['login'])) {
 
         $record = $result->fetch_assoc();
         // echo '<script>alert("' . $record['username'] . '");</script>';
-        if (password_verify($password, $record['password'])) {
+	if (!isset($record['password'])) {
+            echo '<script>alert("Wrong username or password.");</script>';
+	}
+	else if (password_verify($password, $record['password'])) {
             $_SESSION["firstname"] = $record['firstname'];
             $_SESSION["lastname"] = $record['lastname'];
             $_SESSION["id"] = $record['id'];
         } else {
-            echo '<script>alert("' . $record['password'] . '");</script>';
             echo '<script>alert("Wrong username or password.");</script>';
         }
         // if (!isset($record['username']) || !isset($record['password'])) {
