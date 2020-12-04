@@ -26,50 +26,41 @@ main {
 
 }
 
-.flashcard {
+.flashcard-content {
 	text-align: center;
-	margin: 0;
-	padding: 10px;
-}
-
-#question {
-	min-height: 50%;
-	padding: 4% 0;
-	overflow: auto;
-}
-
-#answer {
-	visibility: hidden;
-	min-height: 50%;
-	padding: 4% 0;
+	height: 100%;
+	width: 100%;
+	padding: 0px 20px;
+	font-size: 30px;
+	font-size: 5vh;
 	overflow: auto;
 }
 
 #question_box {
-	background-color: #ffddcc;
-	font-size: 2rem;
+  font-size: 5vh;
 	font-weight: 500;
   line-height: 1.2;
 	display: block;
 	width: 100%;
-	padding: 10px;
+  height: 100%;
+	padding: 0px 10px;
 	border: none;
 	text-align: center;
 }
 #answer_box {
-	background-color: #ffddcc;
-	font-size: 2rem;
+	font-size: 5vh;
 	font-weight: 500;
   line-height: 1.2;
 	display: block;
 	width: 100%;
-	padding: 10px;
+  height: 100%;
+	padding: 0px 10px;
 	border: none;
 	text-align: center;
 }
 
 #user_input {
-	position: relative;
+  position: relative;
   margin: 10px auto 10px auto;
   width: 150px;
   height: 100px;
@@ -94,7 +85,7 @@ main {
 
 #edit_button {
 	position: absolute;
-	left: 25%;
+	left: 20%;
   bottom: 0;
 }
 
@@ -108,4 +99,116 @@ main {
 
 #save_button {
 	float: right;
+}
+
+
+.animation {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.wrapper {
+  width: 80%;
+  padding: 4%;
+  margin: 20px auto;
+  background: #fff;
+}
+
+.wrapper.flashcards {
+  background: 0;
+  width: 88%;
+  padding: 20px 0 0 0;
+}
+
+.flashcard-container {
+  position: relative;
+  float: left;
+  width: 48%;
+  height: 260px;
+  margin: 10px 0 10px 4%;
+  background: #fff;
+  
+  
+  /* Set the depth of the elements */
+  -webkit-perspective: 800px;
+  -moz-perspective: 800px;
+  -o-perspective: 800px;
+  perspective: 800px;
+}
+
+.flashcard-container:first-child {
+  margin-left: 0;
+}
+
+.flashcard {
+  width: 500px;
+  height: 500px;
+  cursor: pointer;
+  margin: auto;
+  margin-bottom: 40px;
+  
+  /* Set the transition effects */
+  -webkit-transition: -webkit-transform 0.4s;
+  -moz-transition: -moz-transform 0.4s;
+  -o-transition: -o-transform 0.4s;
+  transition: transform 0.4s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped {
+  -webkit-transform: rotateY( 180deg );
+  -moz-transform: rotateY( 180deg );
+  -o-transform: rotateY( 180deg );
+  transform: rotateY( 180deg );
+}
+
+.flashcard .front,
+.flashcard .back {
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 260px;
+  padding: 20% 0;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 4em;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow: 3px 5px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+
+
+.formItem:first-child {
+  margin-top: 20px;
+}
+
+
+.flashcard .back {
+  -webkit-transform: rotateY( 180deg );
+  -moz-transform: rotateY( 180deg );
+  -o-transform: rotateY( 180deg );
+  transform: rotateY( 180deg );
+}
+
+.flashcardTitle {
+  font-size: 1.4em;
+  line-height: 1.2em;
+  margin: 0;
+}
+
+.content {
+  padding: 4%;
+  font-weight: 100;
+  text-align: left;
 }
