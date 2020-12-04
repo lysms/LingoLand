@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div id="lingoland-title" class="col-md-6">
-                    <h1>LingoLand</h1>
+                    <img alt="LingoLand" src="../resources/images/LLL.png" width="150px">
                     <h3 id="slogan">Read more. Study less.</h3>
                     <a type="button" id="learn-more" class="btn btn-info" href="../auth/auth.php">Get Started</a>
                 </div>

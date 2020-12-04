@@ -5,8 +5,18 @@ var missIndices = [];
 var currentCard = 0;
 var flashcardData;
 
+$(document).ready(function(){
+	$(".flashcard").click(function(){
+		if(sessionStatus != 2 && sessionStatus != -1){
+			showAnswer()
+		} else if(sessionStatus != -1) {
+			$(this).toggleClass('flipped');
+		}
+	})
+})
+
+// sets up and sends the inital request for flashcard data
 const params = new URLSearchParams(location.search);
-//alert(params.get('deck'));
 
 let deckInfo = new FormData();
 deckInfo.append("deck", "{\"name\":\"" + params.get('deck') + "\"}");
@@ -34,22 +44,36 @@ dataReq.onload = function () {
 	document.getElementById("answer").innerHTML = flashcardData.cards[0].back;
 };
 
+// redirects user to the dashboard
 function toDashboard() {
 	window.location.href = "../dashboard/dashboard.php";
+}
+
+function showQuestion(){
+	sessionStatus = 1;
+	$(".flashcard").removeClass("flipped");
+	
+	document.getElementById("user_input").innerHTML =
+		"<button type=\"button\" class=\"btn btn-danger answer_button\" id=\"wrong_button\" onclick=\"answer(false)\">Again</button>" +
+		"<button type=\"button\" class=\"btn btn-success answer_button\" id=\"right_button\" onclick=\"answer(true)\">Correct</button>" +
+		"<button type=\"button\" class=\"btn btn-outline-danger\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
 }
 
 function showAnswer() {
 	sessionStatus = 2;
 	document.getElementById("answer").style.visibility = "visible";
+	$(".flashcard").addClass("flipped");
+	
 	document.getElementById("user_input").innerHTML =
-		"<button type=\"button\" class=\"answer_button\" id=\"wrong_button\" onclick=\"answer(false)\">Again</button>" +
-		"<button type=\"button\" class=\"answer_button\" id=\"right_button\" onclick=\"answer(true)\">Correct</button>" +
-		"<button type=\"button\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
+		"<button type=\"button\" class=\"btn btn-danger answer_button\" id=\"wrong_button\" onclick=\"answer(false)\">Again</button>" +
+		"<button type=\"button\" class=\"btn btn-success answer_button\" id=\"right_button\" onclick=\"answer(true)\">Correct</button>" +
+		"<button type=\"button\" class=\"btn btn-outline-danger\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
 }
 
 function enterEditMode() {
 	sessionStatus = -1;
 	// gets the current card
+	$('.flashcard').removeClass('flipped');
 	var cardIndex;
 	if (currentCard == reviewCount)
 		cardIndex = missIndices[0];
@@ -57,15 +81,16 @@ function enterEditMode() {
 		cardIndex = currentCard;
 
 	// makes the card text editable
-	document.getElementById("card_area").innerHTML =
-		"<input type=\"text\" id=\"question_box\" value=\"" + flashcardData.cards[cardIndex]["front"] + "\"name=\"fname\">" +
-		"<input type=\"text\" id=\"answer_box\" value=\"" + flashcardData.cards[cardIndex]["back"] + "\"name=\"fname\">";
-
+	document.querySelector(".front").innerHTML =
+		"<textarea id=\"question_box\" name=\"fname\">" + flashcardData.cards[cardIndex]["front"] + "</textarea>";
+		
+	document.querySelector(".back").innerHTML =
+		"<textarea id=\"answer_box\" name=\"fname\">" + flashcardData.cards[cardIndex]["back"] + "</textarea>";
 	// gives the user edit buttons
 	document.getElementById("user_input").innerHTML =
-		"<button type=\"button\" class=\"edit_button\" id=\"cancel_button\" onclick=\"exitEditMode(false)\">Cancel</button>" +
-		"<button type=\"button\" class=\"edit_button\" id=\"save_button\" onclick=\"sendChanges()\">Save</button>" +
-		"<button type=\"button\" id=\"edit_button\" onclick=\"confirm()\">Delete Card</button>";
+		"<button type=\"button\" class=\"edit_button btn btn-secondary\" id=\"cancel_button\" onclick=\"exitEditMode(false)\">Cancel</button>" +
+		"<button type=\"button\" class=\"edit_button btn btn-success\" id=\"save_button\" onclick=\"sendChanges()\">Save</button>" +
+		"<button type=\"button\" id=\"edit_button\" class=\"btn btn-danger\" onclick=\"confirm()\">Delete Card</button>";
 }
 
 function sendChanges() {
@@ -79,6 +104,8 @@ function sendChanges() {
 	// changes the card data with the text box
 	flashcardData.cards[cardIndex]["front"] = document.getElementById("question_box").value;
 	flashcardData.cards[cardIndex]["back"] = document.getElementById("answer_box").value;
+
+
 
 	//sends the update request
 	let cardInfo = new FormData();
@@ -94,8 +121,8 @@ function sendChanges() {
 
 function confirm() {
 	document.getElementById("user_input").innerHTML =
-		"<button type=\"button\" class=\"edit_button\" id=\"cancel_button\" onclick=\"exitEditMode()\">Cancel</button>" +
-		"<button type=\"button\" class=\"edit_button\" id=\"save_button\" onclick=\"deleteCard()\">Confirm</button>";
+		"<button type=\"button\" class=\"edit_button btn btn-secondary\" id=\"cancel_button\" onclick=\"exitEditMode()\">Cancel</button>" +
+		"<button type=\"button\" class=\"edit_button btn btn-success\" id=\"save_button\" onclick=\"deleteCard()\">Confirm</button>";
 }
 
 function deleteCard() {
@@ -117,15 +144,14 @@ function deleteCard() {
 
 function exitEditMode(deleted) {
 	sessionStatus = 1;
+	$('.flashcard').removeClass('flipped');
 
-	document.getElementById("card_area").innerHTML =
-		"<h2 class=\"flashcard\" id=\"question\"></h2>" +
-		"<h2 class=\"flashcard\" id=\"answer\"></h2>";
-
+	document.querySelector(".front").innerHTML = '<h5 id = "question" class="flashcard-content card-title"></h5>'
+	document.querySelector(".back").innerHTML = '<h5 id = "answer" class="flashcard-content card-title"></h5>'
 	document.getElementById("answer").style.visibility = "hidden";
 	document.getElementById("user_input").innerHTML =
-		"<button type=\"button\" id=\"show_button\" onclick=\"showAnswer()\">Show Answer</button>" +
-		"<button type=\"button\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
+		"<button type=\"button\" class=\"btn btn-secondary\" id=\"show_button\" onclick=\"showAnswer()\">Show Answer</button>" +
+		"<button type=\"button\" class=\"btn btn-outline-danger\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
 	if (deleted) {
 		if (currentCard != reviewCount) {
 			currentCard++;
@@ -189,9 +215,10 @@ function answer(correct) {
 	//resets the view to front only
 	document.getElementById("answer").style.visibility = "hidden";
 	document.getElementById("user_input").innerHTML =
-		"<button type=\"button\" id=\"show_button\" onclick=\"showAnswer()\">Show Answer</button>" +
-		"<button type=\"button\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
+		"<button type=\"button\" class=\"btn btn-secondary\" id=\"show_button\" onclick=\"showAnswer()\">Show Answer</button>" +
+		"<button type=\"button\" class=\"btn btn-outline-danger\" id=\"edit_button\" onclick=\"enterEditMode()\">Edit Card</button>";
 
+	$(".flashcard").removeClass('flipped')
 	// changes text to the next card
 	if (currentCard != reviewCount) {
 		document.getElementById("question").innerHTML = flashcardData.cards[currentCard].front;
@@ -204,6 +231,7 @@ function answer(correct) {
 	}
 }
 
+// changes cards front/back text from edit mode
 function updateDatabase(cardIndex, correct) {
 	let cardInfo = new FormData();
 	cardInfo.append("correct", correct);
@@ -215,7 +243,7 @@ function updateDatabase(cardIndex, correct) {
 
 	dataUpdate.onload = function () {
 		if (this.responseText == "error")
-			alert(this.responseText);
+			console.log("Update Error: ", this.responseText);
 	};
 }
 
@@ -240,23 +268,44 @@ function updateStats(correct) {
 }
 
 function endSession() {
-	// give session summary and/or just congratulate user 
+	// congratulate user 
 	document.getElementById("question").innerHTML = "No More Reviews";
 	document.getElementById("user_input").innerHTML = "";
 	setTimeout(toDashboard, 3000);
 }
 
+// prevents space bar from scrolling
+window.onkeydown = function(e) {
+	// alert(e.target.type);
+    return !(e.keyCode == 32 && e.target.type != 'textarea');
+};
 
-
+// hotkeys for bottom buttons
 document.onkeyup = function (e) {
-
-	if (sessionStatus < 1)
+	console.log("sessionStatus:", sessionStatus)
+	if (sessionStatus == 0)
 		return;
+	// spacebar flips card in edit mode
+	else if (e.which == 32 && sessionStatus == -1 && e.target.type != 'textarea') {
+		$('.flashcard').toggleClass('flipped');
+	}
+	// "1" key marks as wrong
 	else if (e.which == 49 && sessionStatus == 2) {
 		answer(false);
-	} else if (e.which == 50 && sessionStatus == 2) {
+	} 
+	// "2" key marks as right
+	else if (e.which == 50 && sessionStatus == 2) {
 		answer(true);
-	} else if ((e.which == 49 || e.which == 50) && sessionStatus == 1) {
+	} 
+	// "1", "2", or spacebar shows answer
+	else if ((e.which == 49 || e.which == 50 || e.which == 32) && sessionStatus == 1) {
 		showAnswer();
+	} 
+	// spacebar flips the card
+	else if ((e.which == 49 || e.which == 50 || e.which == 32) && sessionStatus != -1){
+		$('.flashcard').toggleClass('flipped');
+	}
+	else if(e.which == 69 && sessionStatus > 0){
+		enterEditMode();
 	}
 };

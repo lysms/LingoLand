@@ -18,15 +18,23 @@
         <h3 id="review_count">999 cards left</h3>
         <h3 id="accuracy">100% correct</h3>
     </section>
-
-    <main id="card_area">
-        <h2 class="flashcard" id="question"></h2>
+      <div id="card_area" class="flashcard">
+        <div class="card_content">
+        <div class="front">
+            <h5 id = "question" class="flashcard-content card-title"></h5>
+          </div>
+          <div class="back">
+            <h5 id = "answer" class="flashcard-content card-title"></h5>
+          </div>
+        </div>
+  </div>
+    <!-- <main id="card_area">
         <h2 class="flashcard" id="answer"></h2>
-    </main>
+    </main> -->
 
     <section id="user_input">
-        <button type="button" id="show_button" onclick="showAnswer()">Show Answer</button>
-        <button type="button" id="edit_button" onclick="enterEditMode()">Edit Card</button>
+        <button type="button" class="btn btn-secondary" id="show_button" onclick="showAnswer()">Show Answer</button>
+        <button type="button" class="btn btn-outline-danger" id="edit_button" onclick="enterEditMode()">Edit Card</button>
     </section>
 
     <script src="flashcards.js"></script>
