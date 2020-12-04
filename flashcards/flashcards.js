@@ -15,9 +15,8 @@ $(document).ready(function(){
 	})
 })
 
-
+// sets up and sends the inital request for flashcard data
 const params = new URLSearchParams(location.search);
-//alert(params.get('deck'));
 
 let deckInfo = new FormData();
 deckInfo.append("deck", "{\"name\":\"" + params.get('deck') + "\"}");
@@ -45,13 +44,14 @@ dataReq.onload = function () {
 	document.getElementById("answer").innerHTML = flashcardData.cards[0].back;
 };
 
+// redirects user to the dashboard
 function toDashboard() {
 	window.location.href = "../dashboard/dashboard.php";
 }
 
 function showQuestion(){
 	sessionStatus = 1;
-	$(".flashcard").removeClass("flipped")
+	$(".flashcard").removeClass("flipped");
 	
 	document.getElementById("user_input").innerHTML =
 		"<button type=\"button\" class=\"btn btn-danger answer_button\" id=\"wrong_button\" onclick=\"answer(false)\">Again</button>" +
@@ -62,7 +62,7 @@ function showQuestion(){
 function showAnswer() {
 	sessionStatus = 2;
 	document.getElementById("answer").style.visibility = "visible";
-	$(".flashcard").addClass("flipped")
+	$(".flashcard").addClass("flipped");
 	
 	document.getElementById("user_input").innerHTML =
 		"<button type=\"button\" class=\"btn btn-danger answer_button\" id=\"wrong_button\" onclick=\"answer(false)\">Again</button>" +
@@ -80,11 +80,12 @@ function enterEditMode() {
 	else
 		cardIndex = currentCard;
 
-	// makes the card text editablef
+	// makes the card text editable
 	document.querySelector(".front").innerHTML =
-		"<input type=\"text\" id=\"question_box\" value=\"" + flashcardData.cards[cardIndex]["front"] + "\"name=\"fname\">" +
-		"<input type=\"text\" id=\"answer_box\" value=\"" + flashcardData.cards[cardIndex]["back"] + "\"name=\"fname\">";
-
+		"<textarea id=\"question_box\" name=\"fname\">" + flashcardData.cards[cardIndex]["front"] + "</textarea>";
+		
+	document.querySelector(".back").innerHTML =
+		"<textarea id=\"answer_box\" name=\"fname\">" + flashcardData.cards[cardIndex]["back"] + "</textarea>";
 	// gives the user edit buttons
 	document.getElementById("user_input").innerHTML =
 		"<button type=\"button\" class=\"edit_button btn btn-secondary\" id=\"cancel_button\" onclick=\"exitEditMode(false)\">Cancel</button>" +
@@ -143,6 +144,8 @@ function deleteCard() {
 
 function exitEditMode(deleted) {
 	sessionStatus = 1;
+	$('.flashcard').removeClass('flipped');
+
 	document.querySelector(".front").innerHTML = '<h5 id = "question" class="flashcard-content card-title"></h5>'
 	document.querySelector(".back").innerHTML = '<h5 id = "answer" class="flashcard-content card-title"></h5>'
 	document.getElementById("answer").style.visibility = "hidden";
@@ -228,6 +231,7 @@ function answer(correct) {
 	}
 }
 
+// changes cards front/back text from edit mode
 function updateDatabase(cardIndex, correct) {
 	let cardInfo = new FormData();
 	cardInfo.append("correct", correct);
@@ -239,7 +243,7 @@ function updateDatabase(cardIndex, correct) {
 
 	dataUpdate.onload = function () {
 		if (this.responseText == "error")
-			alert(this.responseText);
+			console.log("Update Error: ", this.responseText);
 	};
 }
 
@@ -264,26 +268,44 @@ function updateStats(correct) {
 }
 
 function endSession() {
-	// give session summary and/or just congratulate user 
+	// congratulate user 
 	document.getElementById("question").innerHTML = "No More Reviews";
 	document.getElementById("user_input").innerHTML = "";
 	setTimeout(toDashboard, 3000);
 }
 
+// prevents space bar from scrolling
+window.onkeydown = function(e) {
+	// alert(e.target.type);
+    return !(e.keyCode == 32 && e.target.type != 'textarea');
+};
 
-
+// hotkeys for bottom buttons
 document.onkeyup = function (e) {
 	console.log("sessionStatus:", sessionStatus)
-	if (sessionStatus < 1)
+	if (sessionStatus == 0)
 		return;
-	else if (e.which == 49 && sessionStatus == 2) {
-		answer(false);
-	} else if (e.which == 50 && sessionStatus == 2) {
-		answer(true);
-	} else if ((e.which == 49 || e.which == 50 || e.which == 32) && sessionStatus == 1) {
-		showAnswer();
-	} else  if ((e.which == 49 || e.which == 50 || e.which == 32)){
+	// spacebar flips card in edit mode
+	else if (e.which == 32 && sessionStatus == -1 && e.target.type != 'textarea') {
 		$('.flashcard').toggleClass('flipped');
 	}
-
+	// "1" key marks as wrong
+	else if (e.which == 49 && sessionStatus == 2) {
+		answer(false);
+	} 
+	// "2" key marks as right
+	else if (e.which == 50 && sessionStatus == 2) {
+		answer(true);
+	} 
+	// "1", "2", or spacebar shows answer
+	else if ((e.which == 49 || e.which == 50 || e.which == 32) && sessionStatus == 1) {
+		showAnswer();
+	} 
+	// spacebar flips the card
+	else if ((e.which == 49 || e.which == 50 || e.which == 32) && sessionStatus != -1){
+		$('.flashcard').toggleClass('flipped');
+	}
+	else if(e.which == 69 && sessionStatus > 0){
+		enterEditMode();
+	}
 };

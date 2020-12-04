@@ -37,24 +37,24 @@ main {
 }
 
 #question_box {
-	background-color: #ffddcc;
-	font-size: 2rem;
+  font-size: 5vh;
 	font-weight: 500;
   line-height: 1.2;
 	display: block;
 	width: 100%;
-	padding: 10px;
+  height: 100%;
+	padding: 0px 10px;
 	border: none;
 	text-align: center;
 }
 #answer_box {
-	background-color: #ffddcc;
-	font-size: 2rem;
+	font-size: 5vh;
 	font-weight: 500;
   line-height: 1.2;
 	display: block;
 	width: 100%;
-	padding: 10px;
+  height: 100%;
+	padding: 0px 10px;
 	border: none;
 	text-align: center;
 }
@@ -85,7 +85,7 @@ main {
 
 #edit_button {
 	position: absolute;
-	left: 25%;
+	left: 20%;
   bottom: 0;
 }
 
