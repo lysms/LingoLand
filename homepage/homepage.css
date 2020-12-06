@@ -1,5 +1,5 @@
 #index {
-    background-color: #61becc;
+    background-color: #B1FFE5;
 }
 
 .card {
@@ -16,33 +16,12 @@
     object-fit: cover;
 }
 
-#Footer {
-    /*border-bottom: 2px solid #333;*/
-    padding: 1em 1em 1em 1em;
-    text-align: right;
-    white-space: normal;
-    right: 0;
-    width: 100%;
-    color: #ffffff;
-    background-color: #666666;
-}
-
-#Footer a {
-    color: #ffffff;
-    padding: 0 2em 0.5em 0;
-    text-decoration: none;
-}
 
 .content {
     padding: 10px;
     padding-bottom: 60px;
 }
 
-#index .jumbotron .container-fluid {
-    padding-left: 0px;
-    padding-right: 0px;
-    height: 100%;
-}
 
 .container {
     max-width: 1280px;
@@ -59,7 +38,7 @@
 }
 
 .background-yellow {
-    background-color: lightgoldenrodyellow;
+    background-color: #FFCBB1;
 }
 
 #index .jumbotron {
@@ -74,8 +53,7 @@
 }
 
 .home-image {
-    width: 100%;
-    padding-right: -1px;
+    width: 95%;
     margin-top: 1.1em;
 }
 
@@ -87,13 +65,13 @@
 }
 
 h1 {
-    color: lightgoldenrodyellow;
+    color: #FFAA7f;
     font-size: 40px;
 }
 
 h2.index {
     text-align: center;
-    color: lightgoldenrodyellow;
+    color: #56b6a9;
 }
 
 h3.index {
@@ -102,7 +80,6 @@ h3.index {
 
 img.index {
     width: 96%;
-    max-width: 300px;
 }
 
 figure {
@@ -125,7 +102,7 @@ article {
 }
 
 #slogan {
-    color: navajowhite;
+    color: #56b6a9;
 }
 
 #images {

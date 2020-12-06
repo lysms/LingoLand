@@ -3,8 +3,6 @@
         $url = 'https://api.gdeltproject.org/api/v1/search_ftxtsearch/search_ftxtsearch';
         $query = "?query=sourcelang:".$_GET["language"]."%20".$_GET["keyword"]."&output=artimgonlylist&dropdup=true";
         $url = $url.$query; 
-        // echo $_GET["language"]."\n" ;
-        // echo $_GET["keyword"]."\n";
         header('Content-Type: text/html');                                                                                                                
         $ch = curl_init(); 
         curl_setopt($ch, CURLOPT_URL, $url);    
@@ -25,18 +23,7 @@
         $returnCode = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         $arr = preg_split ('/$\R?^/m', $result);
-        
-        // $uriList = array();
 
-        // foreach($arr as $urlInfo) {
-        //     $uriInfoArray = explode(",", $urlInfo);
-        //     $tmpUriObj= new stdClass(); 
-        //     $tmpUriObj->date = $uriInfoArray[0];
-        //     $tmpUriObj->uri = $uriInfoArray[2];
-        //     array_push($uriList, $tmpUriObj);
-        // }
-        //print_r(json_decode($result, true));
-        //var_dump($uriList);
         $resultUriResponse = $result;
         echo $resultUriResponse;
     } else {

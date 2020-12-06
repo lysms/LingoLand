@@ -2,19 +2,9 @@
   include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
   include('../includes/functions.inc.php'); // functions
 ?>
+<?php include('../includes/head.inc.php'); ?>
 
-<title>LingoLand &#8212; Home</title>
-
-<head>
-    <title>LingoLang</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="homepage.css">
-</head>
-
-
-
+<link rel="stylesheet" type="text/css" href="homepage.css">
 <?php include('../includes/home_navbar.php'); ?>
 <div id=index>
     <div id="top" class="jumbotron" data-position="center right">
@@ -74,7 +64,7 @@
             <hr>
             <div class="row">
                 <div class="col-4">
-                    <h4>Flash-card Making System</h4>
+                    <h4>Flashcard Making System</h4>
                     <p>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You could be highlight terms that they are not familiar with a
                         different language through our flashcard making workflow, and be able to have flashcards
@@ -84,33 +74,24 @@
                         definition being the translation. These cards will be tested based on a SRS algorithm.
                     </p>
                 </div>
-                <div class="col-4">
-                    <img class="home-image" src="../resources/images/flashcards.jpg">
-                </div>
-                <div class="col-4">
-                    <h3>Highlighting</h3>
-                    <figure>
-                        <img class="index" src="../resources/images/highlight.png">
-                    </figure>
+                <div class="col-8">
+                    <img class="index" src="../resources/images/highlight.png">
                 </div>
             </div>
             <hr>
             <div class="row">
 
-                <div class="col-10">
-                    <h3>Flash-card Motion</h3>
-                    <p>
-                        The front is the original sentence. The back is the word's definition in selected language.
-                    </p>
+                <div class="col-12">
+                    <h3>Flashcard SRS system</h3>
                 </div>
-                <div class="col-4">
+            </div>
+            <div class = "row d-flex flex-row align-items-center justify-content-center">
+                <div class="col-6">
                     <figure>
                         <img class="index" src="../resources/images/flash1.png">
                     </figure>
                 </div>
-                <div class="col-4">
-                </div>
-                <div class="col-4">
+                <div class="col-6">
                     <figure>
                         <img class="index" src="../resources/images/flash2.png">
                     </figure>

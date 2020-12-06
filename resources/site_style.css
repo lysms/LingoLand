@@ -1,7 +1,19 @@
 body#index {
     background-color: #61becc;
+}
+ 
+.page-content{
+  min-height: 88vh;
+}
+
+  .bg-lingoland{
+    background-color: #61becc;
   }
-  
+
+  .nav-link{
+    color: white !important; 
+  }
+
   .card{
     width: 250px;
     margin: 0 auto; /* Added */
@@ -22,7 +34,7 @@ body#index {
     right: 0;
     width: 100%;
     color: #ffffff;
-    background-color: #666666;
+    background-color: #62BECC;
     }
     #Footer a{
     color: #ffffff;
@@ -34,21 +46,12 @@ body#index {
     padding-bottom: 60px;
     }
   
-  #index .jumbotron .container-fluid {
-    padding-left: 0px;
-    padding-right: 0px;
-    height: 100%;
-  }
   
   .container {
     max-width: 1280px;
     padding: 40px 180px;
   }
   
-  #lingoland-title{
-    padding-left: 20%;
-    padding-top: 100px;
-  }
   
   .background-white{
     background-color: white;
@@ -78,6 +81,10 @@ body#index {
     margin-top: 100px;
     font-size: 1.5em;
   }
+
+  .header{
+    color: #3c9c8f
+  }
   
   h1 {
     color: lightgoldenrodyellow;
@@ -93,10 +100,6 @@ body#index {
     text-align: center;
   }
   
-  img.index {
-    width: 60%;
-    max-width: 300px;
-  }
   
   figure {
     display: inline-block;
@@ -115,10 +118,6 @@ body#index {
   .description {
     padding: 10px;
     text-align: left;
-  }
-  
-  #slogan {
-    color: navajowhite;
   }
   
   #images {

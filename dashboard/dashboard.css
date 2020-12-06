@@ -1,0 +1,16 @@
+.flashcard-sections{
+    background-color: #dcfff3;
+}
+
+.flashcard-table{
+    background-color: white;
+    padding: 0px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #FFCBB1;
+}
+
+.thead-light {
+    background-color: #26fcb6
+}

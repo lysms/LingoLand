@@ -1,4 +1,18 @@
 window.onload = getData;
+var languageToKey = {}
+
+$(document).ready(function(){
+	$.getJSON("./identifiableLanguages.json", function (data) {
+        var languages = []
+        $.each(data.languages, function (key, language) {
+            languages.push('<option value="' + language.name + '">' + language.name + '</option>')
+            languageToKey[language.name] = language.language;
+        })
+
+        $(languages.join("")).appendTo("#deckSelect");
+
+    })
+})
 
 
 function getData() {
@@ -15,7 +29,7 @@ function getData() {
 		let flashcardData = JSON.parse(this.responseText);
 
 		document.getElementById("reviewButton").innerHTML =
-			"Review Daily Flashcards(" + flashcardData.reviewCount + ")";
+			"Review Daily Flashcards(" + flashcardData.reviewCount + ") <i class='far fa-lightbulb'></i>";
 	};
 
 

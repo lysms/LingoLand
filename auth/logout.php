@@ -2,7 +2,7 @@
 
 session_start();
 
-echo "Loggging out...";
+echo "Logging out...";
 
 session_unset();
 session_destroy();
