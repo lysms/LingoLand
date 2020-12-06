@@ -49,8 +49,6 @@ if (isset($_POST['login'])) {
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
     if (!empty($username)) {
-        // $password = password_hash($password, PASSWORD_DEFAULT);
-
         $query = "SELECT * FROM auth WHERE username = '$username'";
         $result = $db->query($query);
 
@@ -63,16 +61,10 @@ if (isset($_POST['login'])) {
             $_SESSION["firstname"] = $record['firstname'];
             $_SESSION["lastname"] = $record['lastname'];
             $_SESSION["id"] = $record['id'];
+            $_SESSION['logged_in'] = 1;
         } else {
             echo '<script>alert("Wrong username or password.");</script>';
         }
-        // if (!isset($record['username']) || !isset($record['password'])) {
-        //     echo '<script>alert("Wrong username or password.");</script>';
-        // } else if ($username == $record['username'] && $password == $record['password']) {
-        //     $_SESSION["firstname"] = $record['firstname'];
-        //     $_SESSION["lastname"] = $record['lastname'];
-        //     $_SESSION["id"] = $record['id'];
-        // }
         if (isset($_SESSION["firstname"])) {
             header("location: ../dashboard/dashboard.php");
         }

@@ -12,6 +12,10 @@
     font-size: 1.3em;
 }
 
+.term-card:hover{
+    cursor: pointer;
+}
+
 .toast-header{
     font-size: 1.3em;
 }

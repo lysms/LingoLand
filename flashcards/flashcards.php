@@ -23,7 +23,7 @@ if (!isset($_SESSION["firstname"])) {
 <?php include('../includes/regular_nav.php'); ?>
 
 <link rel="stylesheet" href="flashcards.css">
-<div>
+<div class="page-content">
     <!-- Place html here -->
     <section id="info">
         <h3 id="review_count">999 cards left</h3>
