@@ -13,10 +13,6 @@
             "name": "Azerbaijani"
         },
         {
-            "language": "ba",
-            "name": "Bashkir"
-        },
-        {
             "language": "be",
             "name": "Belarusian"
         },
@@ -37,10 +33,6 @@
             "name": "Czech"
         },
         {
-            "language": "cv",
-            "name": "Chuvash"
-        },
-        {
             "language": "cy",
             "name": "Welsh"
         },
@@ -55,10 +47,6 @@
         {
             "language": "el",
             "name": "Greek"
-        },
-        {
-            "language": "en",
-            "name": "English"
         },
         {
             "language": "es",
@@ -85,10 +73,6 @@
             "name": "French"
         },
         {
-            "language": "ga",
-            "name": "Irish"
-        },
-        {
             "language": "gu",
             "name": "Gujarati"
         },
@@ -103,10 +87,6 @@
         {
             "language": "hr",
             "name": "Croatian"
-        },
-        {
-            "language": "ht",
-            "name": "Haitian"
         },
         {
             "language": "hu",
@@ -135,10 +115,6 @@
         {
             "language": "kk",
             "name": "Kazakh"
-        },
-        {
-            "language": "km",
-            "name": "Central Khmer"
         },
         {
             "language": "ko",
@@ -223,10 +199,6 @@
         {
             "language": "ru",
             "name": "Russian"
-        },
-        {
-            "language": "sk",
-            "name": "Slovakian"
         },
         {
             "language": "sl",
