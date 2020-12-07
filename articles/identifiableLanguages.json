@@ -61,10 +61,6 @@
             "name": "English"
         },
         {
-            "language": "eo",
-            "name": "Esperanto"
-        },
-        {
             "language": "es",
             "name": "Spanish"
         },
@@ -153,10 +149,6 @@
             "name": "Kurdish"
         },
         {
-            "language": "ky",
-            "name": "Kirghiz"
-        },
-        {
             "language": "lo",
             "name": "Lao"
         },
@@ -221,10 +213,6 @@
             "name": "Polish"
         },
         {
-            "language": "ps",
-            "name": "Pushto"
-        },
-        {
             "language": "pt",
             "name": "Portuguese"
         },
@@ -235,10 +223,6 @@
         {
             "language": "ru",
             "name": "Russian"
-        },
-        {
-            "language": "si",
-            "name": "Sinhala"
         },
         {
             "language": "sk",
