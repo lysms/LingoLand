@@ -27,6 +27,11 @@ $(document).on("click", ".make-flashcard", function(){
   $('.toast').toast('show');
 })
 
+$(document).on("click", ".term-card", function(){
+  const cardID = this.id.replace("card-", "");
+  const highlight = idoc.document.getElementById(cardID);
+  highlight.scrollIntoView();
+})
 
 $(document).on("click", ".fas.fa-trash-alt", function(){
   let cardID = this.id;

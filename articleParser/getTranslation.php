@@ -31,9 +31,6 @@
         $result = curl_exec($ch);
         $returnCode = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);  
-        //echo $returnCode;
-        //var_dump($errors);
-        //print_r(json_decode($result, true));
         echo $result;
     } else {
         echo json_encode(array('error' => 'missing text or model id from query'));

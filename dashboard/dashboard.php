@@ -5,7 +5,7 @@ if(!isset($_SESSION))
     session_start(); 
 }
 if (!isset($_SESSION["firstname"])) {
-    header("location: ../homepage/homepage.php");
+    header("location: ../auth/auth.php");
 }
 
 ?>
@@ -43,68 +43,59 @@ if ($db->connect_error) {
     $reviewCount = $db->query($reviewQuery)->num_rows;
 }
 ?>
-
+<link rel="stylesheet" type="text/css" href="dashboard.css">
 <div id="headerImg">
     <div id="main" class="background-light-grey">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img id="profile-img" src="../resources/images/profile-image.jpeg" width="250"
+                    <img id="profile-img" src="../resources/images/Lion.png" width="250"
                         alt="profile image" />
                 </div>
                 <div class="col-md-6">
-                    <h2 class="profile-name"><?php echo $_SESSION["firstname"] . " " . $_SESSION["lastname"]; ?>
+                    <h2 class="profile-name">Welcome <?php echo $_SESSION["firstname"] . " " . $_SESSION["lastname"]; ?>
                     </h2>
-                    <div class="container">
-                        <a class="btn btn-primary" href="../auth/logout.php" title="Logout">Log Out</a>
-                    </div>
+                    <p class="lead">Look below to find some flashcards to review!</p>
                 </div>
             </div>
         </div>
     </div>
-    <div id="main" class="">
+    <div id="main" class="flashcard-sections">
         <div class="container">
             <div class="row experience-item">
-                <h3 class="col-12">Study</h3>
+                <h3 class="header col-12">Study</h3>
             </div>
             <div class="row">
                 <div class="col-md-3">
                     <select name="deck" id="deckSelect" class="form-control" oninput="getData()">
-                        <option value="english">English</option>
-                        <option value="italian">Italian</option>
-                        <option value="spanish">Spanish</option>
-                        <option value="french">French</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                     <button onclick="doReviews()" id="reviewButton" class="btn btn-secondary activity">Review Daily
-                        Flashcards (0)</button>
+                        Flashcards (0) <i class="far fa-lightbulb"></i></button>
                 </div>
-                <!-- <div class="col-md-3">
-                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review all Flashcards (
-                        <?php echo $cardCount; ?> )</a>
-                </div> -->
                 <div class="col-md-2">
-                    <a href="../articles/articles.php" class="d-flex flex-column align-items-center justify-content-center btn btn-success activity">Find New Articles</a>
+
+                    <a href="../articles/articles.php" class="d-flex flex-column align-items-center justify-content-center btn btn-success activity">Find New Articles <i class="fas fa-newspaper"></i> </a>
                 </div>
             </div>
         </div>
     </div>
-    <div id="main" class="">
+    <div id="main" class="flashcard-sections">
         <div class="container">
             <div class="row experience-item">
-                <h3 class="col-12">Terms</h3>
+                <h3 class="header col-12">Terms</h3>
             </div>
-            <div class="row experience-item">
-                <div class="col-12">
+            <div class="row">
+                <div class="col-12 flashcard-table">
                     <table class="table table-striped">
-                        <thead class='thead-light'>
+                        <thead class='thead-dark'>
                             <tr class="d-flex">
                                 <th class="col-2">Deck</th>
                                 <th class="col-3">Front</th>
                                 <th class="col-3">Back</th>
                                 <th class="col-3">Due Date</th>
-                                <th class="col-3"> </th>
+                                <th class="col-1"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -121,8 +112,9 @@ if ($db->connect_error) {
                                     echo "<th class=\"col-3\">" . $card["front"] . "</th>";
                                     echo "<th class=\"col-3\">" . $card["back"] . "</th>";
                                     echo "<th class=\"col-3\">" . $card["duedate"] . "</th>";
-                                    echo "<th class=\"col-3\">" .
+                                    echo "<th class=\"col-1\">" .
                                         "<button onclick=\"deleteCard(" . $card["cardid"] . ")\" role=\"button\" class=\"btn btn-danger\">Delete</button></th>";
+                                    echo "</tr>";
                                 }
                             }
                             ?>

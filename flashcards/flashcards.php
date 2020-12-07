@@ -23,7 +23,7 @@ if (!isset($_SESSION["firstname"])) {
 <?php include('../includes/regular_nav.php'); ?>
 
 <link rel="stylesheet" href="flashcards.css">
-<div>
+<div class="page-content">
     <!-- Place html here -->
     <section id="info">
         <h3 id="review_count">999 cards left</h3>
@@ -39,9 +39,6 @@ if (!isset($_SESSION["firstname"])) {
           </div>
         </div>
   </div>
-    <!-- <main id="card_area">
-        <h2 class="flashcard" id="answer"></h2>
-    </main> -->
 
     <section id="user_input">
         <button type="button" class="btn btn-secondary" id="show_button" onclick="showAnswer()">Show Answer</button>

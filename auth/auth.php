@@ -11,7 +11,7 @@ include('connection.php');
 <!------ Include the above in your HEAD tag ---------->
 
 <?php include('../includes/head.inc.php'); ?>
-
+<?php include('../includes/regular_nav.php'); ?>
 
 <div class="container">
     <div class="myCard">

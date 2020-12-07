@@ -5,7 +5,7 @@ if(!isset($_SESSION))
     session_start(); 
 }
 if (!isset($_SESSION["firstname"])) {
-    header("location: ../homepage/homepage.php");
+    header("location: ../auth/auth.php");
 }
 
 ?>
@@ -23,9 +23,9 @@ if (!isset($_SESSION["firstname"])) {
 <?php include('../includes/head.inc.php'); ?>
 
 <?php include('../includes/regular_nav.php'); ?>
-<div class="Backgroundimg-body">
+<div class="Backgroundimg-body page-content">
 <!-- Place html here --> 
-    <h2 class="BigHead">Suggested Articles</h2>
+    <h2 class="header d-flex align-items-center justify-content-center pt-4">Suggested Articles</h2>
     
     <form id="search-articles" class="MenuPosition container">    
         <div class="search-filters row"> 

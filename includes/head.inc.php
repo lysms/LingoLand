@@ -6,7 +6,7 @@
     <script type="text/javascript" src="../resources/scripts/autocomplete.js"></script>
     <script type="text/javascript" src="homepage.js"></script>
     <script type="text/javascript" src="dashboard.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css?family=Merienda&display=swap" rel="stylesheet">
     <link href="../resources/site_style.css" rel="stylesheet" type="text/css" />
     <link href="../resources/trip.css" rel="stylesheet" type="text/css" />
