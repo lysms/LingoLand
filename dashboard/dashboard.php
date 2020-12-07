@@ -74,10 +74,6 @@ if ($db->connect_error) {
                     <button onclick="doReviews()" id="reviewButton" class="btn btn-secondary activity">Review Daily
                         Flashcards (0) <i class="far fa-lightbulb"></i></button>
                 </div>
-                <!-- <div class="col-md-3">
-                    <a href="../flashcards/flashcards.php" class="btn btn-secondary activity">Review all Flashcards (
-                        <?php echo $cardCount; ?> )</a>
-                </div> -->
                 <div class="col-md-2">
 
                     <a href="../articles/articles.php" class="d-flex flex-column align-items-center justify-content-center btn btn-success activity">Find New Articles <i class="fas fa-newspaper"></i> </a>

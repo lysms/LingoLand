@@ -46,9 +46,9 @@
                     <img class="home-image" src="../resources/images/learning-language.jpg" alt="Language image" />
                 </div>
                 <div class="col-4">
-                    <h3>Space-Repetition System</h3>
+                    <h3>Spaced Repetition System</h3>
                     <p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Through our built-in space-repetition system, we aim to help users
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Through our built-in spaced repetition system, we aim to help users
                         learn more efficiently and decrease the amount of information a given user would need to look
                         through day-by-day.
                     </p>
@@ -75,7 +75,7 @@
                     </p>
                 </div>
                 <div class="col-8">
-                    <img class="index" src="../resources/images/highlight.png">
+                    <img class="index" src="../resources/images/cardMaker.png">
                 </div>
             </div>
             <hr>
@@ -88,12 +88,12 @@
             <div class = "row d-flex flex-row align-items-center justify-content-center">
                 <div class="col-6">
                     <figure>
-                        <img class="index" src="../resources/images/flash1.png">
+                        <img class="index" src="../resources/images/front.png">
                     </figure>
                 </div>
                 <div class="col-6">
                     <figure>
-                        <img class="index" src="../resources/images/flash2.png">
+                        <img class="index" src="../resources/images/back.png">
                     </figure>
                 </div>
             </div>

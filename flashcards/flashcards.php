@@ -39,9 +39,6 @@ if (!isset($_SESSION["firstname"])) {
           </div>
         </div>
   </div>
-    <!-- <main id="card_area">
-        <h2 class="flashcard" id="answer"></h2>
-    </main> -->
 
     <section id="user_input">
         <button type="button" class="btn btn-secondary" id="show_button" onclick="showAnswer()">Show Answer</button>
