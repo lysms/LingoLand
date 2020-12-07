@@ -1,6 +1,9 @@
 <?php
   include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
   include('../includes/functions.inc.php'); // functions
+  if (!isset($_SESSION["firstname"])) {
+    header("location: ../homepage/homepage.php");
+  }
 ?>
 
 <title>LingoLand</title>
