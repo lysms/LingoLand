@@ -84,7 +84,7 @@ body{
     padding: 10px;
     padding-left: 50px;
     border: none;
-    box-shadow: 0px 10px 40px -14px black;
+    box-shadow: 0px 10px 15px -14px black;
 }
 
 .myLeftCtn .myInput:focus{
@@ -101,9 +101,10 @@ body{
     color: black;
     width: 230px;
     border: none;
+    margin-left: 1.3em;
     border-radius: 25px;
     padding: 10px;
-    box-shadow: 0px 10px 41px -11px black;
+    box-shadow: 0px 10px 15px -11px black;
 }
 
 .myLeftCtn .butt:hover{
