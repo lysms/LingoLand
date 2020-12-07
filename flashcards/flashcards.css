@@ -1,8 +1,6 @@
-
 body{	
 	background-color: rgba(127, 255, 213,0.3);
 }
-
 
 #info {
 	margin: auto;
@@ -47,6 +45,7 @@ main {
 	border: none;
 	text-align: center;
 }
+
 #answer_box {
 	font-size: 5vh;
 	font-weight: 500;
@@ -100,7 +99,6 @@ main {
 #save_button {
 	float: right;
 }
-
 
 .animation {
   -webkit-transition: all 0.3s ease;
