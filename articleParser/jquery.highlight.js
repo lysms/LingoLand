@@ -1,3 +1,4 @@
+/*JQuery plugin to highlight text inside of a text block displayed on a webpage.*/
 jQuery.fn.highlight = function (pat, color, id) {
     function innerHighlight(node, pat, color, id) {
         var skip = 0;
@@ -27,7 +28,7 @@ jQuery.fn.highlight = function (pat, color, id) {
         innerHighlight(this, pat.toUpperCase(), color, id);
     }) : this;
 };
-
+/*JQuery plugin to remove highlighted text inside of a text block displayed on a webpage.*/
 jQuery.fn.removeHighlight = function (id) {
     return this.find("span" + "#" + id + ".highlight").each(function () {
         this.parentNode.firstChild.nodeName;

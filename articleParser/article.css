@@ -1,7 +1,9 @@
+/*css related to our article iframe page*/
 #article-page{
     height: 100vh;
 }
 
+/*the notification box that pops up after every flashcard is created*/
 .toast{
     z-index: 2000;
     position: absolute;
@@ -12,25 +14,47 @@
     font-size: 1.3em;
 }
 
+/*
+    when a user hovers over the flashcards in the sidebar, their cursor becomes a pointer to indicate that when clicked, 
+    it will snap to the highlight on the respective page
+*/
 .term-card:hover{
     cursor: pointer;
 }
 
+/*
+    the notification box header
+*/
 .toast-header{
     font-size: 1.3em;
 }
 
+/*
+    the notification box body
+*/
 .toast-body{
     font-size: 1.3em;
 }
 
+/*
+    the styling associated with the trash icon
+*/
 .delete-flashcard{
     margin: 10px;
     font-size: 1.2em;
     color: gray;
 }
 
+/*
+    the styling associated with the trash icon
+*/
 .delete-flashcard:hover{
     cursor: pointer;
     color: rgb(243, 107, 107);
+}
+
+
+.language-to-translate{
+    width: 50%;
+    margin-bottom: 50px;
 }

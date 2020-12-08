@@ -11,7 +11,7 @@ else{
 if($dbOk){
 	$card = json_decode("$_POST[card]", true);
 
-	// creates and executes the update query
+	// creates and executes the delete query
 	$query = 'delete from flashcards where cardid = ' . $card['cardid'];
 	$db->query($query);
 }

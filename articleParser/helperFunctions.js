@@ -1,9 +1,9 @@
 var id = 1;
 
-var cards = []
+var cards = []  // list of terms shown in the site (in the sidebar)
 
-var language = getQueryVariable("language");
-var languagename = getQueryVariable("languagename");
+var language = getQueryVariable("language");  // gets the query variable in the uri called language 
+var languagename = getQueryVariable("languagename"); // gets the query variable in the uri called languagename
 
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
@@ -17,11 +17,17 @@ function getQueryVariable(variable) {
   console.log('Query variable %s not found', variable);
 }
 
+/*
+  returns a random color (hsl is utilized to keep the random colors bright and saturated, so the text is more visible)
+*/
 function getRandomColor() {
     color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
     return color;
 }
 
+/*
+  creates a new card per each text block highlighted, which is then appended to the user's sidebar in the article's flashcard making page
+*/ 
 function createCard(sel, translation, context, color){
     var newCardObject = {
       id: id,
@@ -42,6 +48,9 @@ function createCard(sel, translation, context, color){
     $(newCardElement).appendTo("#terms");
   }
 
+/*
+  calls the translation backend API to query via ajax for the english translation of a term based on what was immediatedly highlighted in the site.
+*/
 async function createTranslation(stringToTranslate){
     const url = window.location.href.toString().replace("iframetest.php", "getTranslation.php")
     const response = $.ajax({
@@ -68,6 +77,9 @@ async function createTranslation(stringToTranslate){
     })
   }
 
+/*
+  calls our php backend function to add the card to the user's flashcard collection via a XMLHTTPRequest
+*/
 function createFlashcard(front, back){
   const url = window.location.href.toString().replace("articleParser/iframetest.php", "flashcards/addCard.php")
   

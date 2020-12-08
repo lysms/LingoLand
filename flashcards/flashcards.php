@@ -24,7 +24,6 @@ if (!isset($_SESSION["firstname"])) {
 
 <link rel="stylesheet" href="flashcards.css">
 <div class="page-content">
-    <!-- Place html here -->
     <section id="info">
         <h3 id="review_count">999 cards left</h3>
         <h3 id="accuracy">100% correct</h3>

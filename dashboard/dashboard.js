@@ -1,6 +1,10 @@
 window.onload = getData;
 var languageToKey = {}
 
+/* 
+	function called to populate our selection input with all languages available to the user through our webpage, based on all languages listed in our 
+	identifiableLanguages.json.
+*/
 $(document).ready(function(){
 	$.getJSON("./identifiableLanguages.json", function (data) {
         var languages = []
@@ -14,7 +18,7 @@ $(document).ready(function(){
     })
 })
 
-
+/*function grabs all flashcards associated with a given card deck within the user's list of flashcards.*/
 function getData() {
 	var deckName = document.getElementById("deckSelect").value;
 	if(deckName == ""){
@@ -37,11 +41,13 @@ function getData() {
 
 }
 
+/*Redirects the user to flashcard workflow, where it will show the user all flashcards due for that day of the specified flashcard deck*/
 function doReviews() {
 	window.location.href = "../flashcards/flashcards.php?deck=" +
 		document.getElementById("deckSelect").value;
 }
 
+/*Deletes a flashcard, if the user clicks on the delete button in the table associated with each flashcard.*/ 
 function deleteCard(cardID) {
 
 	let cardInfo = new FormData();
