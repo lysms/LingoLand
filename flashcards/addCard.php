@@ -27,7 +27,7 @@ if ($dbOk) {
 	$card = json_decode("$_POST[card]", true);
 	$today = new DateTime('now');
 
-	// creates and executes the update query
+	// creates and executes the add query
 	$query = 'insert into flashcards (`duedate`, `interval`, `easefactor`, `front`, `back`, `deck`, `userID`) values ("' .
 		$today->format('Y-m-d H:i:s') . '", 0, 250, "' . $card['front'] . '", "' . $card['back'] . '", "' . $card['deck'] . '","' . $_SESSION["id"] . '")';
 
