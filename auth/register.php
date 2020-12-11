@@ -13,6 +13,8 @@ include('connection.php');
 
 <?php include('../includes/head.inc.php'); ?>
 <?php include('../includes/regular_nav.php'); ?>
+
+<!-- HTML form to get the new user's sign up input information and process the info with database.-->
 <div class="container">
     <div class="myCard">
         <div class="row">
