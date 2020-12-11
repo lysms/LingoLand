@@ -1,6 +1,6 @@
 <?php
-  include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
-  include('../includes/functions.inc.php'); // functions
+include('../includes/init.inc.php'); // include the DOCTYPE and opening tags
+include('../includes/functions.inc.php'); // functions
 ?>
 <?php include('../includes/head.inc.php'); ?>
 
@@ -8,6 +8,7 @@
 <?php include('../includes/home_navbar.php'); ?>
 <div id=index>
     <div id="top" class="jumbotron" data-position="center right">
+        <!--Our slogn and header about LingoLand -->
         <div class="container-fluid">
             <div class="row">
                 <div id="lingoland-title" class="col-md-6">
@@ -30,6 +31,7 @@
                 <br> - Rita Mae Brown
             </p>
             <hr>
+            <!-- Description about LingoLand. -->
             <div class="row">
                 <div class="col-4">
                     <h3>Language Learning</h3>
@@ -48,7 +50,8 @@
                 <div class="col-4">
                     <h3>Spaced Repetition System</h3>
                     <p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Through our built-in spaced repetition system, we aim to help users
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Through our built-in spaced repetition system, we aim to help
+                        users
                         learn more efficiently and decrease the amount of information a given user would need to look
                         through day-by-day.
                     </p>
@@ -85,7 +88,7 @@
                     <h3>Flashcard SRS system</h3>
                 </div>
             </div>
-            <div class = "row d-flex flex-row align-items-center justify-content-center">
+            <div class="row d-flex flex-row align-items-center justify-content-center">
                 <div class="col-6">
                     <figure>
                         <img class="index" src="../resources/images/front.png">
@@ -102,6 +105,7 @@
         </div>
     </div>
 
+    <!-- Our team members session-->
     <div id="meet-the-team">
         <section id="images" class="container">
             <h2 class="index">Meet the Team</h2>
@@ -151,5 +155,5 @@
     </div>
 </div>
 <?php include('../includes/foot.inc.php');
-  // footer info and closing tags
+// footer info and closing tags
 ?>
