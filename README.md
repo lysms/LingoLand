@@ -1,4 +1,9 @@
+<p align="center">
+  <img src="https://github.com/lysms/LingoLand/blob/master/resources/images/Lion.png" width="50%" title="LingoLand Logo">
+</p>
+
 # LingoLand
+Welcome to LingoLand!
 
 ## Summary of LingoLand
 - LingoLand serves anyone who is trying to learn another language at any level. Whether it be a beginner level or intermediate level, it would help users by using both the Target Language that the user wants to learn and the Native Language that the user is already familiar with.
@@ -27,8 +32,8 @@ structure for LingoLand web pages. JavaScript will be used to connect the site t
 account in order to access the learning material. In this case, we will use MySQL to save and
 update the user's profile, progress, login information, etc. And all other data on the site.
 We will use PHP coupled with AJAX to pull the data from MySQL. To translate terms, we want
-to potentially use Google Translate API, or some other language parsing API to help automate
-the translation process. In suggesting articles, we could make use of the Gdelt article searching "https://blog.gdeltproject.org/announcing-the-gdelt-full-text-search-api/"
+to potentially use [Google Translate API](https://cloud.google.com/translate/docs/reference/rest), or some other language parsing API to help automate
+the translation process. In suggesting articles, we could make use of the [Gdelt article searching](https://blog.gdeltproject.org/announcing-the-gdelt-full-text-search-api/)
 API, which allows users to search for articles based on language and topic category.
 
 
