@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/lysms/LingoLand/blob/master/resources/images/LLL.png" width="50%" height="30%" title="LingoLand Logo">
+  <img src="https://github.com/lysms/LingoLand/blob/master/resources/images/LLL.png" width="50%" height="10%" title="LingoLand Logo">
 </p>
 
 # LingoLand
